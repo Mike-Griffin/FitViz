@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "StravaApiPackage",
+        "repositoryURL": "https://github.com/Mike-Griffin/StravaApiPackage",
+        "state": {
+          "branch": null,
+          "revision": "e9bd77204bac14fad7d8ee825d669f2a987b7f32",
+          "version": "0.0.9"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

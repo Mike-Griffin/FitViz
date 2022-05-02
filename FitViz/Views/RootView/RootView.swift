@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct RootView: View {
+    @ObservedObject var viewModel = ViewModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        if viewModel.defaultSource.isEmpty {
+            Text("Empty")
+        } else {
+            HomeFeedView()
+        }
     }
 }
 

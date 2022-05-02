@@ -11,6 +11,13 @@
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
 		7FA0EBA2282089C700020DA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EBA1282089C700020DA2 /* Preview Assets.xcassets */; };
+		7FA0EBAA28208C8D00020DA2 /* StravaApiPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 7FA0EBA928208C8D00020DA2 /* StravaApiPackage */; };
+		7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBAD28208D8B00020DA2 /* RootViewModel.swift */; };
+		7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBB028208DFE00020DA2 /* Source.swift */; };
+		7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBB328208E8D00020DA2 /* HomeFeedView.swift */; };
+		7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */; };
+		7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */; };
+		7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBBA282092F100020DA2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,12 @@
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7FA0EB9E282089C700020DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FA0EBA1282089C700020DA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7FA0EBAD28208D8B00020DA2 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		7FA0EBB028208DFE00020DA2 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		7FA0EBB328208E8D00020DA2 /* HomeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedView.swift; sourceTree = "<group>"; };
+		7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedViewModel.swift; sourceTree = "<group>"; };
+		7FA0EBBA282092F100020DA2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA0EBAA28208C8D00020DA2 /* StravaApiPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +65,10 @@
 		7FA0EB99282089C400020DA2 /* FitViz */ = {
 			isa = PBXGroup;
 			children = (
+				7FA0EBB52820908900020DA2 /* Managers */,
+				7FA0EBAF28208DE800020DA2 /* Utilities */,
+				7FA0EBAB28208D6600020DA2 /* Views */,
 				7FA0EB9A282089C400020DA2 /* FitVizApp.swift */,
-				7FA0EB9C282089C400020DA2 /* RootView.swift */,
 				7FA0EB9E282089C700020DA2 /* Assets.xcassets */,
 				7FA0EBA0282089C700020DA2 /* Preview Content */,
 			);
@@ -65,6 +81,50 @@
 				7FA0EBA1282089C700020DA2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7FA0EBAB28208D6600020DA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBB228208E5000020DA2 /* HomeFeedView */,
+				7FA0EBAC28208D7300020DA2 /* RootView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7FA0EBAC28208D7300020DA2 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBAD28208D8B00020DA2 /* RootViewModel.swift */,
+				7FA0EB9C282089C400020DA2 /* RootView.swift */,
+			);
+			path = RootView;
+			sourceTree = "<group>";
+		};
+		7FA0EBAF28208DE800020DA2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBB028208DFE00020DA2 /* Source.swift */,
+				7FA0EBBA282092F100020DA2 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7FA0EBB228208E5000020DA2 /* HomeFeedView */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBB328208E8D00020DA2 /* HomeFeedView.swift */,
+				7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */,
+			);
+			path = HomeFeedView;
+			sourceTree = "<group>";
+		};
+		7FA0EBB52820908900020DA2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +143,9 @@
 			dependencies = (
 			);
 			name = FitViz;
+			packageProductDependencies = (
+				7FA0EBA928208C8D00020DA2 /* StravaApiPackage */,
+			);
 			productName = FitViz;
 			productReference = 7FA0EB97282089C400020DA2 /* FitViz.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +174,9 @@
 				Base,
 			);
 			mainGroup = 7FA0EB8E282089C300020DA2;
+			packageReferences = (
+				7FA0EBA828208C8D00020DA2 /* XCRemoteSwiftPackageReference "StravaApiPackage" */,
+			);
 			productRefGroup = 7FA0EB98282089C400020DA2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +203,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */,
+				7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */,
+				7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
+				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
+				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
 				7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */,
+				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +413,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7FA0EBA828208C8D00020DA2 /* XCRemoteSwiftPackageReference "StravaApiPackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mike-Griffin/StravaApiPackage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7FA0EBA928208C8D00020DA2 /* StravaApiPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7FA0EBA828208C8D00020DA2 /* XCRemoteSwiftPackageReference "StravaApiPackage" */;
+			productName = StravaApiPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7FA0EB8F282089C300020DA2 /* Project object */;
 }
