@@ -10,3 +10,7 @@ import Foundation
 enum CloudKitKeys: String {
     case stravaLastFetch = "kStravaLastFetch"
 }
+
+enum RecordType {
+    static let activity = "FVActivity"
+}

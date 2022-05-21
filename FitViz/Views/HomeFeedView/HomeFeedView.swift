@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct HomeFeedView: View {
+    @ObservedObject var viewModel = ViewModel()
     var body: some View {
-        Text("Home")
+        VStack {
+            if viewModel.feedActivities.isEmpty {
+                Text("No activities yet")
+            } else {
+                ActivityListView()
+            }
+        }
+            .onAppear {
+                viewModel.loadActivities()
+            }
     }
 }
 

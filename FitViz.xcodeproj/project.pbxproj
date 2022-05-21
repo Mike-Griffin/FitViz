@@ -18,6 +18,10 @@
 		7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */; };
 		7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */; };
 		7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBBA282092F100020DA2 /* Constants.swift */; };
+		7FA0EBBF2827141600020DA2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA0EBBE2827141600020DA2 /* CloudKit.framework */; };
+		7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC128271EBF00020DA2 /* FVActivity.swift */; };
+		7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC32827218900020DA2 /* ActivityListView.swift */; };
+		7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,11 @@
 		7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedViewModel.swift; sourceTree = "<group>"; };
 		7FA0EBBA282092F100020DA2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7FA0EBBC2827141200020DA2 /* FitViz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitViz.entitlements; sourceTree = "<group>"; };
+		7FA0EBBE2827141600020DA2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		7FA0EBC128271EBF00020DA2 /* FVActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVActivity.swift; sourceTree = "<group>"; };
+		7FA0EBC32827218900020DA2 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA0EBAA28208C8D00020DA2 /* StravaApiPackage in Frameworks */,
+				7FA0EBBF2827141600020DA2 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +61,7 @@
 			children = (
 				7FA0EB99282089C400020DA2 /* FitViz */,
 				7FA0EB98282089C400020DA2 /* Products */,
+				7FA0EBBD2827141600020DA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,8 +76,10 @@
 		7FA0EB99282089C400020DA2 /* FitViz */ = {
 			isa = PBXGroup;
 			children = (
+				7FA0EBBC2827141200020DA2 /* FitViz.entitlements */,
 				7FA0EBB52820908900020DA2 /* Managers */,
 				7FA0EBAF28208DE800020DA2 /* Utilities */,
+				7FA0EBC028271EAC00020DA2 /* Model */,
 				7FA0EBAB28208D6600020DA2 /* Views */,
 				7FA0EB9A282089C400020DA2 /* FitVizApp.swift */,
 				7FA0EB9E282089C700020DA2 /* Assets.xcassets */,
@@ -104,6 +117,7 @@
 		7FA0EBAF28208DE800020DA2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7FA0EBC528396C5200020DA2 /* Extensions */,
 				7FA0EBB028208DFE00020DA2 /* Source.swift */,
 				7FA0EBBA282092F100020DA2 /* Constants.swift */,
 			);
@@ -113,8 +127,9 @@
 		7FA0EBB228208E5000020DA2 /* HomeFeedView */ = {
 			isa = PBXGroup;
 			children = (
-				7FA0EBB328208E8D00020DA2 /* HomeFeedView.swift */,
 				7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */,
+				7FA0EBB328208E8D00020DA2 /* HomeFeedView.swift */,
+				7FA0EBC32827218900020DA2 /* ActivityListView.swift */,
 			);
 			path = HomeFeedView;
 			sourceTree = "<group>";
@@ -125,6 +140,30 @@
 				7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		7FA0EBBD2827141600020DA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBBE2827141600020DA2 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FA0EBC028271EAC00020DA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBC128271EBF00020DA2 /* FVActivity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7FA0EBC528396C5200020DA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,9 +243,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */,
+				7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */,
 				7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */,
 				7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
+				7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */,
+				7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
 				7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */,
@@ -338,6 +380,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FitViz/FitViz.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitViz/Preview Content\"";
@@ -356,6 +400,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.comedichoney.FitViz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -367,6 +412,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FitViz/FitViz.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitViz/Preview Content\"";
@@ -385,6 +432,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.comedichoney.FitViz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

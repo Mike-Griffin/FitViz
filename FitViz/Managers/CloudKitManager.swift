@@ -6,9 +6,24 @@
 //
 
 import Foundation
+import CloudKit
 
 struct CloudKitManager {
-    func loadActivities() {
+    func loadActivities(completed: @escaping (Result<[FVActivity], Error>) -> ()) {
         print("activities are being loaded")
+//        let container = CKContainer(identifier: "iCloud.com.comedichoney.FitViz")
+        let query = CKQuery(recordType: RecordType.activity, predicate: NSPredicate(value: true))
+        
+        CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                completed(.failure(error))
+                return
+            }
+            
+            guard let records = records else { return }
+            
+            let activities = records.map { $0.mapToFVActivity() }
+            completed(.success(activities))
+        }
     }
 }
