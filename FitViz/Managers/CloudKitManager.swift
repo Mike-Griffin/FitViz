@@ -11,10 +11,10 @@ import CloudKit
 struct CloudKitManager {
     func loadActivities(completed: @escaping (Result<[FVActivity], Error>) -> ()) {
         print("activities are being loaded")
-//        let container = CKContainer(identifier: "iCloud.com.comedichoney.FitViz")
+        let container = CKContainer(identifier: "iCloud.com.comedichoney.FitnessVisualizer")
         let query = CKQuery(recordType: RecordType.activity, predicate: NSPredicate(value: true))
         
-        CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+        container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
             if let error = error {
                 completed(.failure(error))
                 return

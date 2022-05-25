@@ -22,9 +22,9 @@ struct FVActivity: Identifiable {
     let source: String
     let startTime: String
     let duration: Int
-    let averagePace: Float
-    let averageHeartRate: Float
-    let distance: Float
+    let averagePace: Double
+    let averageHeartRate: Double
+    let distance: Double
     
     init(record: CKRecord) {
         id = record.recordID
@@ -32,8 +32,8 @@ struct FVActivity: Identifiable {
         source = record[FVActivity.kSource] as? String ?? "N/A"
         startTime = record[FVActivity.kStartTime] as? String ?? "N/A"
         duration = record[FVActivity.kDuration] as? Int ?? 0
-        averagePace = record[FVActivity.kAveragePace] as? Float ?? 0
-        averageHeartRate = record[FVActivity.kAverageHeartRate] as? Float ?? 0
-        distance = record[FVActivity.kDistance] as? Float ?? 0
+        averagePace = record[FVActivity.kAveragePace] as? Double ?? 0.0
+        averageHeartRate = record[FVActivity.kAverageHeartRate] as? Double ?? 0.0
+        distance = record[FVActivity.kDistance] as? Double ?? 0.0
     }
 }

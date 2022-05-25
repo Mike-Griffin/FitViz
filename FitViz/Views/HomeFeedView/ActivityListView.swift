@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ActivityListView: View {
+    @Binding var activities: [FVActivity]
     var body: some View {
-        Text("Soon there will be activities here")
+        List($activities) {
+            ActivityListCellView(activity: $0)
+        }
     }
 }
 
 struct ActivityListView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityListView()
+        ActivityListView(activities: .constant([]))
     }
 }

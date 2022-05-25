@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0EB6CA283DB13C00721D81 /* ActivityListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6C9283DB13C00721D81 /* ActivityListCellView.swift */; };
+		7F0EB6CC283DB1AC00721D81 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6CB283DB1AC00721D81 /* MockData.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0EB6C9283DB13C00721D81 /* ActivityListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListCellView.swift; sourceTree = "<group>"; };
+		7F0EB6CB283DB1AC00721D81 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				7FA0EBB82820925B00020DA2 /* HomeFeedViewModel.swift */,
 				7FA0EBB328208E8D00020DA2 /* HomeFeedView.swift */,
 				7FA0EBC32827218900020DA2 /* ActivityListView.swift */,
+				7F0EB6C9283DB13C00721D81 /* ActivityListCellView.swift */,
 			);
 			path = HomeFeedView;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA0EBC128271EBF00020DA2 /* FVActivity.swift */,
+				7F0EB6CB283DB1AC00721D81 /* MockData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,8 +251,10 @@
 				7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */,
 				7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */,
 				7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */,
+				7F0EB6CC283DB1AC00721D81 /* MockData.swift in Sources */,
 				7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
+				7F0EB6CA283DB13C00721D81 /* ActivityListCellView.swift in Sources */,
 				7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */,
 				7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,

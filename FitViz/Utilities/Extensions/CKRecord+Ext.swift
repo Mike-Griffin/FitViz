@@ -9,5 +9,10 @@ import Foundation
 import CloudKit
 
 extension CKRecord {
-    func mapToFVActivity() -> FVActivity { FVActivity(record: self) }
+    func mapToFVActivity() -> FVActivity {
+        print(self)
+        print(self["distance"])
+        return FVActivity(record: self)
+        
+    }
 }

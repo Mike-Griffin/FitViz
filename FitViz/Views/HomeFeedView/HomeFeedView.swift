@@ -14,7 +14,7 @@ struct HomeFeedView: View {
             if viewModel.feedActivities.isEmpty {
                 Text("No activities yet")
             } else {
-                ActivityListView()
+                ActivityListView(activities: $viewModel.feedActivities)
             }
         }
             .onAppear {
