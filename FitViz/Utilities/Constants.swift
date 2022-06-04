@@ -14,3 +14,8 @@ enum CloudKitKeys: String {
 enum RecordType {
     static let activity = "FVActivity"
 }
+
+enum DistanceUnit: String, CaseIterable, Identifiable {
+    case miles, kilometer
+    var id: Self { self }
+}

@@ -9,8 +9,18 @@ import SwiftUI
 
 struct ActivityListCellView: View {
     @Binding var activity: FVActivity
+    @AppStorage("distanceUnit") private var distanceUnit = ""
     var body: some View {
-        Text(activity.startTime)
+        VStack {
+            HStack {
+                Text(String(activity.distance))
+                Text(distanceUnit)
+                Text(activity.type)
+            }
+            HStack {
+                Text("via \(activity.source)")
+            }
+        }
     }
 }
 

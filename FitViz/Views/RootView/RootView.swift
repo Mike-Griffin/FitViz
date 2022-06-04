@@ -11,7 +11,15 @@ struct RootView: View {
     @ObservedObject var viewModel = ViewModel()
     var body: some View {
         if viewModel.defaultSource.isEmpty {
+            NavigationView {
+            VStack {
+            NavigationLink("Settings") {
+                SettingsView()
+            }
             HomeFeedView()
+            }
+            }
+            
         } else {
         }
     }
