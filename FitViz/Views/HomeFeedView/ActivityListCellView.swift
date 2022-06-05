@@ -13,7 +13,8 @@ struct ActivityListCellView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(String(activity.distance))
+                Text(activity.distance      .convertMetersToDistanceUnit(distanceUnit)
+                    .formatDistanceDisplayValue())
                 Text(distanceUnit)
                 Text(activity.type)
             }
