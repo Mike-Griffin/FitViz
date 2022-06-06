@@ -19,3 +19,7 @@ enum DistanceUnit: String, CaseIterable, Identifiable {
     case miles, kilometer
     var id: Self { self }
 }
+
+enum ActivityType: String, CaseIterable {
+    case Run, Bike
+}
