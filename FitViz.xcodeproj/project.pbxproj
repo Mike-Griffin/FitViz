@@ -12,6 +12,10 @@
 		7F0EB6CF284C12AB00721D81 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6CE284C12AB00721D81 /* SettingsView.swift */; };
 		7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6D0284D3CFF00721D81 /* Double+Ext.swift */; };
 		7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D2F285509A4003B0A04 /* String+Ext.swift */; };
+		7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D312855328D003B0A04 /* NetworkManager.swift */; };
+		7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D33285533D0003B0A04 /* CustomError.swift */; };
+		7F4E8D3628553A48003B0A04 /* StravaActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3528553A48003B0A04 /* StravaActivity.swift */; };
+		7F4E8D3828553AD4003B0A04 /* ActivityRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -35,6 +39,10 @@
 		7F0EB6CE284C12AB00721D81 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7F0EB6D0284D3CFF00721D81 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		7F4E8D2F285509A4003B0A04 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		7F4E8D312855328D003B0A04 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7F4E8D33285533D0003B0A04 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		7F4E8D3528553A48003B0A04 /* StravaActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaActivity.swift; sourceTree = "<group>"; };
+		7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRequestManager.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 				7FA0EBC528396C5200020DA2 /* Extensions */,
 				7FA0EBB028208DFE00020DA2 /* Source.swift */,
 				7FA0EBBA282092F100020DA2 /* Constants.swift */,
+				7F4E8D33285533D0003B0A04 /* CustomError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -158,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */,
+				7F4E8D312855328D003B0A04 /* NetworkManager.swift */,
+				7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -175,6 +186,7 @@
 			children = (
 				7FA0EBC128271EBF00020DA2 /* FVActivity.swift */,
 				7F0EB6CB283DB1AC00721D81 /* MockData.swift */,
+				7F4E8D3528553A48003B0A04 /* StravaActivity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,18 +277,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4E8D3828553AD4003B0A04 /* ActivityRequestManager.swift in Sources */,
 				7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */,
 				7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */,
 				7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */,
 				7F0EB6CC283DB1AC00721D81 /* MockData.swift in Sources */,
 				7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */,
+				7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
 				7F0EB6CA283DB13C00721D81 /* ActivityListCellView.swift in Sources */,
 				7F0EB6CF284C12AB00721D81 /* SettingsView.swift in Sources */,
 				7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */,
 				7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */,
+				7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
+				7F4E8D3628553A48003B0A04 /* StravaActivity.swift in Sources */,
 				7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */,
 				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,

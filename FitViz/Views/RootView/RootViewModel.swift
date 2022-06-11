@@ -10,5 +10,17 @@ import SwiftUI
 extension RootView {
     class ViewModel: ObservableObject {
         var defaultSource: [Source] = []
+        let activityRequestManager = ActivityRequestManager()
+        init() {
+            activityRequestManager.getActivities(urlString: "https://www.strava.com/api/v3/athlete/activities") { (result: Result<[StravaActivity], Error>) in
+                switch(result) {
+                case .success(let activities):
+                    print("Great Success")
+                    print(activities)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
 }
