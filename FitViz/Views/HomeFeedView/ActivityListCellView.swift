@@ -20,7 +20,7 @@ struct ActivityListCellView: View {
                 ActivityIcon(activityString: activity.type)
             }
             HStack {
-                Text("via \(activity.source)")
+                Text("\(activity.startTime.activityPreviewDateDisplay()) via \(activity.source)")
             }
         }
     }
