@@ -12,7 +12,7 @@ extension RootView {
         var defaultSource: [Source] = []
         let activityRequestManager = ActivityRequestManager()
         init() {
-            activityRequestManager.getActivities(urlString: "https://www.strava.com/api/v3/athlete/activities") { (result: Result<[StravaActivity], Error>) in
+            activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
                 switch(result) {
                 case .success(let activities):
                     print("Great Success")
