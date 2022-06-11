@@ -9,8 +9,6 @@ import Foundation
 
 extension Double {
     func convertMetersToDistanceUnit(_ unitString: String) -> Double {
-        print("Unit String: ", unitString)
-        print(self)
         if let unit = DistanceUnit(rawValue: unitString) {
             switch (unit) {
             case .miles:
@@ -24,7 +22,6 @@ extension Double {
     }
     
     func formatDistanceDisplayValue() -> String {
-        print(self)
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumFractionDigits = 0

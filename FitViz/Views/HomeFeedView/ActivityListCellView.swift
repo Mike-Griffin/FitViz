@@ -11,17 +11,21 @@ struct ActivityListCellView: View {
     @Binding var activity: FVActivity
     @AppStorage("distanceUnit") private var distanceUnit = ""
     var body: some View {
-        VStack {
-            HStack {
-                Text(activity.distance      .convertMetersToDistanceUnit(distanceUnit)
-                    .formatDistanceDisplayValue())
-                Text(distanceUnit)
-                Text(activity.type)
-                ActivityIcon(activityString: activity.type)
+        HStack {
+            Spacer()
+            VStack(alignment: .center) {
+                HStack {
+                    Text(activity.distance      .convertMetersToDistanceUnit(distanceUnit)
+                        .formatDistanceDisplayValue())
+                    Text(distanceUnit)
+                    Text(activity.type)
+                    ActivityIcon(activityString: activity.type)
+                }
+                HStack {
+                    Text("\(activity.startTime.activityPreviewDateDisplay()) via \(activity.source)")
+                }
             }
-            HStack {
-                Text("\(activity.startTime.activityPreviewDateDisplay()) via \(activity.source)")
-            }
+            Spacer()
         }
     }
 }
