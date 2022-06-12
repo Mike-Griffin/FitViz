@@ -6,22 +6,20 @@
 //
 
 import SwiftUI
-import KeychainAccess
 
 extension DeveloperView {
     class ViewModel: ObservableObject {
         @Published var stravaAccessCode = ""
-        let keychain = Keychain(service: "com.comedichoney.FitViz")
 
         init() {
-            if let stravaCode = keychain[KeychainKeys.stravaAccessCode.rawValue] {
+            if let stravaCode = KeychainManager.shared.getStravaAccessCode() {
                 print("Keychain code: \(stravaCode)")
                 stravaAccessCode = stravaCode
             }
         }
         
         func setStravaAccessCodeToKeychain() {
-            keychain[KeychainKeys.stravaAccessCode.rawValue] = stravaAccessCode
+            KeychainManager.shared.setStravaAccessCode(stravaAccessCode)
         }
     }
 }

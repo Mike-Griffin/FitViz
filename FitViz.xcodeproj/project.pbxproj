@@ -19,6 +19,10 @@
 		7F4E8D3A28567009003B0A04 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3928567009003B0A04 /* DeveloperView.swift */; };
 		7F4E8D3D285670D0003B0A04 /* DeveloperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3C285670D0003B0A04 /* DeveloperViewModel.swift */; };
 		7F4E8D40285672B8003B0A04 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4E8D3F285672B8003B0A04 /* KeychainAccess */; };
+		7F4E8D422856779F003B0A04 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D412856779F003B0A04 /* KeychainManager.swift */; };
+		7F4E8D4528567C71003B0A04 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4428567C71003B0A04 /* AuthorizationManager.swift */; };
+		7F4E8D4728567F04003B0A04 /* AuthDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4628567F04003B0A04 /* AuthDetails.swift */; };
+		7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -48,6 +52,11 @@
 		7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRequestManager.swift; sourceTree = "<group>"; };
 		7F4E8D3928567009003B0A04 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
 		7F4E8D3C285670D0003B0A04 /* DeveloperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperViewModel.swift; sourceTree = "<group>"; };
+		7F4E8D412856779F003B0A04 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		7F4E8D4428567C71003B0A04 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		7F4E8D4628567F04003B0A04 /* AuthDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDetails.swift; sourceTree = "<group>"; };
+		7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		7F4E8D4A28569CBA003B0A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		7FA0EB99282089C400020DA2 /* FitViz */ = {
 			isa = PBXGroup;
 			children = (
+				7F4E8D4A28569CBA003B0A04 /* Info.plist */,
 				7FA0EBBC2827141200020DA2 /* FitViz.entitlements */,
 				7FA0EBB52820908900020DA2 /* Managers */,
 				7FA0EBAF28208DE800020DA2 /* Utilities */,
@@ -164,6 +174,7 @@
 				7FA0EBB028208DFE00020DA2 /* Source.swift */,
 				7FA0EBBA282092F100020DA2 /* Constants.swift */,
 				7F4E8D33285533D0003B0A04 /* CustomError.swift */,
+				7F4E8D4628567F04003B0A04 /* AuthDetails.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -182,9 +193,11 @@
 		7FA0EBB52820908900020DA2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				7F4E8D4428567C71003B0A04 /* AuthorizationManager.swift */,
 				7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */,
 				7F4E8D312855328D003B0A04 /* NetworkManager.swift */,
 				7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */,
+				7F4E8D412856779F003B0A04 /* KeychainManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -203,6 +216,7 @@
 				7FA0EBC128271EBF00020DA2 /* FVActivity.swift */,
 				7F0EB6CB283DB1AC00721D81 /* MockData.swift */,
 				7F4E8D3528553A48003B0A04 /* StravaActivity.swift */,
+				7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,13 +319,17 @@
 				7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
 				7F0EB6CA283DB13C00721D81 /* ActivityListCellView.swift in Sources */,
+				7F4E8D4728567F04003B0A04 /* AuthDetails.swift in Sources */,
 				7F0EB6CF284C12AB00721D81 /* SettingsView.swift in Sources */,
 				7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */,
 				7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */,
 				7F4E8D3A28567009003B0A04 /* DeveloperView.swift in Sources */,
 				7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */,
+				7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
+				7F4E8D4528567C71003B0A04 /* AuthorizationManager.swift in Sources */,
+				7F4E8D422856779F003B0A04 /* KeychainManager.swift in Sources */,
 				7F4E8D3628553A48003B0A04 /* StravaActivity.swift in Sources */,
 				7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */,
 				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
@@ -452,6 +470,7 @@
 				DEVELOPMENT_TEAM = T24L76PMG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitViz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -484,6 +503,7 @@
 				DEVELOPMENT_TEAM = T24L76PMG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitViz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

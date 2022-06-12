@@ -27,3 +27,7 @@ enum ActivityType: String, CaseIterable {
 enum KeychainKeys: String {
     case stravaAccessCode
 }
+
+enum Scheme {
+    static let clientScheme = "FitViz"
+}

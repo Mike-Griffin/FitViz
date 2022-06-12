@@ -27,7 +27,10 @@ struct ActivityRequestManager {
         switch source {
             // TODO change this to get the token from nsuserdefaults or wherever I'm going to write it to
         case .Strava:
-            urlRequest.addValue("Bearer 2dbb2507ac9a820b44a08e678837158eddda0d04", forHTTPHeaderField: "Authorization")
+            // TODO: Throw an error if there is no access code?
+            if let token = KeychainManager.shared.getStravaAccessCode() {
+                urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            }
         case .MapMyRun:
             print("No map my run token yet")
         }
