@@ -16,6 +16,9 @@
 		7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D33285533D0003B0A04 /* CustomError.swift */; };
 		7F4E8D3628553A48003B0A04 /* StravaActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3528553A48003B0A04 /* StravaActivity.swift */; };
 		7F4E8D3828553AD4003B0A04 /* ActivityRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */; };
+		7F4E8D3A28567009003B0A04 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3928567009003B0A04 /* DeveloperView.swift */; };
+		7F4E8D3D285670D0003B0A04 /* DeveloperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D3C285670D0003B0A04 /* DeveloperViewModel.swift */; };
+		7F4E8D40285672B8003B0A04 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4E8D3F285672B8003B0A04 /* KeychainAccess */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -43,6 +46,8 @@
 		7F4E8D33285533D0003B0A04 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		7F4E8D3528553A48003B0A04 /* StravaActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaActivity.swift; sourceTree = "<group>"; };
 		7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRequestManager.swift; sourceTree = "<group>"; };
+		7F4E8D3928567009003B0A04 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
+		7F4E8D3C285670D0003B0A04 /* DeveloperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperViewModel.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 			files = (
 				7FA0EBAA28208C8D00020DA2 /* StravaApiPackage in Frameworks */,
 				7FA0EBBF2827141600020DA2 /* CloudKit.framework in Frameworks */,
+				7F4E8D40285672B8003B0A04 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +86,15 @@
 				7F0EB6CE284C12AB00721D81 /* SettingsView.swift */,
 			);
 			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		7F4E8D3B28567040003B0A04 /* DeveloperView */ = {
+			isa = PBXGroup;
+			children = (
+				7F4E8D3C285670D0003B0A04 /* DeveloperViewModel.swift */,
+				7F4E8D3928567009003B0A04 /* DeveloperView.swift */,
+			);
+			path = DeveloperView;
 			sourceTree = "<group>";
 		};
 		7FA0EB8E282089C300020DA2 = {
@@ -125,9 +140,10 @@
 		7FA0EBAB28208D6600020DA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7F0EB6CD284C127F00721D81 /* SettingsView */,
-				7FA0EBB228208E5000020DA2 /* HomeFeedView */,
 				7FA0EBAC28208D7300020DA2 /* RootView */,
+				7FA0EBB228208E5000020DA2 /* HomeFeedView */,
+				7F0EB6CD284C127F00721D81 /* SettingsView */,
+				7F4E8D3B28567040003B0A04 /* DeveloperView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +235,7 @@
 			name = FitViz;
 			packageProductDependencies = (
 				7FA0EBA928208C8D00020DA2 /* StravaApiPackage */,
+				7F4E8D3F285672B8003B0A04 /* KeychainAccess */,
 			);
 			productName = FitViz;
 			productReference = 7FA0EB97282089C400020DA2 /* FitViz.app */;
@@ -250,6 +267,7 @@
 			mainGroup = 7FA0EB8E282089C300020DA2;
 			packageReferences = (
 				7FA0EBA828208C8D00020DA2 /* XCRemoteSwiftPackageReference "StravaApiPackage" */,
+				7F4E8D3E285672B8003B0A04 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 7FA0EB98282089C400020DA2 /* Products */;
 			projectDirPath = "";
@@ -282,6 +300,7 @@
 				7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */,
 				7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */,
 				7F0EB6CC283DB1AC00721D81 /* MockData.swift in Sources */,
+				7F4E8D3D285670D0003B0A04 /* DeveloperViewModel.swift in Sources */,
 				7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */,
 				7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
@@ -289,6 +308,7 @@
 				7F0EB6CF284C12AB00721D81 /* SettingsView.swift in Sources */,
 				7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */,
 				7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */,
+				7F4E8D3A28567009003B0A04 /* DeveloperView.swift in Sources */,
 				7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
@@ -507,6 +527,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7F4E8D3E285672B8003B0A04 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7FA0EBA828208C8D00020DA2 /* XCRemoteSwiftPackageReference "StravaApiPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mike-Griffin/StravaApiPackage";
@@ -518,6 +546,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7F4E8D3F285672B8003B0A04 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F4E8D3E285672B8003B0A04 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		7FA0EBA928208C8D00020DA2 /* StravaApiPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7FA0EBA828208C8D00020DA2 /* XCRemoteSwiftPackageReference "StravaApiPackage" */;

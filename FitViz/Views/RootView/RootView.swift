@@ -13,10 +13,13 @@ struct RootView: View {
         if viewModel.defaultSource.isEmpty {
             NavigationView {
             VStack {
-            NavigationLink("Settings") {
-                SettingsView()
-            }
-            HomeFeedView()
+                NavigationLink("Settings") {
+                    SettingsView()
+                }
+                NavigationLink("Developer") {
+                    DeveloperView()
+                }
+                HomeFeedView()
             }
             }
             

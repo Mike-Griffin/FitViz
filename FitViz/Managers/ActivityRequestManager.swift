@@ -10,7 +10,7 @@ import Foundation
 struct ActivityRequestManager {
     let networkManager = NetworkManager()
     
-    //TODO: Modify this function to take in the enum for the source, then switch over the source
+    // TODO: Change this to be a generic, probably should be a protocol type that all the activities inherit from
     func getActivities(source: Source, completed: @escaping (Result<[StravaActivity], Error>) -> ()) {
         var urlString = ""
         switch source {
