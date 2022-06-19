@@ -14,8 +14,8 @@
             filePath = "FitViz/Managers/AuthorizationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "performAuthSessionRequest(source:completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,10 +30,10 @@
             filePath = "FitViz/Managers/AuthorizationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "presentationAnchor(for:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,8 +46,8 @@
             filePath = "FitViz/Managers/AuthorizationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "performAuthSessionRequest(source:completed:)"
             landmarkType = "7">
          </BreakpointContent>

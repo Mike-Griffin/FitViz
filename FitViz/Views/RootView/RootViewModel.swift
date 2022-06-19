@@ -13,28 +13,21 @@ extension RootView {
         let activityRequestManager = ActivityRequestManager()
         let authorizationManager = AuthorizationManager()
         init() {
-            authorizationManager.performAuthSessionRequest(source: .Strava) { [self] result in
-                switch result {
-                case .success(let token):
-                    if let token = token {
-                        print("Token: \(token)")
-                        activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
-                            switch(result) {
-                            case .success(let activities):
-                                print("Great Success")
-                                print(activities)
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                    } else {
-                        print("No token :(")
-                    }
-                case .failure(let error):
+            authorizationManager.initAuthorization(source: .Strava) { [self] error in
+                if let error = error {
                     print(error)
+                } else {
+                    activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
+                        switch(result) {
+                        case .success(let activities):
+                            print("Great Success")
+                            print(activities)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }
             }
-
         }
     }
 }

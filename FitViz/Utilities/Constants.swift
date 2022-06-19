@@ -26,6 +26,7 @@ enum ActivityType: String, CaseIterable {
 
 enum KeychainKeys: String {
     case stravaAccessCode
+    case stravaRefreshToken
 }
 
 enum Scheme {

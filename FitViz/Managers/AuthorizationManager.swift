@@ -9,13 +9,75 @@ import UIKit
 import AuthenticationServices
 
 class AuthorizationManager: NSObject {
+    public func initAuthorization(source: Source, completed: @escaping (Error?) -> Void) {
+        // check if there is a refresh token
+        if let refreshToken = KeychainManager.shared.getRefreshTokenForSource(source: source) {
+            // perform the refresh flow
+            performRefresh(refreshToken: refreshToken) { result in
+                switch result {
+                case .success(_):
+                    completed(nil)
+                case .failure(let error):
+                    completed(error)
+                }
+            }
+        } else {
+            performAuthSessionRequest(source: source) { result in
+                switch result {
+                case .success(_):
+                    completed(nil)
+                case .failure(let error):
+                    completed(error)
+                }
+            }
+        }
+    }
+    
+    //TODO: Refactor this to not be Strava specific
+    public func performRefresh(refreshToken: String, completed: @escaping (Result<TokenResponse, Error>) -> Void) {
+            let authDetails = Source.Strava.getAuthDetails()
+        let json : [String: Any] = ["client_id": authDetails.clientId,
+                                    "client_secret": authDetails.clientSecret,
+                                        "refresh_token": refreshToken,
+                                        "grant_type": "refresh_token"]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json, options: [])
+            
+            guard let url = URL(string: "https://www.strava.com/oauth/token") else {
+                print("ain't no url")
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = jsonData
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do {
+                    let decodedData = try JSONDecoder().decode(TokenResponse.self, from: data)
+                        KeychainManager.shared.setStravaAccessCode(decodedData.access_token)
+                        // TODO: Also set the expiration detail
+                        completed(.success(decodedData))
+                        print(decodedData.access_token)
+                        print(decodedData.expires_at)
+
+                    }
+                    catch {
+                       print("error decoding the token")
+                        completed(.failure(error))
+                   }
+
+                }
+            }.resume()
+    }
+    
     public func performAuthSessionRequest(source: Source, completed: @escaping (Result<String?, Error>) -> Void) {
         let mostOfTheString = getAuthUrl(source)
-        //TODO: Move this to the authDetails
-        let appOAuthUrlStravaScheme = URL(string: "strava://oauth/mobile/authorize?client_id="
+        let appOAuthUrlStravaScheme = URL(string: source.getAuthDetails().appOAuthUrl
                                           + mostOfTheString)!
 
-        let webOAuthUrl = URL(string: "https://www.strava.com/oauth/mobile/authorize?client_id="
+        let webOAuthUrl = URL(string: source.getAuthDetails().webOAuthUrl
                               + mostOfTheString)!
         if UIApplication.shared.canOpenURL(appOAuthUrlStravaScheme) {
             print("ya ya")
@@ -29,6 +91,7 @@ class AuthorizationManager: NSObject {
             let authSession = ASWebAuthenticationSession(url: webOAuthUrl, callbackURLScheme: Scheme.clientScheme) { url, error in
                 if let error = error {
                     print(error)
+                    completed(.failure(error))
                 } else {
                     print("else no error")
                     if let code = self.getCode(from: url) {
@@ -36,6 +99,8 @@ class AuthorizationManager: NSObject {
                             switch result {
                             case .success(let tokenResponse):
 //                                self?.token = tokenResponse.access_token
+                                // TODO: Consider pulling this out
+                                // TODO: Set the expiration details
                                 completed(.success(tokenResponse.access_token))
                             case .failure(let error):
                                 completed(.failure(error))
@@ -101,6 +166,8 @@ class AuthorizationManager: NSObject {
                     print(decodedData.access_token)
                     print(decodedData.refresh_token)
                     print(decodedData.expires_at)
+                    KeychainManager.shared.setStravaAccessCode(decodedData.access_token)
+                    KeychainManager.shared.setStravaRefreshToken(decodedData.refresh_token)
                     completed(.success(decodedData))
 
                 }
@@ -115,6 +182,6 @@ class AuthorizationManager: NSObject {
 
 extension AuthorizationManager: ASWebAuthenticationPresentationContextProviding {
     public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        UIApplication.shared.windows[0]
+        return ASPresentationAnchor()
     }
 }
