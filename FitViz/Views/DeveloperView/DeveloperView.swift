@@ -11,20 +11,12 @@ struct DeveloperView: View {
     @ObservedObject private var viewModel = ViewModel()
     var body: some View {
         Form {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Strava Access Code")
-                        .font(.headline)
-                TextField("Strava Access Code", text: $viewModel.stravaAccessCode)
-                }
-            Button {
-                print("yeah we be setting the strava code \(viewModel.stravaAccessCode)")
-                viewModel.setStravaAccessCodeToKeychain()
-            } label: {
-                Text("Set")
-            }
-            }
-
+            FormRow(value: $viewModel.stravaAccessCode,
+                    label: "Strava Access Code",
+                    setValue: viewModel.setStravaAccessCodeToKeychain)
+            FormRow(value: $viewModel.stravaRefreshToken, label: "Strava Refresh Token", setValue: viewModel.setStravaRefreshTokenToKeychain)
+            FormRow(value: $viewModel.stravaLastFetchTime, label: "Strava Last Fetch", setValue: viewModel.setStravaLastFetchTime)
+            
         }
     }
 }
@@ -32,5 +24,26 @@ struct DeveloperView: View {
 struct DeveloperView_Previews: PreviewProvider {
     static var previews: some View {
         DeveloperView()
+    }
+}
+
+struct FormRow: View {
+    @Binding var value: String
+    var label: String
+    var setValue: () -> Void
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(label)
+                    .font(.headline)
+                TextField(label, text: $value)
+            }
+            Button {
+                print("yeah we be setting the strava code \(value)")
+                setValue()
+            } label: {
+                Text("Set")
+            }
+        }
     }
 }

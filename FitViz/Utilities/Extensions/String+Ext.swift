@@ -18,6 +18,16 @@ extension String {
             return self
         }
     }
+    
+    func convertDateStringToEpochTimestamp() -> Int {
+        let expectedFormat = Date.ISO8601FormatStyle()
+        do {
+            let date = try Date(self, strategy: expectedFormat)
+            return date.toEpochTimeStamp()
+        } catch {
+            return 0
+        }
+    }
 }
 
 extension Date {
@@ -32,5 +42,9 @@ extension Date {
         } else {
             return self.formatted()
         }
+    }
+    
+    func toEpochTimeStamp() -> Int {
+        return Int(self.timeIntervalSince1970)
     }
 }

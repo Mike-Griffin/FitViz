@@ -38,6 +38,7 @@
 		7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC128271EBF00020DA2 /* FVActivity.swift */; };
 		7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC32827218900020DA2 /* ActivityListView.swift */; };
 		7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */; };
+		7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		7FA0EBC128271EBF00020DA2 /* FVActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVActivity.swift; sourceTree = "<group>"; };
 		7FA0EBC32827218900020DA2 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
+		7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				7F4E8D312855328D003B0A04 /* NetworkManager.swift */,
 				7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */,
 				7F4E8D412856779F003B0A04 /* KeychainManager.swift */,
+				7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				7F4E8D422856779F003B0A04 /* KeychainManager.swift in Sources */,
 				7F4E8D3628553A48003B0A04 /* StravaActivity.swift in Sources */,
 				7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */,
+				7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */,
 				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
 				7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */,

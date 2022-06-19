@@ -17,11 +17,17 @@ extension RootView {
                 if let error = error {
                     print(error)
                 } else {
-                    activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
+                    activityRequestManager.getAllActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
                         switch(result) {
                         case .success(let activities):
                             print("Great Success")
                             print(activities)
+                            if let newestActivity = activities.first {
+                                print(newestActivity.start_date.convertDateStringToEpochTimestamp())
+                                // TODO: Convert move this logic to somewhere else within the fetching logic
+                                UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
+//                                UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity, source: .Strava)
+                            }
                         case .failure(let error):
                             print(error)
                         }

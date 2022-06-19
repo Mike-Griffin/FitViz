@@ -13,4 +13,7 @@ struct StravaActivityResponse {
 
 struct StravaActivity: Decodable {
     let name: String
+    // TODO: Consider using start time local to account for time zone
+    // TODO: Add coding keys to make this startTime
+    let start_date: String
 }

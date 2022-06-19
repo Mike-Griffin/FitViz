@@ -29,6 +29,10 @@ enum KeychainKeys: String {
     case stravaRefreshToken
 }
 
+enum DefaultsKeys: String {
+    case stravaLastRetrived
+}
+
 enum Scheme {
     static let clientScheme = "FitViz"
 }
