@@ -14,8 +14,7 @@ extension DeveloperView {
         @Published var stravaLastFetchTime = ""
         @Published var stravaExpirationTime = ""
 
-        init() {
-            // TODO: Move this to onAppear instead of init
+        func fetchValues() {
             if let stravaCode = KeychainManager.shared.getStravaAccessCode() {
                 print("Keychain code: \(stravaCode)")
                 stravaAccessCode = stravaCode
@@ -26,7 +25,6 @@ extension DeveloperView {
             }
             
             stravaLastFetchTime = "\(UserDefaultsManager.shared.getLastRetrievedTime(source: .Strava))"
-            
         }
         
         func setStravaAccessCodeToKeychain() {

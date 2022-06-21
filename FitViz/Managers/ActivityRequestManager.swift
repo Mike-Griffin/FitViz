@@ -11,7 +11,7 @@ struct ActivityRequestManager {
     let networkManager = NetworkManager()
     
     // TODO: Change this to be a generic, probably should be a protocol type that all the activities inherit from
-    func getAllActivities(source: Source, completed: @escaping (Result<[StravaActivity], Error>) -> ()) {
+    func getActivities(source: Source, completed: @escaping (Result<[StravaActivity], Error>) -> ()) {
         var urlString = ""
         switch source {
         case .Strava:
@@ -20,6 +20,9 @@ struct ActivityRequestManager {
             if lastFetchTime != 0 {
                 print("it's not zero")
                 urlString += "?after=\(lastFetchTime)"
+            } else {
+                //TODO: Change this to get pagination done properly. For now I'll just load in a lot of activities
+                urlString += "?page_limit=100"
             }
         case .MapMyRun:
             urlString = "TBD"

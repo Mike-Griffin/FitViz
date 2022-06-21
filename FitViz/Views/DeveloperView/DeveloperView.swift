@@ -18,6 +18,9 @@ struct DeveloperView: View {
             FormRow(value: $viewModel.stravaLastFetchTime, label: "Strava Last Fetch", setValue: viewModel.setStravaLastFetchTime)
             
         }
+        .onAppear {
+            viewModel.fetchValues()
+        }
     }
 }
 

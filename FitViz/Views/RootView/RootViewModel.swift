@@ -17,7 +17,7 @@ extension RootView {
                 if let error = error {
                     print(error)
                 } else {
-                    activityRequestManager.getAllActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
+                    activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
                         switch(result) {
                         case .success(let activities):
                             print("Great Success")
