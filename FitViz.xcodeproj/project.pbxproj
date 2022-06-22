@@ -39,6 +39,8 @@
 		7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC32827218900020DA2 /* ActivityListView.swift */; };
 		7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */; };
 		7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */; };
+		7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFB12C286175BF00A7408D /* HealthKit.framework */; };
+		7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFB12E286175F400A7408D /* HealthKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		7FA0EBC32827218900020DA2 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
 		7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		7FEFB12C286175BF00A7408D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		7FEFB12E286175F400A7408D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA0EBAA28208C8D00020DA2 /* StravaApiPackage in Frameworks */,
+				7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */,
 				7FA0EBBF2827141600020DA2 /* CloudKit.framework in Frameworks */,
 				7F4E8D40285672B8003B0A04 /* KeychainAccess in Frameworks */,
 			);
@@ -199,6 +204,7 @@
 				7FA0EBB6282090A000020DA2 /* CloudKitManager.swift */,
 				7F4E8D312855328D003B0A04 /* NetworkManager.swift */,
 				7F4E8D3728553AD4003B0A04 /* ActivityRequestManager.swift */,
+				7FEFB12E286175F400A7408D /* HealthKitManager.swift */,
 				7F4E8D412856779F003B0A04 /* KeychainManager.swift */,
 				7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */,
 			);
@@ -208,6 +214,7 @@
 		7FA0EBBD2827141600020DA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FEFB12C286175BF00A7408D /* HealthKit.framework */,
 				7FA0EBBE2827141600020DA2 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -338,6 +345,7 @@
 				7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */,
 				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
+				7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */,
 				7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
