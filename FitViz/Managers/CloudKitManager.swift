@@ -26,4 +26,21 @@ struct CloudKitManager {
             completed(.success(activities))
         }
     }
+    
+    func batchSave(records: [CKRecord], completed: @escaping (Result<[CKRecord], Error>) -> Void) {
+        let container = CKContainer(identifier: "iCloud.com.comedichoney.FitnessVisualizer")
+        let operation = CKModifyRecordsOperation(recordsToSave: records)
+        
+        operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+            guard let savedRecords = savedRecords, error == nil else {
+                print(error!.localizedDescription)
+                completed(.failure(error!))
+                return
+            }
+            
+            completed(.success(savedRecords))
+        }
+        
+        container.privateCloudDatabase.add(operation)
+    }
 }

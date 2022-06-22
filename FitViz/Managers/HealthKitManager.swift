@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-final class KeychainManager {
-    static let shared = KeychainManager()
+final class HealthKitManager {
+    static let shared = HealthKitManager()
     let healthStore = HKHealthStore()
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Source {
+enum Source: String {
     case Strava
     case MapMyRun
     
