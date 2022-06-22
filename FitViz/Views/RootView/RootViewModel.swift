@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 extension RootView {
     class ViewModel: ObservableObject {
@@ -13,6 +14,7 @@ extension RootView {
         let activityRequestManager = ActivityRequestManager()
         let authorizationManager = AuthorizationManager()
         let cloudkitManager = CloudKitManager()
+        
         init() {
             authorizationManager.initAuthorization(source: .Strava) { [self] error in
                 if let error = error {
@@ -27,6 +29,7 @@ extension RootView {
                                 print(newestActivity.start_date.convertDateStringToEpochTimestamp())
                                 // TODO: Convert move this logic to somewhere else within the fetching logic
                                  UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
+                                saveLastFetched(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
                                 let activityRecords = activities.map({ $0.mapToCKRecord() })
                                 cloudkitManager.batchSave(records: activityRecords) { result in
                                     switch result {
@@ -42,6 +45,21 @@ extension RootView {
                             print(error)
                         }
                     }
+                }
+            }
+        }
+        
+        func saveLastFetched(time: Int, source: Source) {
+            print("Saving the last fetch")
+            let record = CKRecord(recordType: RecordType.sourceInformation)
+            record[FVSourceInformation.kSource] = source.rawValue
+            record[FVSourceInformation.kLastFetched] = time
+            cloudkitManager.batchSave(records: [record]) { result in
+                switch result {
+                case .success(let record):
+                    print(record)
+                case .failure(let error):
+                    print(error)
                 }
             }
         }

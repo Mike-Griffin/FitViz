@@ -15,4 +15,8 @@ extension CKRecord {
         return FVActivity(record: self)
         
     }
+    
+    func mapToFVSourceInformation() -> FVSourceInformation {
+        return FVSourceInformation(record: self)
+    }
 }
