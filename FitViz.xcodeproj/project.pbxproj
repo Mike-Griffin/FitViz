@@ -23,6 +23,7 @@
 		7F4E8D4528567C71003B0A04 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4428567C71003B0A04 /* AuthorizationManager.swift */; };
 		7F4E8D4728567F04003B0A04 /* AuthDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4628567F04003B0A04 /* AuthDetails.swift */; };
 		7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */; };
+		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		7F4E8D4628567F04003B0A04 /* AuthDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDetails.swift; sourceTree = "<group>"; };
 		7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		7F4E8D4A28569CBA003B0A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,15 @@
 				7F4E8D3928567009003B0A04 /* DeveloperView.swift */,
 			);
 			path = DeveloperView;
+			sourceTree = "<group>";
+		};
+		7F861C7A2862B2D600D47C2A /* Cloudkit */ = {
+			isa = PBXGroup;
+			children = (
+				7FA0EBC128271EBF00020DA2 /* FVActivity.swift */,
+				7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */,
+			);
+			path = Cloudkit;
 			sourceTree = "<group>";
 		};
 		7FA0EB8E282089C300020DA2 = {
@@ -223,7 +234,7 @@
 		7FA0EBC028271EAC00020DA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7FA0EBC128271EBF00020DA2 /* FVActivity.swift */,
+				7F861C7A2862B2D600D47C2A /* Cloudkit */,
 				7F0EB6CB283DB1AC00721D81 /* MockData.swift */,
 				7F4E8D3528553A48003B0A04 /* StravaActivity.swift */,
 				7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */,
@@ -347,6 +358,7 @@
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
 				7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */,
 				7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */,
+				7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
