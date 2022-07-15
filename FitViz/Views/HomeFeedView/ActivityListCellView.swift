@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActivityListCellView: View {
-    @Binding var activity: FVActivity
+    var activity: FVActivity
     @AppStorage("distanceUnit") private var distanceUnit = ""
     var body: some View {
         HStack {
@@ -32,7 +32,7 @@ struct ActivityListCellView: View {
 
 struct ActivityListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityListCellView(activity: .constant(FVActivity(record: MockData.activity)))
+        ActivityListCellView(activity: FVActivity(record: MockData.activity))
     }
 }
 

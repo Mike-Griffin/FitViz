@@ -10,8 +10,12 @@ import SwiftUI
 struct ActivityListView: View {
     @Binding var activities: [FVActivity]
     var body: some View {
-        List($activities) {
-            ActivityListCellView(activity: $0)
+        List(activities) { activity in
+            NavigationLink {
+                ActivityView(viewModel: ActivityView.ViewModel(activity: activity))
+            } label: {
+                ActivityListCellView(activity: activity)
+            }
         }
     }
 }
