@@ -9,6 +9,7 @@ import SwiftUI
 
 extension DeveloperView {
     class ViewModel: ObservableObject {
+        var cloudkitManager = CloudKitManager()
         @Published var stravaAccessCode = ""
         @Published var stravaRefreshToken = ""
         @Published var stravaLastFetchTime = ""

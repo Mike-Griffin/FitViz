@@ -35,6 +35,7 @@ extension StravaActivity {
         record[FVActivity.kDuration] = self.moving_time
         record[FVActivity.kAveragePace] = self.average_speed
         record[FVActivity.kAverageHeartRate] = self.average_heartrate
+        record[FVActivity.kTimestamp] = self.start_date.convertDateStringToEpochTimestamp()
         return record
     }
 }

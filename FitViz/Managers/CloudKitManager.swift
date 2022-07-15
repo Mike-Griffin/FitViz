@@ -14,6 +14,7 @@ struct CloudKitManager {
     func loadActivities(completed: @escaping (Result<[FVActivity], Error>) -> ()) {
         print("activities are being loaded")
         let query = CKQuery(recordType: RecordType.activity, predicate: NSPredicate(value: true))
+        query.sortDescriptors = [NSSortDescriptor(key: FVActivity.kTimestamp, ascending: false)]
         
         container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
             if let error = error {
@@ -62,6 +63,30 @@ struct CloudKitManager {
             
             let source = relevantRecord.mapToFVSourceInformation()
             completed(.success(source))
+        }
+    }
+    
+    func deleteAllActivities() {
+        let query = CKQuery(recordType: RecordType.activity, predicate: NSPredicate(value: true))
+        container.privateCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if error == nil {
+
+                for record in records! {
+
+                    container.privateCloudDatabase.delete(withRecordID: record.recordID, completionHandler: { (recordId, error) in
+
+                        if error == nil {
+                            print("record deleted")
+                            print(recordId)
+                            //Record deleted
+
+                        }
+
+                    })
+
+                }
+
+            }
         }
     }
 }

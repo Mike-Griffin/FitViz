@@ -28,6 +28,8 @@ struct ActivityRequestManager {
                     } else {
                         //TODO: Change this to get pagination done properly. For now I'll just load in a lot of activities
 //                        urlString += "?page_limit=100"
+                        print("last fetch time is zero")
+                        urlString += "?page_limit=20"
                     }
                 case .MapMyRun:
                     urlString = "TBD"
