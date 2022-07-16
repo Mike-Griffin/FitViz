@@ -39,4 +39,45 @@ struct FVActivity: Identifiable {
         distance = record[FVActivity.kDistance] as? Double ?? 0.0
         timestamp = record[FVActivity.kTimestamp] as? Int ?? 0
     }
+    
+    var distanceRange: DistanceRange {
+        get {
+            if (Int(distance) < DistanceRange.UnderOneMile.upperBound) {
+                // 1 mile
+                return .UnderOneMile
+            } else if (Int(distance) < DistanceRange.OneMile.upperBound) {
+                return .OneMile
+            } else if (Int(distance) < DistanceRange.TwoMile.upperBound) {
+                return .TwoMile
+            } else if (Int(distance) < DistanceRange.ThreeMile.upperBound) {
+                return .ThreeMile
+            } else if (Int(distance) < DistanceRange.FiveK.upperBound) {
+                return .FiveK
+            } else if (Int(distance) < DistanceRange.SixMile.upperBound) {
+                return .SixMile
+            } else if (Int(distance) < DistanceRange.TenK.upperBound) {
+                return .TenK
+            } else if (Int(distance) < DistanceRange.SevenMile.upperBound) {
+                return .SevenMile
+            } else if (Int(distance) < DistanceRange.EightMile.upperBound) {
+                return .EightMile
+            } else if (Int(distance) < DistanceRange.NineMile.upperBound) {
+                return .NineMile
+            } else if (Int(distance) < DistanceRange.FifteenK.upperBound) {
+                return .FifteenK
+            } else if (Int(distance) < DistanceRange.TenMile.upperBound) {
+                return .TenMile
+            } else if (Int(distance) < DistanceRange.ElevenMile.upperBound) {
+                return .ElevenMile
+            } else if (Int(distance) < DistanceRange.TwelveMile.upperBound) {
+                return .TwelveMile
+            } else if (Int(distance) < DistanceRange.ThirteenMile.upperBound) {
+                return .ThirteenMile
+            } else {
+                return .HalfMarathon
+            }
+        }
+    }
 }
+
+

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActivityListView: View {
-    @Binding var activities: [FVActivity]
+    var activities: [FVActivity]
     var body: some View {
         List(activities) { activity in
             NavigationLink {
@@ -22,6 +22,6 @@ struct ActivityListView: View {
 
 struct ActivityListView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityListView(activities: .constant([]))
+        ActivityListView(activities: [])
     }
 }
