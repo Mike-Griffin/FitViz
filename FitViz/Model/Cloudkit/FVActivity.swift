@@ -17,6 +17,7 @@ struct FVActivity: Identifiable {
     static let kAverageHeartRate = "averageHeartRate"
     static let kDistance         = "distance"
     static let kTimestamp        = "timestamp"
+    static let kEncodedPolyline  = "encodedPolyline"
     
     let id: CKRecord.ID
     let type: String
@@ -27,6 +28,7 @@ struct FVActivity: Identifiable {
     let averageHeartRate: Double
     let distance: Double
     let timestamp: Int
+    let encodedPolyline: String
     
     init(record: CKRecord) {
         id = record.recordID
@@ -38,6 +40,7 @@ struct FVActivity: Identifiable {
         averageHeartRate = record[FVActivity.kAverageHeartRate] as? Double ?? 0.0
         distance = record[FVActivity.kDistance] as? Double ?? 0.0
         timestamp = record[FVActivity.kTimestamp] as? Int ?? 0
+        encodedPolyline = record[FVActivity.kEncodedPolyline] as? String ?? "N/A"
     }
     
     var distanceRange: DistanceRange {
