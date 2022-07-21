@@ -17,8 +17,8 @@ struct ActivityView: View {
             Text(viewModel.distanceUnit)
             Text(viewModel.activity.type)
         }
-            if(viewModel.activity.encodedPolyline != "N/A") {
-                MapView(viewModel: viewModel)
+            if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty) {
+                MapView(region: viewModel.region, lineCoordinates: viewModel.lineCoordinates)
             }
             if(!viewModel.sameDistanceActivities.isEmpty) {
                 SameDistanceActivityView(viewModel: viewModel)

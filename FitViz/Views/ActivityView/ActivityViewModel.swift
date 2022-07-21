@@ -7,12 +7,15 @@
 
 import SwiftUI
 import CoreLocation
+import MapKit
 
 extension ActivityView {
     class ViewModel: ObservableObject {
         var activity: FVActivity
         @AppStorage("distanceUnit") var distanceUnit = ""
         @Published var sameDistanceActivities: [FVActivity] = []
+        @Published var lineCoordinates: [CLLocationCoordinate2D]
+        @Published var region: MKCoordinateRegion
         let cloudkitManager = CloudKitManager()
         var activityDisplayString: String {
             get {
@@ -22,6 +25,12 @@ extension ActivityView {
         
         init(activity: FVActivity) {
             self.activity = activity
+            lineCoordinates = []
+            region = MKCoordinateRegion(
+                // Apple Park
+                center: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965),
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+              )
         }
         
         func fetchSameDistanceActivities() {
@@ -65,7 +74,25 @@ extension ActivityView {
 
                 decodedCoordinates.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
             }
+            lineCoordinates = decodedCoordinates
             print(decodedCoordinates)
+            if !lineCoordinates.isEmpty{
+                let centerCoordinate = lineCoordinates[lineCoordinates.count / 2]
+                let sortedLatitudes = lineCoordinates.sorted(by: {
+                    $0.latitude < $1.latitude
+                })
+                let sortedLongitudes = lineCoordinates.sorted(by: {
+                    $0.longitude < $1.longitude
+                })
+                let latitudeDelta = sortedLatitudes.last!.latitude - sortedLatitudes.first!.latitude
+                let longitudeDelta = sortedLongitudes.last!.longitude - sortedLongitudes.first!.longitude
+                let centerLatitude = sortedLatitudes.last!.latitude - (latitudeDelta / 2)
+                let centerLongitude = sortedLongitudes.last!.longitude - (longitudeDelta / 2)
+
+                print("Latitude info: ", sortedLatitudes.first!.latitude, sortedLatitudes.last!.latitude, latitudeDelta)
+                print("Longitude info: ", sortedLongitudes.first!.longitude, sortedLongitudes.last!.longitude, longitudeDelta)
+                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: centerLatitude, longitude: centerLongitude), span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta))
+            }
         }
         
         private func decodeSingleCoordinate(byteArray: UnsafePointer<Int8>, length: Int, position: inout Int, precision: Double = 1e5) -> Double {

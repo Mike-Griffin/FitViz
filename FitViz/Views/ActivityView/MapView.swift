@@ -6,17 +6,45 @@
 //
 
 import SwiftUI
+import MapKit
 
-struct MapView: View {
-    @StateObject var viewModel: ActivityView.ViewModel
-
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct MapView: UIViewRepresentable {
+    let region: MKCoordinateRegion
+    let lineCoordinates: [CLLocationCoordinate2D]
+    
+    func makeUIView(context: Context) -> some UIView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.region = region
+        
+        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+        mapView.addOverlay(polyline)
+        
+        return mapView
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
 }
 
-//struct MapView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MapView()
-//    }
-//}
+class Coordinator: NSObject, MKMapViewDelegate {
+    var parent: MapView
+    
+    init(_ parent: MapView) {
+        self.parent = parent
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let routePolyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: routePolyline)
+            renderer.strokeColor = UIColor.systemBlue
+            renderer.lineWidth = 3
+            return renderer
+        }
+        
+        return MKOverlayRenderer()
+    }
+}
