@@ -84,15 +84,111 @@ extension ActivityView {
                 let sortedLongitudes = lineCoordinates.sorted(by: {
                     $0.longitude < $1.longitude
                 })
-                let latitudeDelta = sortedLatitudes.last!.latitude - sortedLatitudes.first!.latitude
-                let longitudeDelta = sortedLongitudes.last!.longitude - sortedLongitudes.first!.longitude
+                let latitudeDelta = (sortedLatitudes.last!.latitude - sortedLatitudes.first!.latitude) * 2
+                let longitudeDelta = (sortedLongitudes.last!.longitude - sortedLongitudes.first!.longitude) * 2
+                print(sortedLongitudes)
+                print(sortedLatitudes)
+                for (i, lat) in sortedLatitudes.enumerated() {
+                    print("Latitude \(i): \(lat.latitude)")
+                }
+                for (i, lon) in sortedLongitudes.enumerated() {
+                    print("Longitude \(i): \(lon.longitude)")
+                }
                 let centerLatitude = sortedLatitudes.last!.latitude - (latitudeDelta / 2)
                 let centerLongitude = sortedLongitudes.last!.longitude - (longitudeDelta / 2)
+                let centerPoint = middlePointOfListMarkers(listCoords: lineCoordinates)
 
                 print("Latitude info: ", sortedLatitudes.first!.latitude, sortedLatitudes.last!.latitude, latitudeDelta)
                 print("Longitude info: ", sortedLongitudes.first!.longitude, sortedLongitudes.last!.longitude, longitudeDelta)
-                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: centerLatitude, longitude: centerLongitude), span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta))
+                region = MKCoordinateRegion(center: centerPoint, span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta))
+//                region = getCenter(coordinates: lineCoordinates)
             }
+        }
+        
+        // This seems like it may work in some cases, but it's off for a straight line
+        private func getCenter(coordinates: [CLLocationCoordinate2D], spanMultiplier: CLLocationDistance = 1.8) -> MKCoordinateRegion {
+            var topLeftCoord = CLLocationCoordinate2D(latitude: -90, longitude: 180)
+            var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+
+            for coordinate in coordinates {
+                topLeftCoord.longitude = min(topLeftCoord.longitude, coordinate.longitude)
+                topLeftCoord.latitude = max(topLeftCoord.latitude, coordinate.latitude)
+
+                bottomRightCoord.longitude = max(bottomRightCoord.longitude, coordinate.longitude)
+                bottomRightCoord.latitude = min(bottomRightCoord.latitude, coordinate.latitude)
+            }
+
+            let cent = CLLocationCoordinate2D.init(latitude: topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5, longitude: topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5)
+            let span = MKCoordinateSpan.init(latitudeDelta: abs(topLeftCoord.latitude - bottomRightCoord.latitude) * spanMultiplier, longitudeDelta: abs(bottomRightCoord.longitude - topLeftCoord.longitude) * spanMultiplier)
+
+            return MKCoordinateRegion(center: cent, span: span)
+        }
+        
+        // MARK: Calculate Center point
+        /** Degrees to Radian **/
+
+        private func degreeToRadian(_ angle: CLLocationDegrees) -> CGFloat{
+
+            return (  (CGFloat(angle)) / 180.0 * CGFloat(M_PI)  )
+
+        }
+
+        //        /** Radians to Degrees **/
+
+        private func radianToDegree(_ radian: CGFloat) -> CLLocationDegrees{
+
+            return CLLocationDegrees(  radian * CGFloat(180.0 / M_PI)  )
+
+        }
+
+        private func middlePointOfListMarkers(listCoords: [CLLocationCoordinate2D]) -> CLLocationCoordinate2D{
+
+            var x = 0.0 as CGFloat
+
+            var y = 0.0 as CGFloat
+
+            var z = 0.0 as CGFloat
+
+
+
+            for coordinate in listCoords{
+
+                let lat:CGFloat = degreeToRadian(coordinate.latitude)
+
+                let lon:CGFloat = degreeToRadian(coordinate.longitude)
+
+                x = x + cos(lat) * cos(lon)
+
+                y = y + cos(lat) * sin(lon);
+
+                z = z + sin(lat);
+
+            }
+
+            x = x/CGFloat(listCoords.count)
+
+            y = y/CGFloat(listCoords.count)
+
+            z = z/CGFloat(listCoords.count)
+
+
+
+            let resultLon: CGFloat = atan2(y, x)
+
+            let resultHyp: CGFloat = sqrt(x*x+y*y)
+
+            let resultLat:CGFloat = atan2(z, resultHyp)
+
+
+
+            let newLat = radianToDegree(resultLat)
+
+            let newLon = radianToDegree(resultLon)
+
+            let result:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: newLat, longitude: newLon)
+
+            return result
+
         }
         
         private func decodeSingleCoordinate(byteArray: UnsafePointer<Int8>, length: Int, position: inout Int, precision: Double = 1e5) -> Double {
