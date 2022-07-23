@@ -19,7 +19,7 @@ struct CloudKitManager {
         
         let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
         let records = matchResults.compactMap { _, result in try? result.get() }
-        return records.map { $0.mapToFVActivity() }
+        return records.map(FVActivity.init)
     }
     
 //    func fetchSameDistanceActivities(activity: FVActivity, completed: @escaping (Result<[FVActivity], Error>) -> ()) {
@@ -47,7 +47,7 @@ struct CloudKitManager {
         let query = CKQuery(recordType: RecordType.activity, predicate: predicate)
         let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
         let records = matchResults.compactMap { _, result in try? result.get() }
-        return records.map { $0.mapToFVActivity() }
+        return records.map(FVActivity.init)
     }
     
     func deleteAllActivities() {
@@ -77,44 +77,43 @@ struct CloudKitManager {
     
     
     // MARK: Source
-    func getSourceInformation(source: Source, completed: @escaping (Result<FVSourceInformation?, Error>) -> ()) {
+    func getSourceInformation(source: Source) async throws -> FVSourceInformation? {
         let predicate = NSPredicate(format: "source == %@", source.rawValue)
         let query = CKQuery(recordType: RecordType.sourceInformation, predicate: predicate)
-        
-        container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                completed(.failure(error))
-                return
-            }
-            
-            guard let relevantRecord = records?.first else {
-                completed(.success(nil))
-                return
-            }
-            
-            let source = relevantRecord.mapToFVSourceInformation()
-            completed(.success(source))
+        let (matchRecords, _) = try await container.privateCloudDatabase.records(matching: query)
+        let records = matchRecords.compactMap { _, result in try? result.get() }
+        guard let relevantRecord = records.first else {
+            return nil
         }
+        return FVSourceInformation(record: relevantRecord)
     }
     
-    func getSourceInformationRecord(source: Source, completed: @escaping (Result<CKRecord?, Error>) -> ()) {
+    func getSourceInformationRecord(source: Source) async throws -> CKRecord? {
         let predicate = NSPredicate(format: "source == %@", source.rawValue)
         let query = CKQuery(recordType: RecordType.sourceInformation, predicate: predicate)
-        
-        container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                completed(.failure(error))
-                return
-            }
-            
-            guard let relevantRecord = records?.first else {
-                completed(.success(nil))
-                return
-            }
-            
-            completed(.success(relevantRecord))
-        }
+        let (matchRecords, _) = try await container.privateCloudDatabase.records(matching: query)
+        let records = matchRecords.compactMap { _, result in try? result.get() }
+        return records.first
     }
+    
+//    func getSourceInformationRecord(source: Source, completed: @escaping (Result<CKRecord?, Error>) -> ()) {
+//        let predicate = NSPredicate(format: "source == %@", source.rawValue)
+//        let query = CKQuery(recordType: RecordType.sourceInformation, predicate: predicate)
+//
+//        container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+//            if let error = error {
+//                completed(.failure(error))
+//                return
+//            }
+//
+//            guard let relevantRecord = records?.first else {
+//                completed(.success(nil))
+//                return
+//            }
+//
+//            completed(.success(relevantRecord))
+//        }
+//    }
     
     // MARK: Generic records
     func batchSave(records: [CKRecord], completed: @escaping (Result<[CKRecord], Error>) -> Void) {

@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 extension RootView {
-    class ViewModel: ObservableObject {
+    @MainActor class ViewModel: ObservableObject {
         var defaultSource: [Source] = []
         let activityRequestManager = ActivityRequestManager()
         let authorizationManager = AuthorizationManager()
@@ -20,11 +20,9 @@ extension RootView {
                 if let error = error {
                     print(error)
                 } else {
-                    activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
-                        switch(result) {
-                        case .success(let activities):
-                            print("Great Success")
-                            print(activities)
+                    Task {
+                        do {
+                            let activities = try await activityRequestManager.getActivities(source: .Strava)
                             if let newestActivity = activities.sorted(by: {
                                 $0.timestamp < $1.timestamp
                             }).last {
@@ -43,10 +41,37 @@ extension RootView {
                                 }
 //                                UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity, source: .Strava)
                             }
-                        case .failure(let error):
+                        } catch {
                             print(error)
                         }
                     }
+//                    activityRequestManager.getActivities(source: .Strava) { (result: Result<[StravaActivity], Error>) in
+//                        switch(result) {
+//                        case .success(let activities):
+//                            print("Great Success")
+//                            print(activities)
+//                            if let newestActivity = activities.sorted(by: {
+//                                $0.timestamp < $1.timestamp
+//                            }).last {
+//                                print(newestActivity.start_date.convertDateStringToEpochTimestamp())
+//                                // TODO: Convert move this logic to somewhere else within the fetching logic
+//                                 // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
+//                                saveLastFetched(time: newestActivity.timestamp, source: .Strava)
+//                                let activityRecords = activities.map({ $0.mapToCKRecord() })
+//                                cloudkitManager.batchSave(records: activityRecords) { result in
+//                                    switch result {
+//                                    case .success(let records):
+//                                        print(records)
+//                                    case .failure(let error):
+//                                        print(error)
+//                                    }
+//                                }
+////                                UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity, source: .Strava)
+//                            }
+//                        case .failure(let error):
+//                            print(error)
+//                        }
+//                    }
                 }
             }
         }
@@ -56,12 +81,9 @@ extension RootView {
 
             // TODO: Change this to check if one already exists for this source
             // rather than creating a new one every time
-            cloudkitManager.getSourceInformationRecord(source: source) { [self] result in
-                switch result {
-                case .success(let sourceInformation):
-                    if let infoRecord = sourceInformation {
-                        print("Source INFO FOUND: ")
-                        print(infoRecord)
+            Task {
+                do {
+                    if let infoRecord = try await cloudkitManager.getSourceInformationRecord(source: source) {
                         infoRecord[FVSourceInformation.kLastFetched] = time
                         cloudkitManager.save(record: infoRecord) { result in
                             switch result {
@@ -84,10 +106,42 @@ extension RootView {
                             }
                         }
                     }
-                case .failure(let error):
+                } catch {
                     print(error)
                 }
             }
+//            cloudkitManager.getSourceInformationRecord(source: source) { [self] result in
+//                switch result {
+//                case .success(let sourceInformation):
+//                    if let infoRecord = sourceInformation {
+//                        print("Source INFO FOUND: ")
+//                        print(infoRecord)
+//                        infoRecord[FVSourceInformation.kLastFetched] = time
+//                        cloudkitManager.save(record: infoRecord) { result in
+//                            switch result {
+//                            case .success(let record):
+//                                print(record)
+//                            case .failure(let error):
+//                                print(error)
+//                            }
+//                        }
+//                    } else {
+//                        let record = CKRecord(recordType: RecordType.sourceInformation)
+//                        record[FVSourceInformation.kSource] = source.rawValue
+//                        record[FVSourceInformation.kLastFetched] = time
+//                        cloudkitManager.batchSave(records: [record]) { result in
+//                            switch result {
+//                            case .success(let record):
+//                                print(record)
+//                            case .failure(let error):
+//                                print(error)
+//                            }
+//                        }
+//                    }
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
         }
     }
 }
