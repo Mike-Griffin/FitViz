@@ -12,40 +12,42 @@ struct CloudKitManager {
     let container = CKContainer(identifier: "iCloud.com.comedichoney.FitnessVisualizer")
     
     // MARK: Activities
-    func loadActivities(completed: @escaping (Result<[FVActivity], Error>) -> ()) {
+    func loadActivities() async throws -> [FVActivity] {
         print("activities are being loaded")
         let query = CKQuery(recordType: RecordType.activity, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: FVActivity.kTimestamp, ascending: false)]
         
-        container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                completed(.failure(error))
-                return
-            }
-            
-            guard let records = records else { return }
-            
-            let activities = records.map { $0.mapToFVActivity() }
-            completed(.success(activities))
-        }
+        let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
+        let records = matchResults.compactMap { _, result in try? result.get() }
+        return records.map { $0.mapToFVActivity() }
     }
     
-    func fetchSameDistanceActivities(activity: FVActivity, completed: @escaping (Result<[FVActivity], Error>) -> ()) {
+//    func fetchSameDistanceActivities(activity: FVActivity, completed: @escaping (Result<[FVActivity], Error>) -> ()) {
+//        let lowerboundDistance = activity.distanceRange.lowerBound
+//        let upperboundDistance = activity.distanceRange.upperBound
+//        let predicate = NSPredicate(format: "distance >= %d && distance < %d && type == %@", lowerboundDistance, upperboundDistance, activity.type)
+//        print(predicate)
+//        let query = CKQuery(recordType: RecordType.activity, predicate: predicate)
+//        container.privateCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+//            if let error = error {
+//                completed(.failure(error))
+//                return
+//            }
+//
+//            guard let records = records else { return }
+//            let activities = records.map { $0.mapToFVActivity() }
+//            completed(.success(activities))
+//        }
+//    }
+    
+    func fetchSameDistanceActivities(activity: FVActivity) async throws -> [FVActivity] {
         let lowerboundDistance = activity.distanceRange.lowerBound
-        var upperboundDistance = activity.distanceRange.upperBound
+        let upperboundDistance = activity.distanceRange.upperBound
         let predicate = NSPredicate(format: "distance >= %d && distance < %d && type == %@", lowerboundDistance, upperboundDistance, activity.type)
-        print(predicate)
         let query = CKQuery(recordType: RecordType.activity, predicate: predicate)
-        container.privateCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
-            if let error = error {
-                completed(.failure(error))
-                return
-            }
-            
-            guard let records = records else { return }
-            let activities = records.map { $0.mapToFVActivity() }
-            completed(.success(activities))
-        }
+        let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
+        let records = matchResults.compactMap { _, result in try? result.get() }
+        return records.map { $0.mapToFVActivity() }
     }
     
     func deleteAllActivities() {
@@ -95,6 +97,25 @@ struct CloudKitManager {
         }
     }
     
+    func getSourceInformationRecord(source: Source, completed: @escaping (Result<CKRecord?, Error>) -> ()) {
+        let predicate = NSPredicate(format: "source == %@", source.rawValue)
+        let query = CKQuery(recordType: RecordType.sourceInformation, predicate: predicate)
+        
+        container.privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                completed(.failure(error))
+                return
+            }
+            
+            guard let relevantRecord = records?.first else {
+                completed(.success(nil))
+                return
+            }
+            
+            completed(.success(relevantRecord))
+        }
+    }
+    
     // MARK: Generic records
     func batchSave(records: [CKRecord], completed: @escaping (Result<[CKRecord], Error>) -> Void) {
         //        let container = CKContainer(identifier: "iCloud.com.comedichoney.FitnessVisualizer")
@@ -113,5 +134,14 @@ struct CloudKitManager {
         container.privateCloudDatabase.add(operation)
     }
     
-    
+    func save(record: CKRecord, completed: @escaping (Result<CKRecord, Error>) -> Void) {
+        container.privateCloudDatabase.save(record) { record, error in
+            guard let record = record, error == nil else {
+                completed(.failure(error!))
+                return
+            }
+            
+            completed(.success(record))
+        }
+    }
 }

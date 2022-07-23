@@ -25,11 +25,13 @@ extension RootView {
                         case .success(let activities):
                             print("Great Success")
                             print(activities)
-                            if let newestActivity = activities.first {
+                            if let newestActivity = activities.sorted(by: {
+                                $0.timestamp < $1.timestamp
+                            }).last {
                                 print(newestActivity.start_date.convertDateStringToEpochTimestamp())
                                 // TODO: Convert move this logic to somewhere else within the fetching logic
                                  // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
-                                saveLastFetched(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
+                                saveLastFetched(time: newestActivity.timestamp, source: .Strava)
                                 let activityRecords = activities.map({ $0.mapToCKRecord() })
                                 cloudkitManager.batchSave(records: activityRecords) { result in
                                     switch result {
@@ -54,12 +56,21 @@ extension RootView {
 
             // TODO: Change this to check if one already exists for this source
             // rather than creating a new one every time
-            cloudkitManager.getSourceInformation(source: source) { [self] result in
+            cloudkitManager.getSourceInformationRecord(source: source) { [self] result in
                 switch result {
                 case .success(let sourceInformation):
-                    if let info = sourceInformation {
+                    if let infoRecord = sourceInformation {
                         print("Source INFO FOUND: ")
-                        print(info)
+                        print(infoRecord)
+                        infoRecord[FVSourceInformation.kLastFetched] = time
+                        cloudkitManager.save(record: infoRecord) { result in
+                            switch result {
+                            case .success(let record):
+                                print(record)
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
                     } else {
                         let record = CKRecord(recordType: RecordType.sourceInformation)
                         record[FVSourceInformation.kSource] = source.rawValue

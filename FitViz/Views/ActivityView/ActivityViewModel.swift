@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 extension ActivityView {
-    class ViewModel: ObservableObject {
+    @MainActor class ViewModel: ObservableObject {
         var activity: FVActivity
         @AppStorage("distanceUnit") var distanceUnit = ""
         @Published var sameDistanceActivities: [FVActivity] = []
@@ -34,16 +34,23 @@ extension ActivityView {
         }
         
         func fetchSameDistanceActivities() {
-            cloudkitManager.fetchSameDistanceActivities(activity: activity) { [self] result in
-                switch result {
-                case .success(let activities):
-                    print("Activities of distance \(activity.distanceRange.description)")
-                    print(activities)
-                    sameDistanceActivities = activities
-                case .failure(let error):
+            Task {
+                do {
+                    sameDistanceActivities = try await cloudkitManager.fetchSameDistanceActivities(activity: activity)
+                } catch {
                     print(error)
                 }
             }
+//            cloudkitManager.fetchSameDistanceActivities(activity: activity) { [self] result in
+//                switch result {
+//                case .success(let activities):
+//                    print("Activities of distance \(activity.distanceRange.description)")
+//                    print(activities)
+//                    sameDistanceActivities = activities
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
         }
         
         // TODO: Consider refactoring to a seperate struct
