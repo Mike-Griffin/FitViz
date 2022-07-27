@@ -41,16 +41,6 @@ extension ActivityView {
                     print(error)
                 }
             }
-//            cloudkitManager.fetchSameDistanceActivities(activity: activity) { [self] result in
-//                switch result {
-//                case .success(let activities):
-//                    print("Activities of distance \(activity.distanceRange.description)")
-//                    print(activities)
-//                    sameDistanceActivities = activities
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
         }
         
         // TODO: Consider refactoring to a seperate struct
