@@ -15,7 +15,7 @@ extension ActivityView {
         @AppStorage("distanceUnit") var distanceUnit = ""
         @Published var sameDistanceActivities: [FVActivity] = []
         @Published var lineCoordinates: [CLLocationCoordinate2D]
-        @Published var region: MKCoordinateRegion
+        @Published var region: MKCoordinateRegion?
         let cloudkitManager = CloudKitManager()
         var activityDisplayString: String {
             get {
@@ -26,11 +26,11 @@ extension ActivityView {
         init(activity: FVActivity) {
             self.activity = activity
             lineCoordinates = []
-            region = MKCoordinateRegion(
-                // Apple Park
-                center: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965),
-                span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-              )
+//            region = MKCoordinateRegion(
+//                // Apple Park
+//                center: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965),
+//                span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+//              )
         }
         
         func fetchSameDistanceActivities() {
@@ -82,13 +82,21 @@ extension ActivityView {
                 decodedCoordinates.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
             }
             lineCoordinates = decodedCoordinates
-            print(decodedCoordinates)
+//            print(decodedCoordinates)
             if !lineCoordinates.isEmpty{
                 // TODO: Some time of synchronous issue happening here
                 // when I put a breakpoint it works fine but when it runs at a normal speed it's broken
                 var topLeftCoord = CLLocationCoordinate2D(latitude: -90, longitude: 180)
 
                 var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+                let sortedLatitudes = lineCoordinates.sorted {
+                    $0.latitude > $1.latitude
+                }
+                let sortedLongitudes = lineCoordinates.sorted { $0.longitude > $1.longitude }
+                let maxLatitude = sortedLatitudes.first!.latitude
+                let minLatitude = sortedLatitudes.last!.latitude
+                let maxLongitude = sortedLongitudes.first!.longitude
+                let minLongitude = sortedLongitudes.last!.longitude
 
                 for coordinate in lineCoordinates {
                     topLeftCoord.longitude = fmin(topLeftCoord.longitude, coordinate.longitude)
