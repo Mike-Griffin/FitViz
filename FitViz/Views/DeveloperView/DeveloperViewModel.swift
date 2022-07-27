@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension DeveloperView {
-    class ViewModel: ObservableObject {
+    @MainActor class ViewModel: ObservableObject {
         var cloudkitManager = CloudKitManager()
         @Published var stravaAccessCode = ""
         @Published var stravaRefreshToken = ""
@@ -41,6 +41,17 @@ extension DeveloperView {
                 UserDefaultsManager.shared.setLastRetrievedTime(time: intCast, source: .Strava)
             } else {
                 print("attempt to set strava last fetch time without an int")
+            }
+        }
+        
+        func deleteAllActivities() {
+            Task {
+                do {
+                    try await cloudkitManager.deleteAllActivities()
+                    try await cloudkitManager.deleteSourceInformationRecord(source: .Strava)
+                } catch {
+                    print("error on delete")
+                }
             }
         }
     }

@@ -32,4 +32,14 @@ struct NetworkManager {
         }.resume()
 
     }
+    
+    func getRequest<T: Decodable>(urlRequest: URLRequest) async throws -> T {
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        if let httpResponse = response as? HTTPURLResponse {
+            guard httpResponse.statusCode == 200 else {
+                throw(CustomError.getResponseErrorCode(code: httpResponse.statusCode))
+            }
+        }
+        return try JSONDecoder().decode(T.self, from: data)
+    }
 }

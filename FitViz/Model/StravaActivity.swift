@@ -40,6 +40,10 @@ extension StravaActivity {
         record[FVActivity.kEncodedPolyline] = self.map.summary_polyline
         return record
     }
+    
+    var timestamp: Int {
+        self.start_date.convertDateStringToEpochTimestamp()
+    }
 }
 
 struct StravaActivityMap: Decodable {

@@ -17,7 +17,7 @@ struct DeveloperView: View {
             FormRow(value: $viewModel.stravaRefreshToken, label: "Strava Refresh Token", setValue: viewModel.setStravaRefreshTokenToKeychain)
             FormRow(value: $viewModel.stravaLastFetchTime, label: "Strava Last Fetch", setValue: viewModel.setStravaLastFetchTime)
             Button {
-                viewModel.cloudkitManager.deleteAllActivities()
+                viewModel.deleteAllActivities()
             } label: {
                 Text("Delete all Activities")
             }
