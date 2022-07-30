@@ -21,8 +21,10 @@ struct MapView: UIViewRepresentable {
         let regionSpan = mapView.region.span
         let visibleMapRect = mapView.visibleMapRect
         
-        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
-        mapView.addOverlay(polyline)
+        if !lineCoordinates.isEmpty {
+            let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+            mapView.addOverlay(polyline)
+        }
         
         return mapView
     }

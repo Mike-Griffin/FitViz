@@ -14,11 +14,14 @@ extension RootView {
         let activityRequestManager = ActivityRequestManager()
         let authorizationManager = AuthorizationManager()
         let cloudkitManager = CloudKitManager()
+        // TODO: Change this to show a loading spinner while it's loading
+        @Published var loading = true
         
         init() {
             authorizationManager.initAuthorization(source: .Strava) { [self] error in
                 if let error = error {
                     print(error)
+                    loading = false
                 } else {
                     Task {
                         do {
@@ -33,9 +36,14 @@ extension RootView {
                                 let activityRecords = activities.map({ $0.mapToCKRecord() })
                                 let savedRecords = try await cloudkitManager.batchSave(records: activityRecords)
                                 print(savedRecords)
+                                loading = false
+                            } else {
+                                loading = false
                             }
+                            
                         } catch {
                             print(error)
+                            loading = false
                         }
                     }
                 }
