@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 extension DeveloperView {
     @MainActor class ViewModel: ObservableObject {
@@ -14,6 +15,12 @@ extension DeveloperView {
         @Published var stravaRefreshToken = ""
         @Published var stravaLastFetchTime = ""
         @Published var stravaExpirationTime = ""
+        @Published var centerLatitude = ""
+        @Published var centerLongitude = ""
+        @Published var latitudeDelta = ""
+        @Published var longitudeDelta = ""
+        @Published var region: MKCoordinateRegion?
+        @Published var showingMap = false
 
         func fetchValues() {
             if let stravaCode = KeychainManager.shared.getStravaAccessCode() {
@@ -53,6 +60,18 @@ extension DeveloperView {
                     print("error on delete")
                 }
             }
+        }
+        
+        func setRegion() {
+            if let centerLatitudeDegrees = Double(centerLatitude),
+               let centerLongitudeDegrees = Double(centerLongitude),
+               let spanLatitude = Double(latitudeDelta),
+            let spanLongitude = Double(longitudeDelta) {
+                   print("set latitude time")
+                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: centerLatitudeDegrees, longitude: centerLongitudeDegrees), span: MKCoordinateSpan(latitudeDelta: spanLatitude, longitudeDelta: spanLongitude))
+                showingMap = true
+               }
+            
         }
     }
 }

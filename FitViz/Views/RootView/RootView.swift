@@ -19,7 +19,9 @@ struct RootView: View {
                 NavigationLink("Developer") {
                     DeveloperView()
                 }
-                HomeFeedView()
+                if (!viewModel.loading) {
+                    HomeFeedView()
+                }
             }
             }
             
