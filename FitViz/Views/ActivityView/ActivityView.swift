@@ -17,12 +17,16 @@ struct ActivityView: View {
             Text(viewModel.distanceUnit)
             Text(viewModel.activity.type)
         }
+            if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil) {
+                MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates)
+            }
             if(!viewModel.sameDistanceActivities.isEmpty) {
                 SameDistanceActivityView(viewModel: viewModel)
             }
         }
         .onAppear {
             viewModel.fetchSameDistanceActivities()
+            viewModel.decodePolyline()
         }
     }
 }

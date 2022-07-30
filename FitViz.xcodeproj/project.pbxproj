@@ -15,6 +15,7 @@
 		7F0EB6CC283DB1AC00721D81 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6CB283DB1AC00721D81 /* MockData.swift */; };
 		7F0EB6CF284C12AB00721D81 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6CE284C12AB00721D81 /* SettingsView.swift */; };
 		7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6D0284D3CFF00721D81 /* Double+Ext.swift */; };
+		7F1D4920289204C90094DC9C /* MapSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D491F289204C90094DC9C /* MapSheetView.swift */; };
 		7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D2F285509A4003B0A04 /* String+Ext.swift */; };
 		7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D312855328D003B0A04 /* NetworkManager.swift */; };
 		7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D33285533D0003B0A04 /* CustomError.swift */; };
@@ -42,7 +43,6 @@
 		7FA0EBBF2827141600020DA2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA0EBBE2827141600020DA2 /* CloudKit.framework */; };
 		7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC128271EBF00020DA2 /* FVActivity.swift */; };
 		7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC32827218900020DA2 /* ActivityListView.swift */; };
-		7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */; };
 		7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */; };
 		7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFB12C286175BF00A7408D /* HealthKit.framework */; };
 		7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFB12E286175F400A7408D /* HealthKitManager.swift */; };
@@ -57,6 +57,7 @@
 		7F0EB6CB283DB1AC00721D81 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		7F0EB6CE284C12AB00721D81 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7F0EB6D0284D3CFF00721D81 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
+		7F1D491F289204C90094DC9C /* MapSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetView.swift; sourceTree = "<group>"; };
 		7F4E8D2F285509A4003B0A04 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		7F4E8D312855328D003B0A04 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7F4E8D33285533D0003B0A04 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		7FA0EBBE2827141600020DA2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7FA0EBC128271EBF00020DA2 /* FVActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVActivity.swift; sourceTree = "<group>"; };
 		7FA0EBC32827218900020DA2 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
-		7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
 		7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		7FEFB12C286175BF00A7408D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7FEFB12E286175F400A7408D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 			children = (
 				7F4E8D3C285670D0003B0A04 /* DeveloperViewModel.swift */,
 				7F4E8D3928567009003B0A04 /* DeveloperView.swift */,
+				7F1D491F289204C90094DC9C /* MapSheetView.swift */,
 			);
 			path = DeveloperView;
 			sourceTree = "<group>";
@@ -265,7 +266,6 @@
 		7FA0EBC528396C5200020DA2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7FA0EBC628396C6500020DA2 /* CKRecord+Ext.swift */,
 				7F0EB6D0284D3CFF00721D81 /* Double+Ext.swift */,
 				7F4E8D2F285509A4003B0A04 /* String+Ext.swift */,
 			);
@@ -365,7 +365,6 @@
 				7F4E8D4728567F04003B0A04 /* AuthDetails.swift in Sources */,
 				7F0EB6CF284C12AB00721D81 /* SettingsView.swift in Sources */,
 				7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */,
-				7FA0EBC728396C6500020DA2 /* CKRecord+Ext.swift in Sources */,
 				7F4E8D3A28567009003B0A04 /* DeveloperView.swift in Sources */,
 				7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */,
 				7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */,
@@ -378,6 +377,7 @@
 				7F093D342884D4D500AC0D75 /* MapView.swift in Sources */,
 				7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */,
 				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
+				7F1D4920289204C90094DC9C /* MapSheetView.swift in Sources */,
 				7F093D302880F42D00AC0D75 /* ActivityView.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
 				7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */,
