@@ -11,6 +11,11 @@ import CloudKit
 struct CloudKitManager {
     let container = CKContainer(identifier: "iCloud.com.comedichoney.FitnessVisualizer")
     
+    // MARK: User
+    func checkUser() async throws {
+        let _ = try await container.userRecordID()
+    }
+    
     // MARK: Activities
     func loadActivities() async throws -> [FVActivity] {
         print("activities are being loaded")
