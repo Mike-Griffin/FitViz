@@ -23,6 +23,9 @@ struct RootView: View {
                     HomeFeedView()
                 }
             }
+            .alert(item: $viewModel.alertItem, content: { alertItem in
+                Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+            })
             }
             
         } else {

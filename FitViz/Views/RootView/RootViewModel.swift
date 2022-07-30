@@ -16,6 +16,7 @@ extension RootView {
         let cloudkitManager = CloudKitManager()
         // TODO: Change this to show a loading spinner while it's loading
         @Published var loading = true
+        @Published var alertItem: AlertItem?
         
         init() {
             Task {
@@ -24,6 +25,7 @@ extension RootView {
                     fetchStrava()
                 } catch {
                     print(error)
+                    alertItem = AlertContext.noUserRecord
                 }
             }
         }
