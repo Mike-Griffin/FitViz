@@ -12,20 +12,25 @@ struct RootView: View {
     var body: some View {
         if viewModel.defaultSource.isEmpty {
             NavigationView {
-            VStack {
-                NavigationLink("Settings") {
-                    SettingsView()
+                ZStack {
+                    VStack {
+                        NavigationLink("Settings") {
+                            SettingsView()
+                        }
+                        NavigationLink("Developer") {
+                            DeveloperView()
+                        }
+                        if (!viewModel.loading) {
+                            HomeFeedView()
+                        }
+                    }
+                    if(viewModel.loading) {
+                        LoadingView()
+                    }
                 }
-                NavigationLink("Developer") {
-                    DeveloperView()
-                }
-                if (!viewModel.loading) {
-                    HomeFeedView()
-                }
-            }
-            .alert(item: $viewModel.alertItem, content: { alertItem in
-                Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
-            })
+                .alert(item: $viewModel.alertItem, content: { alertItem in
+                    Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+                })
             }
             
         } else {
