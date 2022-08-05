@@ -10,11 +10,19 @@ import SwiftUI
 struct HomeFeedView: View {
     @ObservedObject var viewModel = ViewModel()
     var body: some View {
+        ZStack {
         VStack {
             if viewModel.feedActivities.isEmpty {
                 Text("No activities yet")
             } else {
+                NavigationLink("Charts") {
+                    ChartsView(viewModel: ChartsView.ViewModel(activities: viewModel.feedActivities))
+                }
                 ActivityListView(activities: viewModel.feedActivities)
+            }
+        }
+            if (viewModel.loading) {
+                LoadingView()
             }
         }
             .onAppear {

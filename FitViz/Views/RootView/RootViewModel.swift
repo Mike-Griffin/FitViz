@@ -16,8 +16,21 @@ extension RootView {
         let cloudkitManager = CloudKitManager()
         // TODO: Change this to show a loading spinner while it's loading
         @Published var loading = true
+        @Published var alertItem: AlertItem?
         
         init() {
+            Task {
+                do {
+                    try await cloudkitManager.checkUser()
+                    fetchStrava()
+                } catch {
+                    print(error)
+                    alertItem = AlertContext.noUserRecord
+                }
+            }
+        }
+        
+        func fetchStrava() {
             authorizationManager.initAuthorization(source: .Strava) { [self] error in
                 if let error = error {
                     print(error)
@@ -31,7 +44,7 @@ extension RootView {
                             }).last {
                                 print(newestActivity.start_date.convertDateStringToEpochTimestamp())
                                 // TODO: Convert move this logic to somewhere else within the fetching logic
-                                 // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
+                                // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
                                 saveLastFetched(time: newestActivity.timestamp, source: .Strava)
                                 let activityRecords = activities.map({ $0.mapToCKRecord() })
                                 let savedRecords = try await cloudkitManager.batchSave(records: activityRecords)
@@ -48,6 +61,7 @@ extension RootView {
                     }
                 }
             }
+            
         }
         
         func saveLastFetched(time: Int, source: Source) {
