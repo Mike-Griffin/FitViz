@@ -30,6 +30,7 @@
 		7F4E8D4728567F04003B0A04 /* AuthDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4628567F04003B0A04 /* AuthDetails.swift */; };
 		7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */; };
 		7F55C44C2895C52500F2FAAE /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55C44B2895C52500F2FAAE /* AlertItem.swift */; };
+		7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */; };
 		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
@@ -48,6 +49,7 @@
 		7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */; };
 		7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFB12C286175BF00A7408D /* HealthKit.framework */; };
 		7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFB12E286175F400A7408D /* HealthKitManager.swift */; };
+		7FFAAA1A289CC54200BC7672 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFAAA19289CC54200BC7672 /* StatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,7 @@
 		7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		7F4E8D4A28569CBA003B0A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7F55C44B2895C52500F2FAAE /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		7FEFB12C286175BF00A7408D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7FEFB12E286175F400A7408D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		7FFAAA19289CC54200BC7672 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 				7FA0EBAC28208D7300020DA2 /* RootView */,
 				7FA0EBB228208E5000020DA2 /* HomeFeedView */,
 				7F093D2C2880F40C00AC0D75 /* ActivityView */,
+				7FFAAA18289CC52900BC7672 /* StatsView */,
 				7F0EB6CD284C127F00721D81 /* SettingsView */,
 				7F4E8D3B28567040003B0A04 /* DeveloperView */,
 				7F1D5F912898A30000DD59A6 /* LoadingView.swift */,
@@ -276,6 +281,15 @@
 				7F4E8D2F285509A4003B0A04 /* String+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7FFAAA18289CC52900BC7672 /* StatsView */ = {
+			isa = PBXGroup;
+			children = (
+				7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */,
+				7FFAAA19289CC54200BC7672 /* StatsView.swift */,
+			);
+			path = StatsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +378,7 @@
 				7F093D2E2880F42300AC0D75 /* ActivityViewModel.swift in Sources */,
 				7F093D322883325700AC0D75 /* DistanceRange.swift in Sources */,
 				7F4E8D3D285670D0003B0A04 /* DeveloperViewModel.swift in Sources */,
+				7FFAAA1A289CC54200BC7672 /* StatsView.swift in Sources */,
 				7FA0EBB7282090A000020DA2 /* CloudKitManager.swift in Sources */,
 				7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */,
 				7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */,
@@ -387,6 +402,7 @@
 				7F093D302880F42D00AC0D75 /* ActivityView.swift in Sources */,
 				7F55C44C2895C52500F2FAAE /* AlertItem.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
+				7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */,
 				7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */,
 				7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */,
 				7F1D5F922898A30000DD59A6 /* LoadingView.swift in Sources */,

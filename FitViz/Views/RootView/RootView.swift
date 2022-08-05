@@ -14,6 +14,9 @@ struct RootView: View {
             NavigationView {
                 ZStack {
                     VStack {
+                        NavigationLink("Stats") {
+                            StatsView()
+                        }
                         NavigationLink("Settings") {
                             SettingsView()
                         }
