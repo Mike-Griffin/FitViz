@@ -11,9 +11,26 @@ struct StatsView: View {
     @StateObject var viewModel = ViewModel()
     var body: some View {
         VStack {
-        Text("Stats")
-            Text(viewModel.activities.first?.type ?? "nada")
-            Text(viewModel.mostCommonDay)
+            Form {
+                DatePicker(
+                    "Start Date",
+                    selection: $viewModel.startDate.onChange(viewModel.userSelectedDate),
+                    displayedComponents: [.date]
+                )
+                DatePicker(
+                    "End Date",
+                    selection: $viewModel.endDate.onChange(viewModel.userSelectedDate),
+                    displayedComponents: [.date]
+                )
+            }
+            VStack {
+                Text("Stats")
+                Text(viewModel.activities.first?.type ?? "nada")
+                Text(viewModel.mostCommonDay)
+                Text("There are \($viewModel.activities.count) activities!")
+                ActivityListView(activities: viewModel.activities)
+            }
+            Spacer()
         }
         .onAppear {
             viewModel.loadActivities()

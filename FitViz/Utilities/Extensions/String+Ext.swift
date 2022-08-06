@@ -9,7 +9,6 @@ import Foundation
 
 extension String {
     func activityPreviewDateDisplay() -> String {
-        print(self)
         let expectedFormat = Date.ISO8601FormatStyle()
         do {
             let date = try Date(self, strategy: expectedFormat)
@@ -32,7 +31,6 @@ extension String {
 
 extension Date {
     func previewDateFormat() -> String {
-        print(self)
         let diff = Calendar.current.dateComponents([.day], from: self, to: Date())
         let timeDisplay = self.formatted(.dateTime.hour().minute(.twoDigits))
         if diff.day == 0 {

@@ -27,6 +27,25 @@ struct CloudKitManager {
         return records.map(FVActivity.init)
     }
     
+    // TODO: Reconsider if these really should be different functions
+    func fetchActivities(after startDate: Date) async throws -> [FVActivity] {
+        let timeStamp: Int = Int(startDate.timeIntervalSince1970)
+        print("Fetch activities Cloudkit timestamp \(timeStamp)")
+        let predicate = NSPredicate(format: "timestamp >= %i", timeStamp)
+        let query = CKQuery(recordType: RecordType.activity, predicate: predicate)
+        let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
+        let records = matchResults.compactMap { _, result in try? result.get() }
+        return records.map(FVActivity.init)
+    }
+    
+    func fetchActivitiesBetween(startDate: String, endDate: String) async throws -> [FVActivity] {
+        return []
+    }
+    
+    func fetchActivities(type: ActivityType) async throws -> [FVActivity] {
+        return []
+    }
+    
     func fetchSameDistanceActivities(activity: FVActivity) async throws -> [FVActivity] {
         let lowerboundDistance = activity.distanceRange.lowerBound
         let upperboundDistance = activity.distanceRange.upperBound
