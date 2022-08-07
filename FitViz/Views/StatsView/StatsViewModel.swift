@@ -73,7 +73,7 @@ extension StatsView {
         func loadActivitiesWithParms() {
             Task {
                 do {
-                    //TODO: Reconsider if I want the fetch activities function to be smart enough to ignore the end date if it is today
+                    //TODO: Reconsider if I want the fetch activities function to be smart enough to ignore the start and end date if it is today
                     var startDateNotToday: Date? = startDate
                     var endDateNotToday: Date? = endDate
                     if (startDate.numericDate() == Date().numericDate()) {
@@ -83,7 +83,6 @@ extension StatsView {
                         endDateNotToday = nil
                     }
                     activities = try await ckManager.fetchActivities(type: selectedType, startDate: startDateNotToday, endDate: endDateNotToday)
-                    print(activities)
                 } catch {
                     print(error)
                 }
