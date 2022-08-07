@@ -27,23 +27,32 @@ struct CloudKitManager {
         return records.map(FVActivity.init)
     }
     
-    // TODO: Reconsider if these really should be different functions
-    func fetchActivities(after startDate: Date) async throws -> [FVActivity] {
-        let timeStamp: Int = Int(startDate.timeIntervalSince1970)
-        print("Fetch activities Cloudkit timestamp \(timeStamp)")
-        let predicate = NSPredicate(format: "timestamp >= %i", timeStamp)
+    func fetchActivities(type: ActivityType? = nil, startDate: Date? = nil, endDate: Date? = nil) async throws -> [FVActivity] {
+        print("type: ", type)
+        print("start date: ", startDate)
+        print("end date: ", endDate)
+        var predicatesToCompound: [NSPredicate] = []
+        if (type != nil) {
+            let typeString = type!.rawValue
+            predicatesToCompound.append(NSPredicate(format: "type == %@", typeString))
+        }
+        if (startDate != nil) {
+            let startDateInt = Int(startDate!.timeIntervalSince1970)
+            predicatesToCompound.append(NSPredicate(format: "timestamp >= %i", startDateInt))
+        }
+        if (endDate != nil) {
+            let endDateInt = Int(endDate!.timeIntervalSince1970)
+            predicatesToCompound.append(NSPredicate(format: "timestamp <= %i", endDateInt))
+        }
+        var predicate = NSPredicate(value: true)
+        if (!predicatesToCompound.isEmpty) {
+            predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicatesToCompound)
+        }
         let query = CKQuery(recordType: RecordType.activity, predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: FVActivity.kTimestamp, ascending: false)]
         let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
         let records = matchResults.compactMap { _, result in try? result.get() }
         return records.map(FVActivity.init)
-    }
-    
-    func fetchActivitiesBetween(startDate: String, endDate: String) async throws -> [FVActivity] {
-        return []
-    }
-    
-    func fetchActivities(type: ActivityType) async throws -> [FVActivity] {
-        return []
     }
     
     func fetchSameDistanceActivities(activity: FVActivity) async throws -> [FVActivity] {

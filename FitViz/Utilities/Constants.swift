@@ -22,7 +22,7 @@ enum DistanceUnit: String, CaseIterable, Identifiable {
 }
 
 enum ActivityType: String, CaseIterable {
-    case Run, Bike, Swim
+    case Run, Ride, Swim
 }
 
 enum KeychainKeys: String {

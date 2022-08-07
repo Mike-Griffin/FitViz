@@ -22,6 +22,11 @@ struct StatsView: View {
                     selection: $viewModel.endDate.onChange(viewModel.userSelectedDate),
                     displayedComponents: [.date]
                 )
+                Picker("Type", selection: $viewModel.selectedActivityType.onChange(viewModel.userSelectedType)) {
+                    ForEach(viewModel.availableTypes, id: \.self) { type in
+                        Text(type).tag(type)
+                    }
+                }
             }
             VStack {
                 Text("Stats")
@@ -33,7 +38,7 @@ struct StatsView: View {
             Spacer()
         }
         .onAppear {
-            viewModel.loadActivities()
+            viewModel.viewAppears()
         }
     }
 }
