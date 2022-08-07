@@ -43,7 +43,7 @@ struct ActivityIcon: View {
             switch(ActivityType(rawValue: activityString)) {
             case .Run:
                 Image(systemName: "figure.walk")
-            case .Bike:
+            case .Ride:
                 Image(systemName: "bicycle")
             default:
                 Image(systemName: "face.smiling")
