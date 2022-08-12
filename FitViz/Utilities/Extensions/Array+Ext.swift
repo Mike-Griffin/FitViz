@@ -34,4 +34,16 @@ extension Array where Element == FVActivity {
         }
         // filter the activities to only ones with a timestamp after that
     }
+    
+    func sumDurations() -> Int {
+        return self.reduce(0) { 
+            $0 + $1.duration
+        }
+    }
+    
+    func sumDistances() -> Double {
+        return self.reduce(0) {
+            $0 + $1.distance
+        }
+    }
 }
