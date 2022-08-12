@@ -21,7 +21,7 @@ extension Array where Element == FVActivity {
     
     func getActivitiesInPreviousWeeks(numWeeks: Int) -> [FVActivity] {
         // This looks at the entire week, so the current week is halfway through
-
+        let firstDayOfWeekTimestamp = Date().getFirstDayOfWeekTimeStamp()
         let modifiedNumWeeks = (numWeeks - 1)
         let startDateTimeStamp = firstDayOfWeekTimestamp - modifiedNumWeeks.weeksToSeconds()
         let date = Date(timeIntervalSince1970: TimeInterval(startDateTimeStamp))
