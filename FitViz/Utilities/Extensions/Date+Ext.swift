@@ -44,4 +44,8 @@ extension Date {
     func toEpochTimeStamp() -> Int {
         return Int(self.timeIntervalSince1970)
     }
+    
+    func toMonth() -> String {
+        return self.formatted(.dateTime.month(.abbreviated))
+    }
 }

@@ -16,6 +16,16 @@ struct PreviousWeeksChartView: View {
                 LineMark(x: .value("Week Number", i), y: .value("Duration", viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0))
             }
         }
+        .chartXScale(domain: 0...11)
+        .chartXAxis {
+            if !viewModel.months.isEmpty {
+                AxisMarks(values: .stride(by: 4)) { axis in
+                    AxisValueLabel(viewModel.months[axis.index])
+                }
+            }
+        }
+        .frame(height: 250)
+        .padding()
 
     }
 }
