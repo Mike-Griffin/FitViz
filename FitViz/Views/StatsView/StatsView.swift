@@ -30,8 +30,6 @@ struct StatsView: View {
             }
             VStack {
                 // TODO: This will be the container which shows all the charts
-                
-                // TODO: Make this a chart which filters the activities by last 10 weeks
                 PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: viewModel.activities))
             }
             VStack {

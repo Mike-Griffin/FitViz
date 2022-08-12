@@ -29,27 +29,6 @@ extension StatsView {
                 loadActivities()
                 initialLaunch = false
             }
-            //TODO: Remove this debugging code
-//            for dict in activities.groupByWeek() {
-//                print("Key: \(dict.key)")
-//                print("Count: \(dict.value.count)")
-//                for activity in dict.value {
-//                    print(activity.startTime)
-//                }
-//            }
-//            let groupedActivities = activities.groupByWeek()
-//
-//            for index in 0...11 {
-//                print("Week \(index)")
-//                print(groupedActivities[index]?.count ?? 0)
-//            }
-            let groupedActivities = activities.getActivitiesInPreviousWeeks(numWeeks: 12).groupByWeek()
-            for index in 0...11 {
-                print("Week \(index)")
-                print(groupedActivities[index]?.count ?? 0)
-            }
-            
-
         }
         
         func loadActivities() {
@@ -88,16 +67,6 @@ extension StatsView {
                 print("User selected an unexpected type")
             }
             loadActivitiesWithParms()
-            
-            //TODO: Remove this debug code
-            print("Sum duration: ")
-            print(activities.sumDurations())
-            for activity in activities {
-                print("Duration: ")
-                print(activity.duration)
-            }
-            print("Sum distances: \(activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))")
-            
         }
         
         func loadActivitiesWithParms() {

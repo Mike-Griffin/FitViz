@@ -21,9 +21,7 @@ extension Array where Element == FVActivity {
     
     func getActivitiesInPreviousWeeks(numWeeks: Int) -> [FVActivity] {
         // This looks at the entire week, so the current week is halfway through
-        // Get the first day of this current week
         let firstDayOfWeekTimestamp = Date().getFirstDayOfWeekTimeStamp()
-        // Subtract numWeeks - 1 from it
         let modifiedNumWeeks = (numWeeks - 1)
         let startDateTimeStamp = firstDayOfWeekTimestamp - modifiedNumWeeks.weeksToSeconds()
         let date = Date(timeIntervalSince1970: TimeInterval(startDateTimeStamp))
@@ -32,7 +30,6 @@ extension Array where Element == FVActivity {
         return self.filter {
             $0.timestamp >= startDateTimeStamp
         }
-        // filter the activities to only ones with a timestamp after that
     }
     
     func sumDurations() -> Int {

@@ -14,14 +14,6 @@ struct CloudKitManager {
     // MARK: User
     func checkUser() async throws {
         let _ = try await container.userRecordID()
-//        do {
-//            print("attempting to check user")
-//            let user = try await container.userRecordID()
-//            print(user)
-//        } catch {
-//            print("Error in the cloudkit manager check user")
-//            print(error)
-//        }
     }
     
     // MARK: Activities
@@ -36,9 +28,6 @@ struct CloudKitManager {
     }
     
     func fetchActivities(type: ActivityType? = nil, startDate: Date? = nil, endDate: Date? = nil) async throws -> [FVActivity] {
-        print("type: ", type)
-        print("start date: ", startDate)
-        print("end date: ", endDate)
         var predicatesToCompound: [NSPredicate] = []
         if (type != nil) {
             let typeString = type!.rawValue
