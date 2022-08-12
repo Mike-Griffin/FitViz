@@ -29,6 +29,14 @@ extension StatsView {
                 loadActivities()
                 initialLaunch = false
             }
+            //TODO: Remove this debugging code
+            for dict in activities.groupByWeek() {
+                print("Key: \(dict.key)")
+                print("Count: \(dict.value.count)")
+                for activity in dict.value {
+                    print(activity.startTime)
+                }
+            }
         }
         
         func loadActivities() {

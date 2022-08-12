@@ -81,6 +81,10 @@ struct FVActivity: Identifiable {
             }
         }
     }
+    
+    func weekNumber() -> Int {
+        return self.timestamp.epochTimeStampToDate().weekNumber()
+    }
 }
 
 

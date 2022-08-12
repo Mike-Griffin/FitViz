@@ -11,4 +11,8 @@ extension Date {
     func numericDate() -> String {
         return self.formatted(date: .numeric, time: .omitted)
     }
+    
+    func weekNumber() -> Int {
+        return Int(self.formatted(.dateTime.week())) ?? -1
+    }
 }
