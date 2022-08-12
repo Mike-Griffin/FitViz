@@ -28,21 +28,3 @@ extension String {
         }
     }
 }
-
-extension Date {
-    func previewDateFormat() -> String {
-        let diff = Calendar.current.dateComponents([.day], from: self, to: Date())
-        let timeDisplay = self.formatted(.dateTime.hour().minute(.twoDigits))
-        if diff.day == 0 {
-            return "Today at \(timeDisplay)"
-        } else if diff.day == 1 {
-            return "Yesterday at \(timeDisplay)"
-        } else {
-            return self.formatted()
-        }
-    }
-    
-    func toEpochTimeStamp() -> Int {
-        return Int(self.timeIntervalSince1970)
-    }
-}
