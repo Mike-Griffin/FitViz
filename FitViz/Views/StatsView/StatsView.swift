@@ -29,6 +29,10 @@ struct StatsView: View {
                 }
             }
             VStack {
+                // TODO: This will be the container which shows all the charts
+                PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: viewModel.activities))
+            }
+            VStack {
                 Text("Stats")
                 Text(viewModel.activities.first?.type ?? "nada")
                 Text(viewModel.mostCommonDay)

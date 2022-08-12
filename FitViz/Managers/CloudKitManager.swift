@@ -28,9 +28,6 @@ struct CloudKitManager {
     }
     
     func fetchActivities(type: ActivityType? = nil, startDate: Date? = nil, endDate: Date? = nil) async throws -> [FVActivity] {
-        print("type: ", type)
-        print("start date: ", startDate)
-        print("end date: ", endDate)
         var predicatesToCompound: [NSPredicate] = []
         if (type != nil) {
             let typeString = type!.rawValue

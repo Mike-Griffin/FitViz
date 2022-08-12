@@ -67,7 +67,6 @@ extension StatsView {
                 print("User selected an unexpected type")
             }
             loadActivitiesWithParms()
-            
         }
         
         func loadActivitiesWithParms() {
