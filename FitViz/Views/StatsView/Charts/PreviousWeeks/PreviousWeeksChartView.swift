@@ -12,9 +12,12 @@ struct PreviousWeeksChartView: View {
     @ObservedObject var viewModel: ViewModel
     var body: some View {
         Chart {
-            ForEach(viewModel.activities) { activity in
-                LineMark(x: .value("Timestamp", activity.startTime), y: .value("Duration", activity.duration))
+            ForEach(0...11, id: \.self) { i in
+                LineMark(x: .value("Week Number", i), y: .value("Duration", viewModel.activityMap[i]?.count ?? 0))
             }
+//            ForEach(viewModel.activities) { activity in
+//                LineMark(x: .value("Timestamp", activity.startTime), y: .value("Duration", activity.duration))
+//            }
         }
 
     }
