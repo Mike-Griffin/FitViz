@@ -48,6 +48,8 @@ extension StatsView {
                 print("Week \(index)")
                 print(groupedActivities[index]?.count ?? 0)
             }
+            
+
         }
         
         func loadActivities() {
@@ -86,6 +88,15 @@ extension StatsView {
                 print("User selected an unexpected type")
             }
             loadActivitiesWithParms()
+            
+            //TODO: Remove this debug code
+            print("Sum duration: ")
+            print(activities.sumDurations())
+            for activity in activities {
+                print("Duration: ")
+                print(activity.duration)
+            }
+            print("Sum distances: \(activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))")
             
         }
         
