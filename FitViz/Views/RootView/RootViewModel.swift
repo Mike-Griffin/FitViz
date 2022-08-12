@@ -24,6 +24,7 @@ extension RootView {
                     try await cloudkitManager.checkUser()
                     fetchStrava()
                 } catch {
+                    print("Error in the RootView model")
                     print(error)
                     alertItem = AlertContext.noUserRecord
                 }
