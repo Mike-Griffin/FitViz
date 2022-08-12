@@ -14,9 +14,10 @@ extension PreviousWeeksChartView {
         init(activities: [FVActivity]) {
             self.activities = activities
             activityMap = activities.getActivitiesInPreviousWeeks(numWeeks: 12).groupByWeek()
-            for map in activityMap {
-                print("Week number \(map.key)")
-                print(map.value.count)
+            for i in 0...11 {
+                print("Week number \(i)")
+                print("\(activityMap[i]?.count ?? 0) activities")
+                print("\(activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0) miles" )
             }
         }
     }

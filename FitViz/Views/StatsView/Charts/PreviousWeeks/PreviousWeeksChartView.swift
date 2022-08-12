@@ -13,7 +13,7 @@ struct PreviousWeeksChartView: View {
     var body: some View {
         Chart {
             ForEach(0...11, id: \.self) { i in
-                LineMark(x: .value("Week Number", i), y: .value("Duration", viewModel.activityMap[i]?.count ?? 0))
+                LineMark(x: .value("Week Number", i), y: .value("Duration", viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0))
             }
         }
 
