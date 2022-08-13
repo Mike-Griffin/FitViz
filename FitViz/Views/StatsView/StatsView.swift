@@ -28,9 +28,11 @@ struct StatsView: View {
                     }
                 }
             }
-            VStack {
+            ScrollView {
                 // TODO: This will be the container which shows all the charts
                 PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: viewModel.activities))
+                TimeOfDayView(viewModel: TimeOfDayView.ViewModel(activities: viewModel.activities))
+
             }
             VStack {
                 Text("Stats")

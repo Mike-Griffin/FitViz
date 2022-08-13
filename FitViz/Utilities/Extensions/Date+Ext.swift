@@ -16,6 +16,15 @@ extension Date {
         return Int(self.formatted(.dateTime.week())) ?? -1
     }
     
+    func timeOfDay() -> TimeOfDay {
+        print(self.formatted(.dateTime.hour()))
+        if (self.formatted(.dateTime.hour()).contains(TimeOfDay.AM.rawValue)) {
+            return .AM
+        } else {
+            return .PM
+        }
+    }
+    
     func getFirstDayOfWeek() -> Date {
         print(Calendar.current.firstWeekday)
         // get the weekday

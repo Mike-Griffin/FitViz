@@ -37,3 +37,7 @@ enum DefaultsKeys: String {
 enum Scheme {
     static let clientScheme = "FitViz"
 }
+
+enum TimeOfDay: String {
+    case AM, PM
+}
