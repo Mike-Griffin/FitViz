@@ -17,12 +17,6 @@ extension StatsView {
         var selectedType: ActivityType?
         let ckManager = CloudKitManager()
         var initialLaunch = true
-        var mostCommonDay: String {
-            get {
-                //TODO: Implement calculation for the most common day given the set of activities
-                return activities.first?.startTime ?? "Thursday"
-            }
-        }
         
         func viewAppears() {
             if initialLaunch {

@@ -43,4 +43,17 @@ extension Array where Element == FVActivity {
             $0 + $1.distance
         }
     }
+    
+    func getMostCommonWeekday() -> (Weekday, Int) {
+        var map: [Weekday: Int] = [:]
+        var mostCommonDay: Weekday = .Friday
+        for activity in self {
+            let count = (map[activity.weekday] ?? 0) + 1
+            map[activity.weekday] = count
+            if count > (map[mostCommonDay] ?? 0) {
+                mostCommonDay = activity.weekday
+            }
+        }
+        return (mostCommonDay, map[mostCommonDay] ?? 0)
+    }
 }

@@ -36,8 +36,8 @@ struct StatsView: View {
             }
             VStack {
                 Text("Stats")
+                MostCommonDayView(viewModel: MostCommonDayView.ViewModel(activities: viewModel.activities))
                 Text(viewModel.activities.first?.type ?? "nada")
-                Text(viewModel.mostCommonDay)
                 Text("There are \($viewModel.activities.count) activities!")
                 ActivityListView(activities: viewModel.activities)
             }

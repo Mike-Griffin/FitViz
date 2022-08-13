@@ -88,6 +88,12 @@ struct FVActivity: Identifiable {
         }
     }
     
+    var weekday: Weekday {
+        get {
+            return Weekday(rawValue: self.timestamp.epochTimeStampToDate().formatted(.dateTime.weekday(.wide)))!
+        }
+    }
+    
     func weekNumber() -> Int {
         return self.timestamp.epochTimeStampToDate().weekNumber()
     }
