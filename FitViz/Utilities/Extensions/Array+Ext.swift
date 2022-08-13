@@ -18,7 +18,7 @@ extension Array where Element == FVActivity {
             $0[$1.weekNumber() - offsetNumber, default: []].append($1)
         }
     }
-    
+        
     func getActivitiesInPreviousWeeks(numWeeks: Int) -> [FVActivity] {
         // This looks at the entire week, so the current week is halfway through
         let firstDayOfWeekTimestamp = Date().getFirstDayOfWeekTimeStamp()

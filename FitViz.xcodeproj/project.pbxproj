@@ -34,6 +34,8 @@
 		7F4E8D4728567F04003B0A04 /* AuthDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4628567F04003B0A04 /* AuthDetails.swift */; };
 		7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */; };
 		7F55C44C2895C52500F2FAAE /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55C44B2895C52500F2FAAE /* AlertItem.swift */; };
+		7F57045D28A8114800104B02 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57045C28A8114800104B02 /* TimeOfDayView.swift */; };
+		7F57045F28A8117300104B02 /* TimeOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */; };
 		7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */; };
 		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
@@ -86,6 +88,8 @@
 		7F4E8D4828569A9D003B0A04 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		7F4E8D4A28569CBA003B0A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7F55C44B2895C52500F2FAAE /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		7F57045C28A8114800104B02 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
+		7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayViewModel.swift; sourceTree = "<group>"; };
 		7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +151,7 @@
 		7F27057C28A5CD010041C8FF /* Charts */ = {
 			isa = PBXGroup;
 			children = (
+				7F57045B28A8113900104B02 /* TimeOfDay */,
 				7F27057D28A5CD130041C8FF /* PreviousWeeks */,
 			);
 			path = Charts;
@@ -169,6 +174,15 @@
 				7F1D491F289204C90094DC9C /* MapSheetView.swift */,
 			);
 			path = DeveloperView;
+			sourceTree = "<group>";
+		};
+		7F57045B28A8113900104B02 /* TimeOfDay */ = {
+			isa = PBXGroup;
+			children = (
+				7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */,
+				7F57045C28A8114800104B02 /* TimeOfDayView.swift */,
+			);
+			path = TimeOfDay;
 			sourceTree = "<group>";
 		};
 		7F861C7A2862B2D600D47C2A /* Cloudkit */ = {
@@ -435,8 +449,10 @@
 				7F093D342884D4D500AC0D75 /* MapView.swift in Sources */,
 				7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */,
 				7FA0EBBB282092F100020DA2 /* Constants.swift in Sources */,
+				7F57045D28A8114800104B02 /* TimeOfDayView.swift in Sources */,
 				7F1D4920289204C90094DC9C /* MapSheetView.swift in Sources */,
 				7F093D302880F42D00AC0D75 /* ActivityView.swift in Sources */,
+				7F57045F28A8117300104B02 /* TimeOfDayViewModel.swift in Sources */,
 				7F55C44C2895C52500F2FAAE /* AlertItem.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
 				7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */,
