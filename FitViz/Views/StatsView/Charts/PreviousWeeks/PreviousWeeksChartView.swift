@@ -18,12 +18,14 @@ struct PreviousWeeksChartView: View {
         }
         .chartXScale(domain: 0...11)
         .chartXAxis {
-            if !viewModel.months.isEmpty {
-                AxisMarks(values: .stride(by: 4)) { axis in
-                    AxisValueLabel(viewModel.months[axis.index])
+                AxisMarks(values: .stride(by: 1)) { axis in
+                    AxisGridLine()
+                    if let month = viewModel.dateTransitionMap[axis.index] {
+                        AxisValueLabel(month)
+                    }
                 }
-            }
         }
+        .chartYScale(domain: 0...Double(viewModel.maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
         .frame(height: 250)
         .padding()
 
