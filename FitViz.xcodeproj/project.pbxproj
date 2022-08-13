@@ -36,6 +36,8 @@
 		7F55C44C2895C52500F2FAAE /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55C44B2895C52500F2FAAE /* AlertItem.swift */; };
 		7F57045D28A8114800104B02 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57045C28A8114800104B02 /* TimeOfDayView.swift */; };
 		7F57045F28A8117300104B02 /* TimeOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */; };
+		7F57046128A81A2D00104B02 /* MostCommonDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57046028A81A2D00104B02 /* MostCommonDayView.swift */; };
+		7F57046328A81D5200104B02 /* MostCommonDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */; };
 		7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */; };
 		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
@@ -90,6 +92,8 @@
 		7F55C44B2895C52500F2FAAE /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		7F57045C28A8114800104B02 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
 		7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayViewModel.swift; sourceTree = "<group>"; };
+		7F57046028A81A2D00104B02 /* MostCommonDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostCommonDayView.swift; sourceTree = "<group>"; };
+		7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostCommonDayViewModel.swift; sourceTree = "<group>"; };
 		7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +340,8 @@
 				7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */,
 				7FFAAA19289CC54200BC7672 /* StatsView.swift */,
 				7F27057C28A5CD010041C8FF /* Charts */,
+				7F57046028A81A2D00104B02 /* MostCommonDayView.swift */,
+				7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */,
 			);
 			path = StatsView;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */,
 				7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
+				7F57046328A81D5200104B02 /* MostCommonDayViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
 				7F4E8D4528567C71003B0A04 /* AuthorizationManager.swift in Sources */,
 				7F4E8D422856779F003B0A04 /* KeychainManager.swift in Sources */,
@@ -454,6 +461,7 @@
 				7F093D302880F42D00AC0D75 /* ActivityView.swift in Sources */,
 				7F57045F28A8117300104B02 /* TimeOfDayViewModel.swift in Sources */,
 				7F55C44C2895C52500F2FAAE /* AlertItem.swift in Sources */,
+				7F57046128A81A2D00104B02 /* MostCommonDayView.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
 				7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */,
 				7F42D98B289F1EAE00816250 /* Binding+Ext.swift in Sources */,

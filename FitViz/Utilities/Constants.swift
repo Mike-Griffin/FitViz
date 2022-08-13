@@ -41,3 +41,7 @@ enum Scheme {
 enum TimeOfDay: String {
     case AM, PM
 }
+
+enum Weekday: String {
+    case Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+}
