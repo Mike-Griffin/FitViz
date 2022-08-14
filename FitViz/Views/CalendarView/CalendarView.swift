@@ -47,7 +47,6 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
             let emoji = UILabel()
             let activities = viewModel.activities.filter(dateComponents: dateComponents)
             if !activities.isEmpty {
-                // TODO: Replace this to be more specific to the activity
                 if activities.count > 1 {
                     emoji.text = "🚀"
                 } else {
@@ -68,12 +67,7 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
         }
     }
     
-//    func updateActivities(_ activities: Binding<[FVActivity]>) {
-//        self._activities = activities
-//    }
-    
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-//        let selectedActivities = viewModel.activities.map({ $0.dateComponent.date == dateComponents?.date })
         let selectedActivities = viewModel.activities.filter(dateComponents: dateComponents)
         print(selectedActivities.count)
         for activity in selectedActivities {
