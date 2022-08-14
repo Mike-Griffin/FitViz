@@ -9,7 +9,8 @@ import Foundation
 
 enum CustomError: Error {
     case urlStringInvalid
-case getResponseErrorCode(code: Int)
+    case getResponseErrorCode(code: Int)
+    case invalidSource
 }
 
 extension CustomError: LocalizedError {
@@ -19,6 +20,8 @@ extension CustomError: LocalizedError {
             return NSLocalizedString("String is not a valid URL", comment: "URL String Invalid")
         case .getResponseErrorCode(code: _):
             return NSLocalizedString("Error with get request", comment: "GET Response Error")
+        case .invalidSource:
+            return NSLocalizedString("Source is not supported", comment: "Source Invalid")
         }
     }
 }
