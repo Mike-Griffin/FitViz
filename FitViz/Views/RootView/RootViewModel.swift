@@ -65,6 +65,7 @@ extension RootView {
                                     let fetchedRecords = fetchedActivities.map({ $0.mapToCKRecord() })
                                     let _ = try await cloudkitManager.batchSave(records: fetchedRecords)
                                 }
+                                loading = false
                             } else {
                                 print("last fetch time is not zero")
                                 urlString += "?after=\(lastFetchTime)"
@@ -77,7 +78,7 @@ extension RootView {
                                     // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
                                     saveLastFetched(time: newestActivity.timestamp, source: .Strava)
                                     let activityRecords = activities.map({ $0.mapToCKRecord() })
-                                    let savedRecords = try await cloudkitManager.batchSave(records: activityRecords)
+                                    let _ = try await cloudkitManager.batchSave(records: activityRecords)
                                     loading = false
                                 } else {
                                     loading = false
