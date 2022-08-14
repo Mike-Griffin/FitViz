@@ -22,7 +22,7 @@ struct StravaActivity: Decodable {
     let distance: Float
     let moving_time: Int
     let average_speed: Float
-    let average_heartrate: Float
+    let average_heartrate: Float?
     let map: StravaActivityMap
 }
 
@@ -35,9 +35,13 @@ extension StravaActivity {
         record[FVActivity.kDistance] = self.distance
         record[FVActivity.kDuration] = self.moving_time
         record[FVActivity.kAveragePace] = self.average_speed
-        record[FVActivity.kAverageHeartRate] = self.average_heartrate
+        if self.average_heartrate != nil {
+            record[FVActivity.kAverageHeartRate] = self.average_heartrate!
+        }
         record[FVActivity.kTimestamp] = self.start_date.convertDateStringToEpochTimestamp()
-        record[FVActivity.kEncodedPolyline] = self.map.summary_polyline
+        if self.map.summary_polyline != nil {
+            record[FVActivity.kEncodedPolyline] = self.map.summary_polyline!
+        }
         return record
     }
     
@@ -47,5 +51,5 @@ extension StravaActivity {
 }
 
 struct StravaActivityMap: Decodable {
-    let summary_polyline: String
+    let summary_polyline: String?
 }

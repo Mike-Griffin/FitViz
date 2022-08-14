@@ -39,20 +39,50 @@ extension RootView {
                 } else {
                     Task {
                         do {
-                            let activities = try await activityRequestManager.getActivities(source: .Strava)
-                            if let newestActivity = activities.sorted(by: {
-                                $0.timestamp < $1.timestamp
-                            }).last {
-                                print(newestActivity.start_date.convertDateStringToEpochTimestamp())
-                                // TODO: Convert move this logic to somewhere else within the fetching logic
-                                // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
-                                saveLastFetched(time: newestActivity.timestamp, source: .Strava)
-                                let activityRecords = activities.map({ $0.mapToCKRecord() })
-                                let savedRecords = try await cloudkitManager.batchSave(records: activityRecords)
-                                print(savedRecords)
-                                loading = false
+                            var urlString = "https://www.strava.com/api/v3/athlete/activities"
+
+                            let sourceInfo = try await cloudkitManager.getSourceInformation(source: .Strava)
+                            print(sourceInfo ?? "NO SOURCE INFO")
+                            let lastFetchTime = sourceInfo?.lastFetched ?? 0
+                            if lastFetchTime == 0 {
+                                print("last fetch time is not found")
+                                urlString += "?per_page=100"
+                                var fetchedActivities = try await activityRequestManager.getActivities(source: .Strava, urlString: urlString)
+                                if let newestActivity = fetchedActivities.sorted(by: {
+                                    $0.timestamp < $1.timestamp
+                                }).last {
+                                    saveLastFetched(time: newestActivity.timestamp, source: .Strava)
+                                    let fetchedRecords = fetchedActivities.map({ $0.mapToCKRecord() })
+                                    let _ = try await cloudkitManager.batchSave(records: fetchedRecords)
+                                }
+                                var page = 1
+                                let originalString = urlString
+                                while (fetchedActivities.count == 100 && page < 10) {
+                                    page += 1
+                                    urlString = originalString + "&page=\(page)"
+                                    print(page)
+                                    print(fetchedActivities.count)
+                                    fetchedActivities = try await activityRequestManager.getActivities(source: .Strava, urlString: urlString)
+                                    let fetchedRecords = fetchedActivities.map({ $0.mapToCKRecord() })
+                                    let _ = try await cloudkitManager.batchSave(records: fetchedRecords)
+                                }
                             } else {
-                                loading = false
+                                print("last fetch time is not zero")
+                                urlString += "?after=\(lastFetchTime)"
+                                let activities = try await activityRequestManager.getActivities(source: .Strava, urlString: urlString)
+                                if let newestActivity = activities.sorted(by: {
+                                    $0.timestamp < $1.timestamp
+                                }).last {
+                                    print(newestActivity.start_date.convertDateStringToEpochTimestamp())
+                                    // TODO: Convert move this logic to somewhere else within the fetching logic
+                                    // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
+                                    saveLastFetched(time: newestActivity.timestamp, source: .Strava)
+                                    let activityRecords = activities.map({ $0.mapToCKRecord() })
+                                    let savedRecords = try await cloudkitManager.batchSave(records: activityRecords)
+                                    loading = false
+                                } else {
+                                    loading = false
+                                }
                             }
                             
                         } catch {
