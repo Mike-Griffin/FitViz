@@ -17,6 +17,9 @@ struct RootView: View {
                         NavigationLink("Stats") {
                             StatsView()
                         }
+                        NavigationLink("Calendar") {
+                            CalendarScreenView()
+                        }
                         NavigationLink("Settings") {
                             SettingsView()
                         }

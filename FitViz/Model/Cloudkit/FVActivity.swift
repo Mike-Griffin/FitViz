@@ -94,6 +94,18 @@ struct FVActivity: Identifiable {
         }
     }
     
+    var dateComponent: DateComponents {
+        get {
+            var component = DateComponents()
+            component.timeZone = TimeZone.current
+            component.month = Int(self.timestamp.epochTimeStampToDate().formatted(.dateTime.month(.defaultDigits)))
+            component.day = Int(self.timestamp.epochTimeStampToDate().formatted(.dateTime.day(.defaultDigits)))
+            component.year = Int(self.timestamp.epochTimeStampToDate().formatted(.dateTime.year()))
+            component.calendar = Calendar(identifier: .gregorian)
+            return component
+        }
+    }
+    
     func weekNumber() -> Int {
         return self.timestamp.epochTimeStampToDate().weekNumber()
     }
