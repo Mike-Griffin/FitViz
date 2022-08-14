@@ -13,7 +13,12 @@ struct PreviousWeeksChartView: View {
     var body: some View {
         Chart {
             ForEach(0...11, id: \.self) { i in
-                LineMark(x: .value("Week Number", i), y: .value("Duration", viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0))
+                LineMark(
+                    x: .value("Week Number", i),
+                    y: .value("Duration", viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0)
+                )
+                .symbol(Circle().strokeBorder(lineWidth: 2))
+                .symbolSize(60)
             }
         }
         .chartXScale(domain: 0...11)
