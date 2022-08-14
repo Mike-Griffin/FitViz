@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: FVActivity
 extension Array where Element == FVActivity {
     func groupByWeek() -> [Int: [FVActivity]] {
         let currentWeekNumber = Date().weekNumber()
@@ -55,5 +56,15 @@ extension Array where Element == FVActivity {
             }
         }
         return (mostCommonDay, map[mostCommonDay] ?? 0)
+    }
+    
+    func getDateComponents() -> [DateComponents] {
+        let dateComponents = self.map { $0.dateComponent }
+        let set = Set(dateComponents)
+        let retArray: [DateComponents] = set.compactMap {
+            $0
+        }
+        return retArray
+
     }
 }

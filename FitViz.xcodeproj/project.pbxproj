@@ -55,6 +55,9 @@
 		7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC128271EBF00020DA2 /* FVActivity.swift */; };
 		7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC32827218900020DA2 /* ActivityListView.swift */; };
 		7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */; };
+		7FEE2E0628A852EE000BA4CC /* CalendarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE2E0528A852EE000BA4CC /* CalendarScreenView.swift */; };
+		7FEE2E0828A85385000BA4CC /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE2E0728A85385000BA4CC /* CalendarView.swift */; };
+		7FEE2E0A28A8563F000BA4CC /* CalendarScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE2E0928A8563F000BA4CC /* CalendarScreenViewModel.swift */; };
 		7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFB12C286175BF00A7408D /* HealthKit.framework */; };
 		7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFB12E286175F400A7408D /* HealthKitManager.swift */; };
 		7FF8AA7228A5D1BD0023E64E /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF8AA7128A5D1BD0023E64E /* Array+Ext.swift */; };
@@ -112,6 +115,9 @@
 		7FA0EBC128271EBF00020DA2 /* FVActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVActivity.swift; sourceTree = "<group>"; };
 		7FA0EBC32827218900020DA2 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		7FEE2E0528A852EE000BA4CC /* CalendarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarScreenView.swift; sourceTree = "<group>"; };
+		7FEE2E0728A85385000BA4CC /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		7FEE2E0928A8563F000BA4CC /* CalendarScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarScreenViewModel.swift; sourceTree = "<group>"; };
 		7FEFB12C286175BF00A7408D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7FEFB12E286175F400A7408D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		7FF8AA7128A5D1BD0023E64E /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 				7FA0EBAC28208D7300020DA2 /* RootView */,
 				7FA0EBB228208E5000020DA2 /* HomeFeedView */,
 				7F093D2C2880F40C00AC0D75 /* ActivityView */,
+				7FEE2E0428A852D0000BA4CC /* CalendarView */,
 				7FFAAA18289CC52900BC7672 /* StatsView */,
 				7F0EB6CD284C127F00721D81 /* SettingsView */,
 				7F4E8D3B28567040003B0A04 /* DeveloperView */,
@@ -332,6 +339,16 @@
 				7FF8AA7328A5D6100023E64E /* Int+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7FEE2E0428A852D0000BA4CC /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				7FEE2E0928A8563F000BA4CC /* CalendarScreenViewModel.swift */,
+				7FEE2E0528A852EE000BA4CC /* CalendarScreenView.swift */,
+				7FEE2E0728A85385000BA4CC /* CalendarView.swift */,
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 		7FFAAA18289CC52900BC7672 /* StatsView */ = {
@@ -464,8 +481,11 @@
 				7F57046128A81A2D00104B02 /* MostCommonDayView.swift in Sources */,
 				7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */,
 				7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */,
+				7FEE2E0628A852EE000BA4CC /* CalendarScreenView.swift in Sources */,
 				7F42D98B289F1EAE00816250 /* Binding+Ext.swift in Sources */,
+				7FEE2E0A28A8563F000BA4CC /* CalendarScreenViewModel.swift in Sources */,
 				7FF8AA7428A5D6100023E64E /* Int+Ext.swift in Sources */,
+				7FEE2E0828A85385000BA4CC /* CalendarView.swift in Sources */,
 				7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */,
 				7F0EB6D1284D3CFF00721D81 /* Double+Ext.swift in Sources */,
 				7FF8AA7228A5D1BD0023E64E /* Array+Ext.swift in Sources */,
