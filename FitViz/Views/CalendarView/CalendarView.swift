@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CalendarView: UIViewRepresentable {
-
-    let interval: DateInterval
-    @Binding var activities: [FVActivity]
-    @Binding var selectedActivity: FVActivity?
-    @Binding var showSheet: Bool
-    var fetchActivities: (Int)->()
+    @ObservedObject var viewModel: CalendarViewModel
+//    let interval: DateInterval
+//    @Binding var activities: [FVActivity]
+//    @Binding var selectedActivity: FVActivity?
+//    @Binding var showSheet: Bool
+//    var fetchActivities: (Int)->()
     
     func makeUIView(context: Context) -> some UICalendarView {
         let view = UICalendarView()
-        view.availableDateRange = interval
+        view.availableDateRange = viewModel.interval
         view.delegate = context.coordinator
         view.selectionBehavior = UICalendarSelectionSingleDate(delegate: context.coordinator)
         return view
@@ -27,27 +27,28 @@ struct CalendarView: UIViewRepresentable {
         // TODO: create a function on the activities array to get the date component for an activity
         print("uiview is updated")
         print(uiView.visibleDateComponents)
-        context.coordinator.updateActivities($activities)
-        uiView.reloadDecorations(forDateComponents: activities.getDateComponents(), animated: true)
+//        context.coordinator.updateActivities(viewModel.activities)
+        uiView.reloadDecorations(forDateComponents: viewModel.activities.getDateComponents(), animated: true)
     }
     
     func makeCoordinator() -> CalendarCoordinator {
-        CalendarCoordinator(self, activities: $activities, fetchActivities: fetchActivities)
+        CalendarCoordinator(self, viewModel: viewModel)
     }
     
 }
 
 class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     var parent: CalendarView
-    @Binding var activities: [FVActivity]
+//    @Binding var activities: [FVActivity]
     var currentMonth: Int
-    var fetchActivities: (Int)->()
+//    var fetchActivities: (Int)->()
+    
+    @ObservedObject var viewModel: CalendarViewModel
     
     
-    init(_ parent: CalendarView, activities: Binding<[FVActivity]>, fetchActivities: @escaping (Int) -> ()) {
+    init(_ parent: CalendarView, viewModel: CalendarViewModel) {
         self.parent = parent
-        self._activities = activities
-        self.fetchActivities = fetchActivities
+        self.viewModel = viewModel
         currentMonth = 0
     }
     
@@ -59,12 +60,12 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
             // should I pass down the function to fetch new activities?
             // this feels like I could run into performance issues
             print("Got a different month in here \(currentMonth)")
-            fetchActivities(currentMonth)
+            viewModel.fetchActivitiesWithMonth(currentMonth)
             
         }
         return .customView { [self] in
             let emoji = UILabel()
-            if activities.contains(where: {
+            if viewModel.activities.contains(where: {
                 return $0.dateComponent.date == dateComponents.date
             }) {
                 // TODO: Replace this to be more specific to the activity
@@ -74,16 +75,16 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
         }
     }
     
-    func updateActivities(_ activities: Binding<[FVActivity]>) {
-        self._activities = activities
-    }
+//    func updateActivities(_ activities: Binding<[FVActivity]>) {
+//        self._activities = activities
+//    }
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        if let selectedActivity = activities.first(where: {
+        if let selectedActivity = viewModel.activities.first(where: {
             $0.dateComponent.date == dateComponents?.date
         }) {
-            parent.selectedActivity = selectedActivity
-            parent.showSheet = true
+            viewModel.selectedActivity = selectedActivity
+            viewModel.showSheet = true
         }
         
     }

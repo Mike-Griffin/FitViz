@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct CalendarScreenView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel = CalendarViewModel()
     
     var body: some View {
         VStack {
             Text("Calendar!!!")
             CalendarView(
-                interval: .init(
-                        start: .now.addingTimeInterval(-24 * 30 * 24 * 3600),
-                        end: .now
-                    ),
-                    activities: $viewModel.activities,
-                selectedActivity: $viewModel.selectedActivity,
-                showSheet: $viewModel.showSheet,
-                fetchActivities: viewModel.fetchActivitiesWithMonth(_:)
+                viewModel: viewModel
             )
         }
         .sheet(isPresented: $viewModel.showSheet) {
