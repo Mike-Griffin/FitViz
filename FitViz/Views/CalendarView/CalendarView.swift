@@ -9,11 +9,6 @@ import SwiftUI
 
 struct CalendarView: UIViewRepresentable {
     @ObservedObject var viewModel: CalendarViewModel
-//    let interval: DateInterval
-//    @Binding var activities: [FVActivity]
-//    @Binding var selectedActivity: FVActivity?
-//    @Binding var showSheet: Bool
-//    var fetchActivities: (Int)->()
     
     func makeUIView(context: Context) -> some UICalendarView {
         let view = UICalendarView()
@@ -24,10 +19,6 @@ struct CalendarView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        // TODO: create a function on the activities array to get the date component for an activity
-        print("uiview is updated")
-        print(uiView.visibleDateComponents)
-//        context.coordinator.updateActivities(viewModel.activities)
         uiView.reloadDecorations(forDateComponents: viewModel.activities.getDateComponents(), animated: true)
     }
     
@@ -39,29 +30,20 @@ struct CalendarView: UIViewRepresentable {
 
 class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     var parent: CalendarView
-//    @Binding var activities: [FVActivity]
-    var currentMonth: Int
-//    var fetchActivities: (Int)->()
-    
     @ObservedObject var viewModel: CalendarViewModel
     
     
     init(_ parent: CalendarView, viewModel: CalendarViewModel) {
         self.parent = parent
         self.viewModel = viewModel
-        currentMonth = 0
     }
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         print("Visible date components: \(calendarView.visibleDateComponents)")
 //        print(dateComponents.day)
-        if currentMonth != calendarView.visibleDateComponents.month {
-            currentMonth = calendarView.visibleDateComponents.month ?? 0
-            // should I pass down the function to fetch new activities?
-            // this feels like I could run into performance issues
-            print("Got a different month in here \(currentMonth)")
-            viewModel.fetchActivitiesWithMonth(currentMonth)
-            
+        if viewModel.currentDisplayedMonth != calendarView.visibleDateComponents.month {
+            viewModel.currentDisplayedMonth = calendarView.visibleDateComponents.month ?? 0
+            viewModel.monthUpdated()
         }
         return .customView { [self] in
             let emoji = UILabel()

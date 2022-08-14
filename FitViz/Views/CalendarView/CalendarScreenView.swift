@@ -12,16 +12,13 @@ struct CalendarScreenView: View {
     
     var body: some View {
         VStack {
-            Text("Calendar!!!")
+            Text("Calendar for the month of \(viewModel.monthDescription)!!!")
             CalendarView(
                 viewModel: viewModel
             )
         }
         .sheet(isPresented: $viewModel.showSheet) {
             ActivityView(viewModel: ActivityView.ViewModel(activity: viewModel.selectedActivity!))
-        }
-        .onAppear{
-            viewModel.fetchActivities()
         }
     }
 }
