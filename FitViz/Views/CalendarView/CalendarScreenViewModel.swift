@@ -13,6 +13,7 @@ import Foundation
     @Published var selectedActivities: [FVActivity] = []
     @Published var showSheet: Bool = false
     @Published var currentDisplayedMonth = 0
+    @Published var currentDisplayedYear = 2022
     @Published var monthDescription: String = ""
     var startDate: Date
     var endDate: Date
@@ -30,7 +31,7 @@ import Foundation
         let startDateComponents = DateComponents(
             calendar: Calendar(identifier: .gregorian),
             timeZone: TimeZone.current,
-            year: 2022,
+            year: currentDisplayedYear,
             month: currentDisplayedMonth,
             day: 1
         )

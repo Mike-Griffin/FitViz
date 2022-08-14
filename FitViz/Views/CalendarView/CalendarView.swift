@@ -41,6 +41,7 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         if viewModel.currentDisplayedMonth != calendarView.visibleDateComponents.month {
             viewModel.currentDisplayedMonth = calendarView.visibleDateComponents.month ?? 0
+            viewModel.currentDisplayedYear = calendarView.visibleDateComponents.year ?? 0
             viewModel.monthUpdated()
         }
         return .customView { [self] in
