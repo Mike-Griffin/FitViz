@@ -19,8 +19,14 @@ struct CalendarScreenView: View {
                 viewModel: viewModel
             )
         }
-        .sheet(isPresented: $viewModel.showSheet) {
-            ActivityView(viewModel: ActivityView.ViewModel(activity: viewModel.selectedActivity!))
+        .sheet(isPresented: $viewModel.showSheet, onDismiss: {
+            viewModel.selectedActivities = []
+        }) {
+            if viewModel.selectedActivities.count == 1 {
+                ActivityView(viewModel: ActivityView.ViewModel(activity: viewModel.selectedActivities.first!))
+            } else if viewModel.selectedActivities.count > 1 {
+                ActivityListView(activities: viewModel.selectedActivities)
+            }
         }
     }
 }

@@ -39,33 +39,43 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
     }
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        print("Visible date components: \(calendarView.visibleDateComponents)")
-//        print(dateComponents.day)
         if viewModel.currentDisplayedMonth != calendarView.visibleDateComponents.month {
             viewModel.currentDisplayedMonth = calendarView.visibleDateComponents.month ?? 0
             viewModel.monthUpdated()
         }
         return .customView { [self] in
             let emoji = UILabel()
-            if viewModel.activities.contains(where: {
-                return $0.dateComponent.date == dateComponents.date
-            }) {
-                // TODO: Replace this to be more specific to the activity
-                emoji.text = "🚀"
+            let activities = viewModel.activities.filter(dateComponents: dateComponents)
+            if !activities.isEmpty {
+                if activities.count > 1 {
+                    emoji.text = "🚀"
+                } else {
+                    let activity = activities.first!
+                    switch(activity.type) {
+                    case ActivityType.Run.rawValue:
+                        emoji.text = "🏃‍♂️"
+                    case ActivityType.Ride.rawValue:
+                        emoji.text = "🚲"
+                    case ActivityType.Swim.rawValue:
+                        emoji.text = "🏊‍♂️"
+                    default:
+                        emoji.text = "😖"
+                    }
+                }
             }
             return emoji
         }
     }
     
-//    func updateActivities(_ activities: Binding<[FVActivity]>) {
-//        self._activities = activities
-//    }
-    
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        if let selectedActivity = viewModel.activities.first(where: {
-            $0.dateComponent.date == dateComponents?.date
-        }) {
-            viewModel.selectedActivity = selectedActivity
+        let selectedActivities = viewModel.activities.filter(dateComponents: dateComponents)
+        print(selectedActivities.count)
+        for activity in selectedActivities {
+            print (activity.type)
+        }
+        
+        if !selectedActivities.isEmpty {
+            viewModel.selectedActivities = selectedActivities
             viewModel.showSheet = true
         }
         

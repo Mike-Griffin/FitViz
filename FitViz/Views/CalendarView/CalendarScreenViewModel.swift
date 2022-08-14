@@ -10,7 +10,7 @@ import Foundation
 @MainActor class CalendarViewModel: ObservableObject {
     @Published var activities: [FVActivity] = []
     @Published var interval: DateInterval
-    @Published var selectedActivity: FVActivity?
+    @Published var selectedActivities: [FVActivity] = []
     @Published var showSheet: Bool = false
     @Published var currentDisplayedMonth = 0
     @Published var monthDescription: String = ""
@@ -52,4 +52,6 @@ import Foundation
             
         }
     }
+    
+
 }
