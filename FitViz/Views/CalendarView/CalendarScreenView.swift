@@ -13,6 +13,8 @@ struct CalendarScreenView: View {
     var body: some View {
         VStack {
             Text("Calendar for the month of \(viewModel.monthDescription)!!!")
+            Text("\(viewModel.activities.count) total sessions!")
+            Text("\(viewModel.activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue()) miles completed")
             CalendarView(
                 viewModel: viewModel
             )
