@@ -9,6 +9,8 @@ import Foundation
 
 //MARK: FVActivity
 extension Array where Element == FVActivity {
+    // Note: This may be getting a little carried away, I like the simplicity but I should
+    // see if any of these are not used often enough to warrant being in this file
     func groupByWeek() -> [Int: [FVActivity]] {
         let currentWeekNumber = Date().weekNumber()
         // TODO: Determine how this works in the case where it crosses over the new year
@@ -66,5 +68,11 @@ extension Array where Element == FVActivity {
         }
         return retArray
 
+    }
+    
+    func filter(dateComponents: DateComponents?) -> [FVActivity] {
+        self.filter {
+            $0.dateComponent.date == dateComponents?.date
+        }
     }
 }
