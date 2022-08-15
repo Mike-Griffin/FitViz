@@ -30,9 +30,9 @@ struct StatsView: View {
             }
             ScrollView {
                 // TODO: This will be the container which shows all the charts
-                PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: viewModel.activities) )
+                PreviousWeeksChartView(viewModel: viewModel )
                 NavigationLink {
-                    PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: viewModel.activities))
+                    PreviousWeeksChartView(viewModel: viewModel)
                 } label: {
                     Text("Full Screen Line Chart")
                 }

@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct PreviousWeeksChartView: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: StatsView.ViewModel
     
     var body: some View {
         VStack {
@@ -17,7 +17,7 @@ struct PreviousWeeksChartView: View {
                 ForEach(0...11, id: \.self) { i in
                     LineMark(
                         x: .value("Week Number", i),
-                        y: .value("Duration", viewModel.animateMap[i] == 2
+                        y: .value("Duration", (!viewModel.activities.isEmpty && viewModel.animateMap[i] == true)
                                   ? viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0
                                   : 0)
                     )
@@ -37,36 +37,30 @@ struct PreviousWeeksChartView: View {
             .chartYScale(domain: 0...Double(viewModel.maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
             .frame(height: 250)
             .padding()
-
-            // TODO: Need to broadcast the update
-            //
-            Button {
+            .onChange(of: viewModel.activities) { newValue in
+                for i in 0 ..< 12 {
+                    viewModel.animateMap[i] = false
+                }
                 animateGraph()
-            } label: {
-                Text("Animate")
             }
-
         }
          
 
     }
     
     func animateGraph() {
-        print("animations here")
-        print("Activity count \(viewModel.activities.count)")
-        print("Activity map count \(viewModel.activityMap.count)")
-            for index in 0 ..< 12 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
-                    withAnimation(.interactiveSpring(response:  0.8, dampingFraction: 0.8)) {
-                        viewModel.animateMap[index] = 2
-                    }
+        for index in 0 ..< 12 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                withAnimation(.interactiveSpring(response:  0.8, dampingFraction: 0.8)) {
+                    viewModel.animateMap[index] = true
                 }
             }
+        }
     }
 }
 
-struct PreviousWeeksChartView_Previews: PreviewProvider {
-    static var previews: some View {
-        PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: [FVActivity(record: MockData.activity)]))
-    }
-}
+//struct PreviousWeeksChartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PreviousWeeksChartView(viewModel: PreviousWeeksChartView.ViewModel(activities: [FVActivity(record: MockData.activity)]))
+//    }
+//}
