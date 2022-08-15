@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-struct FVActivity: Identifiable {
+struct FVActivity: Identifiable, Equatable {
     static let kType             = "type"
     static let kSource           = "source"
     static let kStartTime        = "startTime"

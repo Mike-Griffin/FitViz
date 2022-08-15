@@ -18,6 +18,12 @@ extension StatsView {
         let ckManager = CloudKitManager()
         var initialLaunch = true
         
+        //MARK: Previous Calendar View properties
+        @Published var activityMap: [Int: [FVActivity]] = [:]
+        @Published var dateTransitionMap: [Int: String] = [:]
+        @Published var maxValue: Int = 0
+        @Published var animateMap: [Int: Bool] = [:]
+        
         func viewAppears() {
             if initialLaunch {
                 loadActivities()
@@ -34,7 +40,7 @@ extension StatsView {
                         availableTypes = ["All"]
                         let types = Set(activities.compactMap { $0.type })
                         availableTypes.append(contentsOf: types)
-                        print(availableTypes)
+                        updatePreviousWeekValues()
                     }
                 } catch {
                     print(error)
@@ -76,9 +82,31 @@ extension StatsView {
                         endDateNotToday = nil
                     }
                     activities = try await ckManager.fetchActivities(type: selectedType, startDate: startDateNotToday, endDate: endDateNotToday)
+                    updatePreviousWeekValues()
+
                 } catch {
                     print(error)
                 }
+            }
+        }
+        
+        func updatePreviousWeekValues() {
+            activityMap = activities.getActivitiesInPreviousWeeks(numWeeks: 12).groupByWeek()
+            // start from today's date, iterate backwards,
+            // when I detect a different month then set that index
+            var previousDate = Date().getFirstDayOfWeek()
+//            animateMap = [:]
+            for i in 1 ..< 12 {
+                let currentDate = previousDate.addingTimeInterval(TimeInterval((-1).weeksToSeconds()))
+
+                if (previousDate.toMonth() != currentDate.toMonth()) {
+                    dateTransitionMap[11 - i] = previousDate.toMonth()
+                }
+                previousDate = currentDate
+            }
+
+            for (_, value) in activityMap {
+                maxValue = max(maxValue, Int(value.sumDistances()))
             }
         }
         

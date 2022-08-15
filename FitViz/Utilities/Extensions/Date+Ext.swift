@@ -17,7 +17,6 @@ extension Date {
     }
     
     func timeOfDay() -> TimeOfDay {
-        print(self.formatted(.dateTime.hour()))
         if (self.formatted(.dateTime.hour()).contains(TimeOfDay.AM.rawValue)) {
             return .AM
         } else {
@@ -26,7 +25,6 @@ extension Date {
     }
     
     func getFirstDayOfWeek() -> Date {
-        print(Calendar.current.firstWeekday)
         // get the weekday
         let weekday = -1 * ((Int(self.formatted(.dateTime.weekday(.oneDigit))) ?? 0) - 1)
         let weekdayInSeconds = weekday.daysToSeconds()
