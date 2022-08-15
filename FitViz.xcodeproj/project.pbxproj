@@ -49,12 +49,43 @@
 		7FA0EBC228271EBF00020DA2 /* FVActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC128271EBF00020DA2 /* FVActivity.swift */; };
 		7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EBC32827218900020DA2 /* ActivityListView.swift */; };
 		7FB5769D285FB5BE007FF570 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */; };
+		7FB7B1E728A9F707001C7383 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB7B1E628A9F707001C7383 /* WidgetKit.framework */; };
+		7FB7B1E928A9F707001C7383 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB7B1E828A9F707001C7383 /* SwiftUI.framework */; };
+		7FB7B1EC28A9F707001C7383 /* FitVizWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB7B1EB28A9F707001C7383 /* FitVizWidget.swift */; };
+		7FB7B1EF28A9F707001C7383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FB7B1EE28A9F707001C7383 /* Assets.xcassets */; };
+		7FB7B1F128A9F707001C7383 /* FitVizWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7FB7B1ED28A9F707001C7383 /* FitVizWidget.intentdefinition */; };
+		7FB7B1F228A9F707001C7383 /* FitVizWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7FB7B1ED28A9F707001C7383 /* FitVizWidget.intentdefinition */; };
+		7FB7B1F528A9F707001C7383 /* FitVizWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7FB7B1E528A9F707001C7383 /* FitVizWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFB12C286175BF00A7408D /* HealthKit.framework */; };
 		7FEFB12F286175F400A7408D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFB12E286175F400A7408D /* HealthKitManager.swift */; };
 		7FF8AA7228A5D1BD0023E64E /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF8AA7128A5D1BD0023E64E /* Array+Ext.swift */; };
 		7FF8AA7428A5D6100023E64E /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF8AA7328A5D6100023E64E /* Int+Ext.swift */; };
 		7FFAAA1A289CC54200BC7672 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFAAA19289CC54200BC7672 /* StatsView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FB7B1F328A9F707001C7383 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FA0EB8F282089C300020DA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FB7B1E428A9F707001C7383;
+			remoteInfo = FitVizWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7FB7B1F628A9F707001C7383 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7FB7B1F528A9F707001C7383 /* FitVizWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7F093D2D2880F42300AC0D75 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
@@ -100,6 +131,13 @@
 		7FA0EBC128271EBF00020DA2 /* FVActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVActivity.swift; sourceTree = "<group>"; };
 		7FA0EBC32827218900020DA2 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		7FB5769C285FB5BD007FF570 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		7FB7B1E528A9F707001C7383 /* FitVizWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FitVizWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FB7B1E628A9F707001C7383 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7FB7B1E828A9F707001C7383 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7FB7B1EB28A9F707001C7383 /* FitVizWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizWidget.swift; sourceTree = "<group>"; };
+		7FB7B1ED28A9F707001C7383 /* FitVizWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FitVizWidget.intentdefinition; sourceTree = "<group>"; };
+		7FB7B1EE28A9F707001C7383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7FB7B1F028A9F707001C7383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FEFB12C286175BF00A7408D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		7FEFB12E286175F400A7408D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		7FF8AA7128A5D1BD0023E64E /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
@@ -116,6 +154,15 @@
 				7FEFB12D286175BF00A7408D /* HealthKit.framework in Frameworks */,
 				7FA0EBBF2827141600020DA2 /* CloudKit.framework in Frameworks */,
 				7F4E8D40285672B8003B0A04 /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FB7B1E228A9F707001C7383 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FB7B1E928A9F707001C7383 /* SwiftUI.framework in Frameworks */,
+				7FB7B1E728A9F707001C7383 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA0EB99282089C400020DA2 /* FitViz */,
+				7FB7B1EA28A9F707001C7383 /* FitVizWidget */,
 				7FA0EB98282089C400020DA2 /* Products */,
 				7FA0EBBD2827141600020DA2 /* Frameworks */,
 			);
@@ -172,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA0EB97282089C400020DA2 /* FitViz.app */,
+				7FB7B1E528A9F707001C7383 /* FitVizWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,6 +316,8 @@
 			children = (
 				7FEFB12C286175BF00A7408D /* HealthKit.framework */,
 				7FA0EBBE2827141600020DA2 /* CloudKit.framework */,
+				7FB7B1E628A9F707001C7383 /* WidgetKit.framework */,
+				7FB7B1E828A9F707001C7383 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -295,6 +346,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7FB7B1EA28A9F707001C7383 /* FitVizWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7FB7B1EB28A9F707001C7383 /* FitVizWidget.swift */,
+				7FB7B1ED28A9F707001C7383 /* FitVizWidget.intentdefinition */,
+				7FB7B1EE28A9F707001C7383 /* Assets.xcassets */,
+				7FB7B1F028A9F707001C7383 /* Info.plist */,
+			);
+			path = FitVizWidget;
+			sourceTree = "<group>";
+		};
 		7FFAAA18289CC52900BC7672 /* StatsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,10 +376,12 @@
 				7FA0EB93282089C400020DA2 /* Sources */,
 				7FA0EB94282089C400020DA2 /* Frameworks */,
 				7FA0EB95282089C400020DA2 /* Resources */,
+				7FB7B1F628A9F707001C7383 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7FB7B1F428A9F707001C7383 /* PBXTargetDependency */,
 			);
 			name = FitViz;
 			packageProductDependencies = (
@@ -328,6 +392,23 @@
 			productReference = 7FA0EB97282089C400020DA2 /* FitViz.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7FB7B1E428A9F707001C7383 /* FitVizWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FB7B1F928A9F707001C7383 /* Build configuration list for PBXNativeTarget "FitVizWidgetExtension" */;
+			buildPhases = (
+				7FB7B1E128A9F707001C7383 /* Sources */,
+				7FB7B1E228A9F707001C7383 /* Frameworks */,
+				7FB7B1E328A9F707001C7383 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FitVizWidgetExtension;
+			productName = FitVizWidgetExtension;
+			productReference = 7FB7B1E528A9F707001C7383 /* FitVizWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -335,11 +416,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					7FA0EB96282089C400020DA2 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					7FB7B1E428A9F707001C7383 = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
@@ -361,6 +445,7 @@
 			projectRoot = "";
 			targets = (
 				7FA0EB96282089C400020DA2 /* FitViz */,
+				7FB7B1E428A9F707001C7383 /* FitVizWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -372,6 +457,14 @@
 			files = (
 				7FA0EBA2282089C700020DA2 /* Preview Assets.xcassets in Resources */,
 				7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FB7B1E328A9F707001C7383 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FB7B1EF28A9F707001C7383 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +495,7 @@
 				7F4E8D3A28567009003B0A04 /* DeveloperView.swift in Sources */,
 				7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */,
 				7F4E8D4928569A9D003B0A04 /* TokenResponse.swift in Sources */,
+				7FB7B1F228A9F707001C7383 /* FitVizWidget.intentdefinition in Sources */,
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
 				7F4E8D4528567C71003B0A04 /* AuthorizationManager.swift in Sources */,
@@ -426,7 +520,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7FB7B1E128A9F707001C7383 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FB7B1F128A9F707001C7383 /* FitVizWidget.intentdefinition in Sources */,
+				7FB7B1EC28A9F707001C7383 /* FitVizWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FB7B1F428A9F707001C7383 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FB7B1E428A9F707001C7383 /* FitVizWidgetExtension */;
+			targetProxy = 7FB7B1F328A9F707001C7383 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7FA0EBA3282089C700020DA2 /* Debug */ = {
@@ -548,6 +659,7 @@
 		7FA0EBA6282089C700020DA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FitViz/FitViz.entitlements;
@@ -581,6 +693,7 @@
 		7FA0EBA7282089C700020DA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FitViz/FitViz.entitlements;
@@ -611,6 +724,64 @@
 			};
 			name = Release;
 		};
+		7FB7B1F728A9F707001C7383 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T24L76PMG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitVizWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FitVizWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.comedichoney.FitViz.FitVizWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7FB7B1F828A9F707001C7383 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T24L76PMG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitVizWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FitVizWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.comedichoney.FitViz.FitVizWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -628,6 +799,15 @@
 			buildConfigurations = (
 				7FA0EBA6282089C700020DA2 /* Debug */,
 				7FA0EBA7282089C700020DA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FB7B1F928A9F707001C7383 /* Build configuration list for PBXNativeTarget "FitVizWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FB7B1F728A9F707001C7383 /* Debug */,
+				7FB7B1F828A9F707001C7383 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
