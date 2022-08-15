@@ -34,7 +34,6 @@ extension StatsView {
                         availableTypes = ["All"]
                         let types = Set(activities.compactMap { $0.type })
                         availableTypes.append(contentsOf: types)
-                        print(availableTypes)
                     }
                 } catch {
                     print(error)
@@ -76,6 +75,7 @@ extension StatsView {
                         endDateNotToday = nil
                     }
                     activities = try await ckManager.fetchActivities(type: selectedType, startDate: startDateNotToday, endDate: endDateNotToday)
+
                 } catch {
                     print(error)
                 }

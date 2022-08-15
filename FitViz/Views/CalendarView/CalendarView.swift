@@ -81,4 +81,14 @@ class CalendarCoordinator: NSObject, UICalendarViewDelegate, UICalendarSelection
         }
         
     }
+    
+    // The interaction here is better, but it greys out all the dates with no activities. Not a very good user experience
+//    func dateSelection(_ selection: UICalendarSelectionSingleDate, canSelectDate dateComponents: DateComponents?) -> Bool {
+//        let activities = viewModel.activities.filter(dateComponents: dateComponents)
+//        if !activities.isEmpty {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
 }

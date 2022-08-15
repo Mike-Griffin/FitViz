@@ -13,18 +13,15 @@ extension PreviousWeeksChartView {
         @Published var activityMap: [Int: [FVActivity]]
         @Published var dateTransitionMap: [Int: String] = [:]
         @Published var maxValue: Int = 0
+        @Published var animateMap: [Int: Int] = [:]
+        
         init(activities: [FVActivity]) {
             self.activities = activities
             activityMap = activities.getActivitiesInPreviousWeeks(numWeeks: 12).groupByWeek()
-            for i in 0...11 {
-                print("Week number \(i)")
-                print("\(activityMap[i]?.count ?? 0) activities")
-                print("\(activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0) miles" )
-            }
-            
             // start from today's date, iterate backwards,
             // when I detect a different month then set that index
             var previousDate = Date().getFirstDayOfWeek()
+//            animateMap = [:]
             for i in 1 ..< 12 {
                 let currentDate = previousDate.addingTimeInterval(TimeInterval((-1).weeksToSeconds()))
                 
@@ -32,12 +29,12 @@ extension PreviousWeeksChartView {
                     dateTransitionMap[11 - i] = previousDate.toMonth()
                 }
                 previousDate = currentDate
+//                animateMap[i] = 0
             }
             
             for (_, value) in activityMap {
                 maxValue = max(maxValue, Int(value.sumDistances()))
             }
-            print(maxValue)
         }
     }
 }

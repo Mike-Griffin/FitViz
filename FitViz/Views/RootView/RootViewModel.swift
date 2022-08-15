@@ -74,7 +74,6 @@ extension RootView {
                                 if let newestActivity = activities.sorted(by: {
                                     $0.timestamp < $1.timestamp
                                 }).last {
-                                    print(newestActivity.start_date.convertDateStringToEpochTimestamp())
                                     // TODO: Convert move this logic to somewhere else within the fetching logic
                                     // UserDefaultsManager.shared.setLastRetrievedTime(time: newestActivity.start_date.convertDateStringToEpochTimestamp(), source: .Strava)
                                     saveLastFetched(time: newestActivity.timestamp, source: .Strava)

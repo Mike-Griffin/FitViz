@@ -14,7 +14,6 @@ extension TimeOfDayView {
             timeOfDayMap = activities.reduce(into: [TimeOfDay: Int]()) {
                 $0[$1.timeOfDay, default: 0] += 1
             }
-            print(timeOfDayMap)
         }
     }
 }
