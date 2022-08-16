@@ -27,6 +27,7 @@ extension RootView {
                     print("Error in the RootView model")
                     print(error)
                     alertItem = AlertContext.noUserRecord
+                    loading = false
                 }
             }
         }

@@ -12,9 +12,7 @@ struct CalendarScreenView: View {
     
     var body: some View {
         VStack {
-            Text("Calendar for the month of \(viewModel.monthDescription)!!!")
-            Text("\(viewModel.activities.count) total sessions!")
-            Text("\(viewModel.activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue()) miles completed")
+            CalendarHeaderView(viewModel: viewModel)
             CalendarView(
                 viewModel: viewModel
             )
@@ -34,5 +32,39 @@ struct CalendarScreenView: View {
 struct CalendarScreenView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarScreenView()
+    }
+}
+
+struct CalendarHeaderView: View {
+    @ObservedObject var viewModel: CalendarViewModel
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("\(viewModel.monthDescription) Summary")
+                .font(.headline)
+            Grid() {
+                GridRow() {
+                    Text("")
+                    Text("Total")
+                    Text("Average")
+                }
+                GridRow() {
+                    Text("Activities")
+                        .multilineTextAlignment(.leading)
+                    Text("\(viewModel.activities.count)")
+                    Text("")
+
+                }
+                GridRow() {
+                    Text("Distance")
+                    Text("\(viewModel.activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue())")
+                    Text("\((viewModel.activities.sumDistances() / Double(viewModel.activities.count)).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue())")
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .frame(maxWidth: .infinity)
+        .background(.red)
+        .padding()
     }
 }

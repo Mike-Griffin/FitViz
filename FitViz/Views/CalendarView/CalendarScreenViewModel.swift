@@ -36,7 +36,7 @@ import Foundation
             day: 1
         )
         startDate = startDateComponents.date!
-        monthDescription = startDate.formatted(.dateTime.month(.wide))
+        monthDescription = startDate.formatted(.dateTime.month(.wide)) + " " + startDate.formatted(.dateTime.year())
         endDate = startDate.endOfMonth()
         
         fetchActivities()
