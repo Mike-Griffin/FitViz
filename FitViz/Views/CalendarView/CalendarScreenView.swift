@@ -41,30 +41,32 @@ struct CalendarHeaderView: View {
         VStack(alignment: .leading) {
             Text("\(viewModel.monthDescription) Summary")
                 .font(.headline)
-            Grid() {
+                .fontWeight(.bold)
+            Grid(alignment: .leading) {
                 GridRow() {
                     Text("")
                     Text("Total")
                     Text("Average")
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
                 GridRow() {
                     Text("Activities")
-                        .multilineTextAlignment(.leading)
                     Text("\(viewModel.activities.count)")
                     Text("")
 
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
                 GridRow() {
                     Text("Distance")
                     Text("\(viewModel.activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue())")
                     Text("\((viewModel.activities.sumDistances() / Double(viewModel.activities.count)).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue())")
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
             }
-            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity)
-        .background(.red)
         .padding()
     }
 }
