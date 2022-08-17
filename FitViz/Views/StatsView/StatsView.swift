@@ -39,6 +39,7 @@ struct StatsView: View {
 
                 TimeOfDayView(viewModel: TimeOfDayView.ViewModel(activities: viewModel.activities))
 
+
             }
             VStack {
                 Text("Stats")
@@ -46,6 +47,10 @@ struct StatsView: View {
                 Text(viewModel.activities.first?.type ?? "nada")
                 Text("There are \($viewModel.activities.count) activities!")
                 ActivityListView(activities: viewModel.activities)
+                if (viewModel.longestActivity != nil) {
+                    
+                    Text("Longest activity distance is \(viewModel.longestActivity!.distance.convertMetersToDistanceUnit(DistanceUnit.miles.rawValue)) miles")
+                }
             }
             Spacer()
         }
