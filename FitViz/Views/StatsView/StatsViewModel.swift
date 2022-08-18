@@ -14,6 +14,7 @@ extension StatsView {
         @Published var startDate = Date()
         @Published var endDate = Date()
         @Published var availableTypes: [String] = ["All"]
+        @Published var longestActivity: FVActivity?
         var selectedType: ActivityType?
         let ckManager = CloudKitManager()
         var initialLaunch = true
@@ -41,6 +42,9 @@ extension StatsView {
                         let types = Set(activities.compactMap { $0.type })
                         availableTypes.append(contentsOf: types)
                         updatePreviousWeekValues()
+                        longestActivity = activities.sorted(by: {
+                            $0.distance > $1.distance
+                        }).first
                     }
                 } catch {
                     print(error)
