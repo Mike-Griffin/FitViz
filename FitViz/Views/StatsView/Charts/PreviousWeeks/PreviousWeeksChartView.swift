@@ -12,40 +12,43 @@ struct PreviousWeeksChartView: View {
     @ObservedObject var viewModel: StatsView.ViewModel
     
     var body: some View {
-        VStack {
-            Chart {
-                ForEach(0...11, id: \.self) { i in
-                    LineMark(
-                        x: .value("Week Number", i),
-                        y: .value("Duration", (!viewModel.activities.isEmpty && viewModel.animateMap[i] == true)
-                                  ? viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0
-                                  : 0)
-                    )
-                    .symbol(Circle().strokeBorder(lineWidth: 2))
-                    .symbolSize(60)
-                }
-            }
-            .chartXScale(domain: 0...11)
-            .chartXAxis {
-                AxisMarks(values: .stride(by: 1)) { axis in
-                    AxisGridLine()
-                    if let month = viewModel.dateTransitionMap[axis.index] {
-                        AxisValueLabel(month)
+
+            VStack(alignment: .leading) {
+                Text("Previous 3 Months Activity")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
+                Chart {
+                    ForEach(0...11, id: \.self) { i in
+                        LineMark(
+                            x: .value("Week Number", i),
+                            y: .value("Duration", (!viewModel.activities.isEmpty && viewModel.animateMap[i] == true)
+                                      ? viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0
+                                      : 0)
+                        )
+                        .symbol(Circle().strokeBorder(lineWidth: 2))
+                        .symbolSize(60)
                     }
                 }
-            }
-            .chartYScale(domain: 0...Double(viewModel.maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
-            .frame(height: 250)
-            .padding()
-            .onChange(of: viewModel.activities) { newValue in
-                for i in 0 ..< 12 {
-                    viewModel.animateMap[i] = false
+                .chartXScale(domain: 0...11)
+                .chartXAxis {
+                    AxisMarks(values: .stride(by: 1)) { axis in
+                        AxisGridLine()
+                        if let month = viewModel.dateTransitionMap[axis.index] {
+                            AxisValueLabel(month)
+                        }
+                    }
                 }
-                animateGraph()
+                .chartYScale(domain: 0...Double(viewModel.maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
+                .frame(height: 250)
+                .onChange(of: viewModel.activities) { newValue in
+                    for i in 0 ..< 12 {
+                        viewModel.animateMap[i] = false
+                    }
+                    animateGraph()
+                }
             }
-        }
-         
-
+            .padding()
     }
     
     func animateGraph() {

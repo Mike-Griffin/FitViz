@@ -42,12 +42,13 @@ struct ActivityIcon: View {
         VStack {
             switch(ActivityType(rawValue: activityString)) {
             case .Run:
-                Image(systemName: "figure.walk")
+                Image(systemName: "figure.run")
             case .Ride:
-                Image(systemName: "bicycle")
+                Image(systemName: "figure.outdoor.cycle")
+            case .Swim:
+                Image(systemName: "figure.open.water.swim")
             default:
-                Image(systemName: "face.smiling")
-
+                Image(systemName: "moon.haze")
             }
         }
     }

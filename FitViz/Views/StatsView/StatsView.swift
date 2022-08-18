@@ -10,32 +10,14 @@ import SwiftUI
 struct StatsView: View {
     @StateObject var viewModel = ViewModel()
     var body: some View {
-        VStack {
-            Form {
-                DatePicker(
-                    "Start Date",
-                    selection: $viewModel.startDate.onChange(viewModel.userSelectedDate),
-                    displayedComponents: [.date]
-                )
-                DatePicker(
-                    "End Date",
-                    selection: $viewModel.endDate.onChange(viewModel.userSelectedDate),
-                    displayedComponents: [.date]
-                )
-                Picker("Type", selection: $viewModel.selectedActivityType.onChange(viewModel.userSelectedType)) {
-                    ForEach(viewModel.availableTypes, id: \.self) { type in
-                        Text(type).tag(type)
-                    }
-                }
-            }
-            ScrollView {
-                // TODO: This will be the container which shows all the charts
+        ScrollView {
+            FilterActivitiesFormView(viewModel: viewModel)
+            VStack(alignment: .leading) {
+                Text("Charts")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
                 PreviousWeeksChartView(viewModel: viewModel )
-                NavigationLink {
-                    PreviousWeeksChartView(viewModel: viewModel)
-                } label: {
-                    Text("Full Screen Line Chart")
-                }
 
                 TimeOfDayView(viewModel: TimeOfDayView.ViewModel(activities: viewModel.activities))
 
@@ -56,6 +38,47 @@ struct StatsView: View {
         }
         .onAppear {
             viewModel.viewAppears()
+        }
+    }
+}
+
+struct FilterActivitiesFormView: View {
+    @ObservedObject var viewModel: StatsView.ViewModel
+    var body: some View {
+        VStack {
+            Button {
+                viewModel.hideForm.toggle()
+            } label: {
+                HStack {
+                    Text("Filter Activities")
+                        .font(.headline)
+                    Image(systemName: viewModel.hideForm ? "chevron.down" : "chevron.up")
+                        .frame(width: 8, height: 8)
+                    Spacer()
+                }
+                .foregroundColor(.primary)
+            }
+
+            if(!viewModel.hideForm) {
+                Form {
+                    DatePicker(
+                        "Start Date",
+                        selection: $viewModel.startDate.onChange(viewModel.userSelectedDate),
+                        displayedComponents: [.date]
+                    )
+                    DatePicker(
+                        "End Date",
+                        selection: $viewModel.endDate.onChange(viewModel.userSelectedDate),
+                        displayedComponents: [.date]
+                    )
+                    Picker("Type", selection: $viewModel.selectedActivityType.onChange(viewModel.userSelectedType)) {
+                        ForEach(viewModel.availableTypes, id: \.self) { type in
+                            Text(type).tag(type)
+                        }
+                    }
+                }
+                .frame(height: 200)
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 extension StatsView {
     @MainActor class ViewModel: ObservableObject {
         @Published var activities: [FVActivity] = []
+        @Published var hideForm: Bool = true
         @Published var selectedActivityType = "All"
         @Published var startDate = Date()
         @Published var endDate = Date()
