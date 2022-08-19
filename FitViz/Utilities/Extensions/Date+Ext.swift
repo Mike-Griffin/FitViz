@@ -36,6 +36,12 @@ extension Date {
         return self.getFirstDayOfWeek().toEpochTimeStamp()
     }
     
+    func getDaysBefore(_ num: Int) -> Date {
+        let date = self.addingTimeInterval(TimeInterval(-1 * num.daysToSeconds()))
+        print("startDate \(date)")
+        return(Calendar.current.startOfDay(for: date))
+    }
+    
     func previewDateFormat() -> String {
         let diff = Calendar.current.dateComponents([.day], from: self, to: Date())
         let timeDisplay = self.formatted(.dateTime.hour().minute(.twoDigits))

@@ -70,9 +70,15 @@ extension Array where Element == FVActivity {
 
     }
     
-    func filter(dateComponents: DateComponents?) -> [FVActivity] {
+    func sameDateComponent(dateComponents: DateComponents?) -> [FVActivity] {
         self.filter {
             $0.dateComponent.date == dateComponents?.date
+        }
+    }
+    
+    func afterStartDate(_ date: Date) -> [FVActivity] {
+        return self.filter {
+            $0.timestamp > date.toEpochTimeStamp()
         }
     }
 }

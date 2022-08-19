@@ -39,6 +39,7 @@
 		7F57046328A81D5200104B02 /* MostCommonDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */; };
 		7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */; };
 		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
+		7F967C9828AF22FD00753749 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F967C9728AF22FD00753749 /* SnapshotView.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostCommonDayViewModel.swift; sourceTree = "<group>"; };
 		7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
+		7F967C9728AF22FD00753749 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				7F0EB6CD284C127F00721D81 /* SettingsView */,
 				7F4E8D3B28567040003B0A04 /* DeveloperView */,
 				7F1D5F912898A30000DD59A6 /* LoadingView.swift */,
+				7F967C9728AF22FD00753749 /* SnapshotView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F967C9828AF22FD00753749 /* SnapshotView.swift in Sources */,
 				7F27057928A5CCE20041C8FF /* PreviousWeeksChartView.swift in Sources */,
 				7F4E8D3828553AD4003B0A04 /* ActivityRequestManager.swift in Sources */,
 				7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */,
