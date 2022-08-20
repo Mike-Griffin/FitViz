@@ -40,6 +40,7 @@
 		7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */; };
 		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
 		7F967C9828AF22FD00753749 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F967C9728AF22FD00753749 /* SnapshotView.swift */; };
+		7F967C9C28B153B600753749 /* SnapshotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F967C9B28B153B600753749 /* SnapshotViewModel.swift */; };
 		7FA0EB9B282089C400020DA2 /* FitVizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9A282089C400020DA2 /* FitVizApp.swift */; };
 		7FA0EB9D282089C400020DA2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9C282089C400020DA2 /* RootView.swift */; };
 		7FA0EB9F282089C700020DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0EB9E282089C700020DA2 /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
 		7F967C9728AF22FD00753749 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
+		7F967C9B28B153B600753749 /* SnapshotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewModel.swift; sourceTree = "<group>"; };
 		7FA0EB97282089C400020DA2 /* FitViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA0EB9A282089C400020DA2 /* FitVizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitVizApp.swift; sourceTree = "<group>"; };
 		7FA0EB9C282089C400020DA2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,23 @@
 			path = Cloudkit;
 			sourceTree = "<group>";
 		};
+		7F967C9928B1538400753749 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7F967C9A28B1538A00753749 /* SnapshotView */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7F967C9A28B1538A00753749 /* SnapshotView */ = {
+			isa = PBXGroup;
+			children = (
+				7F967C9B28B153B600753749 /* SnapshotViewModel.swift */,
+				7F967C9728AF22FD00753749 /* SnapshotView.swift */,
+			);
+			path = SnapshotView;
+			sourceTree = "<group>";
+		};
 		7FA0EB8E282089C300020DA2 = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +266,7 @@
 		7FA0EBAB28208D6600020DA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7F967C9928B1538400753749 /* Shared */,
 				7FA0EBAC28208D7300020DA2 /* RootView */,
 				7FA0EBB228208E5000020DA2 /* HomeFeedView */,
 				7F093D2C2880F40C00AC0D75 /* ActivityView */,
@@ -255,7 +275,6 @@
 				7F0EB6CD284C127F00721D81 /* SettingsView */,
 				7F4E8D3B28567040003B0A04 /* DeveloperView */,
 				7F1D5F912898A30000DD59A6 /* LoadingView.swift */,
-				7F967C9728AF22FD00753749 /* SnapshotView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,6 +466,7 @@
 				7FA0EBB128208DFE00020DA2 /* Source.swift in Sources */,
 				7FA0EBC42827218900020DA2 /* ActivityListView.swift in Sources */,
 				7FA0EBB428208E8D00020DA2 /* HomeFeedView.swift in Sources */,
+				7F967C9C28B153B600753749 /* SnapshotViewModel.swift in Sources */,
 				7F0EB6CC283DB1AC00721D81 /* MockData.swift in Sources */,
 				7F093D2E2880F42300AC0D75 /* ActivityViewModel.swift in Sources */,
 				7F093D322883325700AC0D75 /* DistanceRange.swift in Sources */,

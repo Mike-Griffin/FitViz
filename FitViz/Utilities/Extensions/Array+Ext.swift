@@ -81,4 +81,22 @@ extension Array where Element == FVActivity {
             $0.timestamp > date.toEpochTimeStamp()
         }
     }
+    
+    func longestStreak() -> Int {
+        var maxStreak = 0
+        var currentStreak = 0
+        guard !self.isEmpty else { return 0 }
+        var previous = self[0]
+        for i in 1 ..< self.count {
+            let current = self[i]
+            if current.startOfDay == previous.startOfDay.nextDay() {
+                currentStreak += 1
+                maxStreak = Swift.max(maxStreak, currentStreak)
+            } else {
+                currentStreak = 0
+            }
+            previous = current
+        }
+        return maxStreak
+    }
 }

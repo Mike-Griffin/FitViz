@@ -69,4 +69,8 @@ extension Date {
     func endOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
+    
+    func nextDay() -> Date {
+        return self.addingTimeInterval(TimeInterval((1).daysToSeconds()))
+    }
 }
