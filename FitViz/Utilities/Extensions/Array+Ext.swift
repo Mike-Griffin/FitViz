@@ -86,9 +86,14 @@ extension Array where Element == FVActivity {
         var maxStreak = 0
         var currentStreak = 0
         guard !self.isEmpty else { return 0 }
-        var previous = self[0]
+        let sorted = self.sorted {
+            $0.timestamp < $1.timestamp
+        }
+        var previous = sorted[0]
         for i in 1 ..< self.count {
-            let current = self[i]
+            let current = sorted[i]
+            print("Previous time: \(previous.startTime)")
+            print("Current time: \(current.startTime)")
             if current.startOfDay == previous.startOfDay.nextDay() {
                 currentStreak += 1
                 maxStreak = Swift.max(maxStreak, currentStreak)

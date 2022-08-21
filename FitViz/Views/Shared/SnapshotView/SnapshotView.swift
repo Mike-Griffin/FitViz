@@ -16,12 +16,14 @@ struct SnapshotView: View {
                 .font(.headline)
             Text("you've done \(viewModel.activities.count) activities")
             Text("Longest streak \(viewModel.longestStreak) days")
+            Text("Total distance: \(viewModel.totalDistance) miles")
+            Text("Average distance per activity: \(viewModel.averageDistance) miles")
         }
     }
 }
 
 struct SnapshotView_Previews: PreviewProvider {
     static var previews: some View {
-        SnapshotView(viewModel: SnapshotViewModel(activities: [FVActivity(record: MockData.activity)], header: "Snapshot View"))
+        SnapshotView(viewModel: SnapshotViewModel(activities: [FVActivity(record: MockData.activity),FVActivity(record: MockData.activity2) ], header: "Snapshot View"))
     }
 }

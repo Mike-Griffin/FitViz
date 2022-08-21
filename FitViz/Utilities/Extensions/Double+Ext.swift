@@ -27,4 +27,8 @@ extension Double {
         numberFormatter.minimumFractionDigits = 0
         return numberFormatter.string(from: NSNumber(value: self)) ?? ""
     }
+    
+    func displayInUnit(_ unit: DistanceUnit) -> String {
+        return self.convertMetersToDistanceUnit(unit.rawValue).formatDistanceDisplayValue()
+    }
 }
