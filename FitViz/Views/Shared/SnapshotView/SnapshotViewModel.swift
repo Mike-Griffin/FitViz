@@ -13,6 +13,8 @@ import Foundation
         @Published var longestStreak: Int
         @Published var totalDistance: String
         @Published var averageDistance: String
+        @Published var totalDuration: String
+        @Published var typeMap: [ActivityType: [FVActivity]]
         init(activities: [FVActivity], header: String) {
             self.activities = activities
             self.header = header
@@ -23,5 +25,7 @@ import Foundation
             } else {
                 self.averageDistance = ""
             }
+            self.totalDuration = String(activities.sumDurations().secondsToHours())
+            self.typeMap = activities.groupByType()
         }
     }

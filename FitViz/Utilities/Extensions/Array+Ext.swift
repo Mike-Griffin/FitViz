@@ -21,6 +21,14 @@ extension Array where Element == FVActivity {
             $0[$1.weekNumber() - offsetNumber, default: []].append($1)
         }
     }
+    
+    func groupByType() -> [ActivityType: [FVActivity]] {
+        return self.reduce(into: [ActivityType: [FVActivity]]()) {
+            if let type = ActivityType(rawValue: $1.type) {
+                $0[type, default: []].append($1)
+            }
+        }
+    }
         
     func getActivitiesInPreviousWeeks(numWeeks: Int) -> [FVActivity] {
         // This looks at the entire week, so the current week is halfway through

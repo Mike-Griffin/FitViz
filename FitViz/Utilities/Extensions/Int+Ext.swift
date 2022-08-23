@@ -19,4 +19,12 @@ extension Int {
     func weeksToSeconds() -> Int {
         return self * 604800
     }
+    
+    func secondsToMinutes() -> Int {
+        return self / 60
+    }
+    
+    func secondsToHours() -> Int {
+        return self.secondsToMinutes() / 60
+    }
 }

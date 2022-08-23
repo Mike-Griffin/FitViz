@@ -11,14 +11,24 @@ struct SnapshotView: View {
     @ObservedObject var viewModel: SnapshotViewModel
 
     var body: some View {
-        VStack {
-            Text(viewModel.header)
-                .font(.headline)
-            Text("you've done \(viewModel.activities.count) activities")
-            Text("Longest streak \(viewModel.longestStreak) days")
-            Text("Total distance: \(viewModel.totalDistance) miles")
-            Text("Average distance per activity: \(viewModel.averageDistance) miles")
+        ZStack {
+            RoundedRectangle(cornerRadius: 16)
+                .frame(height: 200)
+                .foregroundColor(Color(.secondarySystemBackground))
+            VStack() {
+                Text(viewModel.header)
+                    .font(.system(size: 24, weight: .bold))
+                    .padding(.bottom, 16)
+                VStack(spacing: 12) {
+                    Text("\(viewModel.activities.count) activities completed")
+                    Text("\(viewModel.totalDistance) miles traveled")
+                    Text("For a total of \(viewModel.totalDuration) hours")
+                    Text("Across \(viewModel.typeMap.count) different activities")
+                }
+            }
         }
+        .padding()
+ 
     }
 }
 
