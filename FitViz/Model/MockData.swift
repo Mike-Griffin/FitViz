@@ -12,7 +12,19 @@ struct MockData {
         let record = CKRecord(recordType: RecordType.activity)
         record[FVActivity.kType] = "Run"
         record[FVActivity.kSource] = "Strava"
-        record[FVActivity.kStartTime] = "Fake time"
+        record[FVActivity.kStartTime] = "2021-08-16T13:48:53Z"
+        record[FVActivity.kDuration] = 1000
+        record[FVActivity.kAveragePace] = 100.0
+        record[FVActivity.kAverageHeartRate] = 99.9
+        record[FVActivity.kDistance] = 99
+        return record
+    }
+    
+    static var activity2: CKRecord {
+        let record = CKRecord(recordType: RecordType.activity)
+        record[FVActivity.kType] = "Run"
+        record[FVActivity.kSource] = "Strava"
+        record[FVActivity.kStartTime] = "2021-08-17T13:48:53Z"
         record[FVActivity.kDuration] = 1000
         record[FVActivity.kAveragePace] = 100.0
         record[FVActivity.kAverageHeartRate] = 99.9

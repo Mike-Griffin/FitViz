@@ -12,7 +12,10 @@ struct PreviousWeeksChartView: View {
     @ObservedObject var viewModel: StatsView.ViewModel
     
     var body: some View {
-
+        ZStack {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundColor(Color(.secondarySystemBackground))
+                .padding()
             VStack(alignment: .leading) {
                 Text("Previous 3 Months Activity")
                     .font(.subheadline)
@@ -49,6 +52,7 @@ struct PreviousWeeksChartView: View {
                 }
             }
             .padding()
+        }
     }
     
     func animateGraph() {

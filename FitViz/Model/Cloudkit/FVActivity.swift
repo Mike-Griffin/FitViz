@@ -82,6 +82,12 @@ struct FVActivity: Identifiable, Equatable {
         }
     }
     
+    var startOfDay: Date {
+        get {
+            Calendar.current.startOfDay(for: self.timestamp.epochTimeStampToDate())
+        }
+    }
+    
     var timeOfDay: TimeOfDay {
         get {
             self.timestamp.epochTimeStampToDate().timeOfDay()

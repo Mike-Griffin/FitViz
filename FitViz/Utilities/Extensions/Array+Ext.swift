@@ -21,6 +21,14 @@ extension Array where Element == FVActivity {
             $0[$1.weekNumber() - offsetNumber, default: []].append($1)
         }
     }
+    
+    func groupByType() -> [ActivityType: [FVActivity]] {
+        return self.reduce(into: [ActivityType: [FVActivity]]()) {
+            if let type = ActivityType(rawValue: $1.type) {
+                $0[type, default: []].append($1)
+            }
+        }
+    }
         
     func getActivitiesInPreviousWeeks(numWeeks: Int) -> [FVActivity] {
         // This looks at the entire week, so the current week is halfway through
@@ -70,9 +78,38 @@ extension Array where Element == FVActivity {
 
     }
     
-    func filter(dateComponents: DateComponents?) -> [FVActivity] {
+    func sameDateComponent(dateComponents: DateComponents?) -> [FVActivity] {
         self.filter {
             $0.dateComponent.date == dateComponents?.date
         }
+    }
+    
+    func afterStartDate(_ date: Date) -> [FVActivity] {
+        return self.filter {
+            $0.timestamp > date.toEpochTimeStamp()
+        }
+    }
+    
+    func longestStreak() -> Int {
+        var maxStreak = 0
+        var currentStreak = 0
+        guard !self.isEmpty else { return 0 }
+        let sorted = self.sorted {
+            $0.timestamp < $1.timestamp
+        }
+        var previous = sorted[0]
+        for i in 1 ..< self.count {
+            let current = sorted[i]
+            print("Previous time: \(previous.startTime)")
+            print("Current time: \(current.startTime)")
+            if current.startOfDay == previous.startOfDay.nextDay() {
+                currentStreak += 1
+                maxStreak = Swift.max(maxStreak, currentStreak)
+            } else {
+                currentStreak = 0
+            }
+            previous = current
+        }
+        return maxStreak
     }
 }

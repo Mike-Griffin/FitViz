@@ -15,6 +15,7 @@ struct HomeFeedView: View {
             if viewModel.feedActivities.isEmpty {
                 Text("No activities yet")
             } else {
+                SnapshotView(viewModel: SnapshotViewModel(activities: viewModel.snapshotActivities, header: "10 day snapshot"))
                 ActivityListView(activities: viewModel.feedActivities)
             }
         }
