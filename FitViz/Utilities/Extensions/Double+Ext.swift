@@ -31,4 +31,27 @@ extension Double {
     func displayInUnit(_ unit: DistanceUnit) -> String {
         return self.convertMetersToDistanceUnit(unit.rawValue).formatDistanceDisplayValue()
     }
+    
+    func metersPerSecondToMilesPerHour() -> Double {
+        return self * 2.2369
+    }
+    
+    func milesPerHourToMilePace() -> Double {
+        return 60 / self
+    }
+    
+    func formatPaceDisplayValue() -> String {
+        let hour = Int(self)
+        let minute = (self - Double(hour))*60
+        // TODO: zero pad
+        print("Hour: \(hour) : Minute: \(Int(minute))")
+        return "\(hour):\(Int(minute))"
+    }
+    
+    func metersPerSecondToDisplayValue() -> String {
+        return self
+            .metersPerSecondToMilesPerHour()
+            .milesPerHourToMilePace()
+            .formatPaceDisplayValue()
+    }
 }

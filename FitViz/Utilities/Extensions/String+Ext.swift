@@ -18,6 +18,17 @@ extension String {
         }
     }
     
+    // Displays start time as MM/DD/YY
+    func startTimeToMMDDYY() -> String {
+        let expectedFormat = Date.ISO8601FormatStyle()
+        do {
+            let date = try Date(self, strategy: expectedFormat)
+            return date.formatted(date: .numeric, time: .omitted)
+        } catch {
+            return self
+        }
+    }
+    
     func convertDateStringToEpochTimestamp() -> Int {
         let expectedFormat = Date.ISO8601FormatStyle()
         do {
