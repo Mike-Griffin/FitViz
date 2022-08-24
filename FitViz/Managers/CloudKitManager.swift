@@ -57,7 +57,8 @@ struct CloudKitManager {
         let upperboundDistance = activity.distanceRange.upperBound
         let predicate = NSPredicate(format: "distance >= %d && distance < %d && type == %@", lowerboundDistance, upperboundDistance, activity.type)
         let query = CKQuery(recordType: RecordType.activity, predicate: predicate)
-        let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query)
+        query.sortDescriptors = [NSSortDescriptor(key: FVActivity.kAveragePace, ascending: false)]
+        let (matchResults, _) = try await container.privateCloudDatabase.records(matching: query, resultsLimit: 20)
         let records = matchResults.compactMap { _, result in try? result.get() }
         return records.map(FVActivity.init)
     }
