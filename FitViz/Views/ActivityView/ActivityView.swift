@@ -44,7 +44,7 @@ struct SameDistanceActivityView: View {
     var body: some View {
         VStack {
             Text("Other \(viewModel.activity.distanceRange.description) \(viewModel.activity.type)s")
-            ActivityListView(activities: viewModel.sameDistanceActivities)
+            ActivitySimpleListView(activities: viewModel.sameDistanceActivities, viewingActivity: viewModel.activity)
         }
     }
 }

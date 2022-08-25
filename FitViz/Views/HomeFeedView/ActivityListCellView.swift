@@ -35,21 +35,3 @@ struct ActivityListCellView_Previews: PreviewProvider {
         ActivityListCellView(activity: FVActivity(record: MockData.activity))
     }
 }
-
-struct ActivityIcon: View {
-    var activityString: String
-    var body: some View {
-        VStack {
-            switch(ActivityType(rawValue: activityString)) {
-            case .Run:
-                Image(systemName: "figure.run")
-            case .Ride:
-                Image(systemName: "figure.outdoor.cycle")
-            case .Swim:
-                Image(systemName: "figure.open.water.swim")
-            default:
-                Image(systemName: "moon.haze")
-            }
-        }
-    }
-}

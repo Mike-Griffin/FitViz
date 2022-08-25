@@ -14,9 +14,9 @@ struct MockData {
         record[FVActivity.kSource] = "Strava"
         record[FVActivity.kStartTime] = "2021-08-16T13:48:53Z"
         record[FVActivity.kDuration] = 1000
-        record[FVActivity.kAveragePace] = 100.0
+        record[FVActivity.kAveragePace] = 2.6640000343322754
         record[FVActivity.kAverageHeartRate] = 99.9
-        record[FVActivity.kDistance] = 99
+        record[FVActivity.kDistance] = 5000
         return record
     }
     

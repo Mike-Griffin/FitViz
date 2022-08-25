@@ -112,9 +112,12 @@ struct FVActivity: Identifiable, Equatable {
         }
     }
     
+    // TODO: Make this not a function it is inconsistent
     func weekNumber() -> Int {
         return self.timestamp.epochTimeStampToDate().weekNumber()
     }
+    
+
 }
 
 
