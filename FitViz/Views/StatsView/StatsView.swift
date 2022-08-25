@@ -11,6 +11,10 @@ struct StatsView: View {
     @StateObject var viewModel = ViewModel()
     var body: some View {
         ScrollView {
+            #if DEBUG
+            let _ = Self._printChanges()
+            #endif
+
             FilterActivitiesFormView(viewModel: viewModel)
             VStack(alignment: .leading) {
                 Text("Charts")
