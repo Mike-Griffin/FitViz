@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ActivitySimpleListView: View {
     var activities: [FVActivity]
+    var viewingActivity: FVActivity?
     var body: some View {
         List(activities) { activity in
             VStack {
@@ -22,6 +23,7 @@ struct ActivitySimpleListView: View {
                     Text("\(activity.averagePace.metersPerSecondToDisplayValue())/mi")
                 }
             }
+            .foregroundColor(viewingActivity == activity ? Color(.systemRed) : Color(uiColor: .label))
         }
     }
 }
