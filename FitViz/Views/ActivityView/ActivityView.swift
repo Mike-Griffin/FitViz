@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActivityView: View {
-    @StateObject var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
         VStack {
@@ -40,7 +40,7 @@ struct ActivityView: View {
 //}
 
 struct SameDistanceActivityView: View {
-    @StateObject var viewModel: ActivityView.ViewModel
+    @ObservedObject var viewModel: ActivityView.ViewModel
     var body: some View {
         VStack {
             Text("Other \(viewModel.activity.distanceRange.description) \(viewModel.activity.type)s")

@@ -38,7 +38,6 @@ extension Date {
     
     func getDaysBefore(_ num: Int) -> Date {
         let date = self.addingTimeInterval(TimeInterval(-1 * num.daysToSeconds()))
-        print("startDate \(date)")
         return(Calendar.current.startOfDay(for: date))
     }
     

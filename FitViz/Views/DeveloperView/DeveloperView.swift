@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DeveloperView: View {
-    @ObservedObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = ViewModel()
     var body: some View {
         VStack {
             Form {

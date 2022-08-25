@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarScreenView: View {
-    @ObservedObject var viewModel = CalendarViewModel()
+    @StateObject var viewModel = CalendarViewModel()
     
     var body: some View {
         VStack {

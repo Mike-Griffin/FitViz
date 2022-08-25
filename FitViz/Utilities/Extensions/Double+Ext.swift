@@ -43,8 +43,6 @@ extension Double {
     func formatPaceDisplayValue() -> String {
         let hour = Int(self)
         let minute = (self - Double(hour))*60
-        // TODO: zero pad
-        print("Hour: \(hour) : Minute: \(Int(minute))")
         return "\(hour):\(minute < 10 ? "0" : "")\(Int(minute))"
     }
     

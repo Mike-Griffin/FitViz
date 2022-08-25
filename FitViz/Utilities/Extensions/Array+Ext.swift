@@ -15,8 +15,6 @@ extension Array where Element == FVActivity {
         let currentWeekNumber = Date().weekNumber()
         // TODO: Determine how this works in the case where it crosses over the new year
         let offsetNumber = currentWeekNumber - 11
-        print("Current Week Number: \(currentWeekNumber)")
-        print("Offset Number: \(offsetNumber)")
         return self.reduce(into: [Int: [FVActivity]]()) {
             $0[$1.weekNumber() - offsetNumber, default: []].append($1)
         }
@@ -36,8 +34,6 @@ extension Array where Element == FVActivity {
         let modifiedNumWeeks = (numWeeks - 1)
         let startDateTimeStamp = firstDayOfWeekTimestamp - modifiedNumWeeks.weeksToSeconds()
         let date = Date(timeIntervalSince1970: TimeInterval(startDateTimeStamp))
-        print("Start Date as date: \(date)")
-        print("Start Date timestamp: \(startDateTimeStamp)")
         return self.filter {
             $0.timestamp >= startDateTimeStamp
         }
@@ -100,8 +96,6 @@ extension Array where Element == FVActivity {
         var previous = sorted[0]
         for i in 1 ..< self.count {
             let current = sorted[i]
-            print("Previous time: \(previous.startTime)")
-            print("Current time: \(current.startTime)")
             if current.startOfDay == previous.startOfDay.nextDay() {
                 currentStreak += 1
                 maxStreak = Swift.max(maxStreak, currentStreak)

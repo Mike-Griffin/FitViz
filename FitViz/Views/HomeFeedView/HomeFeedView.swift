@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeFeedView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @StateObject var viewModel = ViewModel()
     var body: some View {
         ZStack {
         VStack {

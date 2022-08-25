@@ -18,7 +18,6 @@ struct CloudKitManager {
     
     // MARK: Activities
     func loadActivities() async throws -> [FVActivity] {
-        print("activities are being loaded")
         let query = CKQuery(recordType: RecordType.activity, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: FVActivity.kTimestamp, ascending: false)]
         
