@@ -21,7 +21,7 @@ extension Double {
         }
     }
     
-    func formatDistanceDisplayValue() -> String {
+    func formatDoubleDisplayValue() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumFractionDigits = 0
@@ -29,7 +29,7 @@ extension Double {
     }
     
     func displayInUnit(_ unit: DistanceUnit) -> String {
-        return self.convertMetersToDistanceUnit(unit.rawValue).formatDistanceDisplayValue()
+        return self.convertMetersToDistanceUnit(unit.rawValue).formatDoubleDisplayValue()
     }
     
     func metersPerSecondToMilesPerHour() -> Double {

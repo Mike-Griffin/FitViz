@@ -17,6 +17,10 @@ struct ActivityView: View {
             Text(viewModel.distanceUnit)
             Text(viewModel.activity.type)
         }
+            HStack {
+                Text("Pace: \(viewModel.milePace)/mi")
+                Text("Heart Rate: \(viewModel.activity.averageHeartRate.formatDoubleDisplayValue())")
+            }
             if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil) {
                 MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates)
             }

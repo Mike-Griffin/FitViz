@@ -16,16 +16,18 @@ extension ActivityView {
         @Published var sameDistanceActivities: [FVActivity] = []
         @Published var lineCoordinates: [CLLocationCoordinate2D]
         @Published var region: MKCoordinateRegion?
+        @Published var milePace: String
         let cloudkitManager = CloudKitManager()
         var activityDisplayString: String {
             get {
-                return activity.distance.convertMetersToDistanceUnit(distanceUnit).formatDistanceDisplayValue()
+                return activity.distance.displayInUnit(.miles)
             }
         }
         
         init(activity: FVActivity) {
             self.activity = activity
             lineCoordinates = []
+            milePace = activity.averagePace.metersPerSecondToDisplayValue()
 //            region = MKCoordinateRegion(
 //                // Apple Park
 //                center: CLLocationCoordinate2D(latitude: 37.334803, longitude: -122.008965),

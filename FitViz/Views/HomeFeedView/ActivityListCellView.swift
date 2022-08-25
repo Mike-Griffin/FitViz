@@ -16,7 +16,7 @@ struct ActivityListCellView: View {
             VStack(alignment: .center) {
                 HStack {
                     Text(activity.distance      .convertMetersToDistanceUnit(distanceUnit)
-                        .formatDistanceDisplayValue())
+                        .formatDoubleDisplayValue())
                     Text(distanceUnit)
                     Text(activity.type)
                     ActivityIcon(activityString: activity.type)

@@ -60,8 +60,8 @@ struct CalendarHeaderView: View {
 
                 GridRow() {
                     Text("Distance")
-                    Text("\(viewModel.activities.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue())")
-                    Text("\((viewModel.activities.sumDistances() / Double(viewModel.activities.count)).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue).formatDistanceDisplayValue())")
+                    Text("\(viewModel.activities.sumDistances().displayInUnit(.miles))")
+                    Text("\((viewModel.activities.sumDistances() / Double(viewModel.activities.count)).displayInUnit(.miles))")
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
