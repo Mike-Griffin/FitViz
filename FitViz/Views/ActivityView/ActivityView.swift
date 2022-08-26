@@ -21,7 +21,7 @@ struct ActivityView: View {
                 Text("Pace: \(viewModel.milePace)/mi")
                 Text("Heart Rate: \(viewModel.activity.averageHeartRate.formatDoubleDisplayValue())")
             }
-            if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil) {
+            if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil && viewModel.regionBuilt) {
                 MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates)
             }
             if(!viewModel.sameDistanceActivities.isEmpty) {
