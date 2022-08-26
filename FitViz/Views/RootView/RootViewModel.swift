@@ -17,8 +17,19 @@ extension RootView {
         // TODO: Change this to show a loading spinner while it's loading
         @Published var loading = true
         @Published var alertItem: AlertItem?
+//        @AppStorage("distanceUnit") var distanceUnit: String
         
         init() {
+            print("Locale: \(Locale.current.identifier)")
+            switch(Locale.current.identifier) {
+            case("en_US"):
+                UserDefaults.standard.set(DistanceUnit.miles.rawValue, forKey: "distanceUnit")
+            case("en_CA"):
+                UserDefaults.standard.set(DistanceUnit.kilometer.rawValue, forKey: "distanceUnit")
+            default:
+                print("Not a known locale \(Locale.current.identifier)")
+//                distanceUnit = ""
+            }
             Task {
                 do {
                     try await cloudkitManager.checkUser()
