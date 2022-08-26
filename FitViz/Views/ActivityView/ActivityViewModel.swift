@@ -17,6 +17,7 @@ extension ActivityView {
         @Published var lineCoordinates: [CLLocationCoordinate2D]
         @Published var region: MKCoordinateRegion?
         @Published var milePace: String
+        @Published var regionBuilt = false
         let cloudkitManager = CloudKitManager()
         var activityDisplayString: String {
             get {
@@ -101,6 +102,7 @@ extension ActivityView {
                 let longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1
                 region = MKCoordinateRegion(center: centerPoint, span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta))
             }
+            regionBuilt = true
         }
         
         private func decodeSingleCoordinate(byteArray: UnsafePointer<Int8>, length: Int, position: inout Int, precision: Double = 1e5) -> Double {

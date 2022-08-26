@@ -15,6 +15,7 @@ import Foundation
     @Published var currentDisplayedMonth = 0
     @Published var currentDisplayedYear = 2022
     @Published var monthDescription: String = ""
+    @Published var intervalChecked = false
     var startDate: Date
     var endDate: Date
     let ckManager = CloudKitManager()
@@ -23,6 +24,23 @@ import Foundation
         startDate = .now.addingTimeInterval(-24 * 30 * 24 * 3600)
         endDate = Date()
         interval = DateInterval(start: startDate, end: endDate)
+        Task {
+            do {
+                let sourceInfo = try await ckManager.getSourceInformation(source: .Strava)
+                if let firstDate = sourceInfo?.firstFetched.epochTimeStampToDate() {
+                    startDate = firstDate
+                    interval = DateInterval(start: startDate, end: endDate)
+                    intervalChecked = true
+                } else {
+                    print("Error: didn't find the first fetch time in the calendar")
+                    intervalChecked = true
+                }
+            } catch {
+                print(error)
+                intervalChecked = true
+            }
+        }
+
     }
     
 

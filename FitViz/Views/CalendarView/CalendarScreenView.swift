@@ -13,9 +13,11 @@ struct CalendarScreenView: View {
     var body: some View {
         VStack {
             CalendarHeaderView(viewModel: viewModel)
-            CalendarView(
-                viewModel: viewModel
-            )
+            if(viewModel.intervalChecked) {
+                CalendarView(
+                    viewModel: viewModel
+                )
+            }
         }
         .sheet(isPresented: $viewModel.showSheet, onDismiss: {
             viewModel.selectedActivities = []
