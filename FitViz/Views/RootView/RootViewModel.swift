@@ -67,6 +67,12 @@ extension RootView {
                                     let fetchedRecords = fetchedActivities.map({ $0.mapToCKRecord() })
                                     let _ = try await cloudkitManager.batchSave(records: fetchedRecords)
                                 }
+                                // save the first fetched timestamp
+                                if let oldestActivity = fetchedActivities.sorted(by: {
+                                    $0.timestamp < $1.timestamp
+                                }).first {
+                                    saveFirstFetched(time: oldestActivity.timestamp, source: .Strava)
+                                }
                                 loading = false
                             } else {
                                 print("last fetch time is not zero")
@@ -106,6 +112,25 @@ extension RootView {
                         let record = CKRecord(recordType: RecordType.sourceInformation)
                         record[FVSourceInformation.kSource] = source.rawValue
                         record[FVSourceInformation.kLastFetched] = time
+                        let _ = try await cloudkitManager.save(record: record)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        
+        func saveFirstFetched(time: Int, source: Source) {
+            Task {
+                do {
+                    if let infoRecord = try await cloudkitManager.getSourceInformationRecord(source: source) {
+                        infoRecord[FVSourceInformation.kFirstFetched] = time
+                        let _ = try await cloudkitManager.save(record: infoRecord)
+                    } else {
+                        print("Error: Saving the first fetched but there isn't a source found")
+                        let record = CKRecord(recordType: RecordType.sourceInformation)
+                        record[FVSourceInformation.kSource] = source.rawValue
+                        record[FVSourceInformation.kFirstFetched] = time
                         let _ = try await cloudkitManager.save(record: record)
                     }
                 } catch {

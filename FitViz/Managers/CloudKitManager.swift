@@ -70,6 +70,7 @@ struct CloudKitManager {
         
         for record in records {
             // TODO return something for the success case?
+            print("Deleting record \(record.recordID)")
             let _ = try await container.privateCloudDatabase.modifyRecords(saving: [], deleting: [record.recordID])
         }
     }
