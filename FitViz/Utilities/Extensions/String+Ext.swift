@@ -38,4 +38,14 @@ extension String {
             return 0
         }
     }
+    
+    func convertDateStringToDate() -> Date? {
+        let expectedFormat = Date.ISO8601FormatStyle()
+        do {
+            let date = try Date(self, strategy: expectedFormat)
+            return date
+        } catch {
+            return nil
+        }
+    }
 }
