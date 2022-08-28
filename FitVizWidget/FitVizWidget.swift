@@ -9,40 +9,45 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+    func placeholder(in context: Context) -> ActivityEntry {
+        ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity))
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+    func getSnapshot(in context: Context, completion: @escaping (ActivityEntry) -> ()) {
+        let entry = ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity))
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
+        let cloudkitManager = CloudKitManager()
+        Task {
+            do {
+                let activity = try await cloudkitManager.fetchActivities().first ?? FVActivity(record: MockData.activity)
+                let entry = ActivityEntry(date: .now, activity: activity)
+                let timeline = Timeline(entries: [entry], policy: .atEnd)
+                completion(timeline)
+            } catch {
+                print(error)
+            }
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct ActivityEntry: TimelineEntry {
     let date: Date
+    let activity: FVActivity
 }
 
 struct FitVizWidgetEntryView : View {
-    var entry: Provider.Entry
+    var entry: ActivityEntry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text(entry.activity.type)
+            Text(entry.activity.startTime.activityPreviewDateDisplay())
+        }
     }
 }
 
@@ -61,7 +66,7 @@ struct FitVizWidget: Widget {
 
 struct FitVizWidget_Previews: PreviewProvider {
     static var previews: some View {
-        FitVizWidgetEntryView(entry: SimpleEntry(date: Date()))
+        FitVizWidgetEntryView(entry: ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity)))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
