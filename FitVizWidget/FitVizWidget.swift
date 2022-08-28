@@ -61,12 +61,13 @@ struct FitVizWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemMedium])
     }
 }
 
 struct FitVizWidget_Previews: PreviewProvider {
     static var previews: some View {
         FitVizWidgetEntryView(entry: ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity)))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
