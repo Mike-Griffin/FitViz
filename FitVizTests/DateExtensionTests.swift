@@ -8,7 +8,7 @@
 import XCTest
 @testable import FitViz
 
-final class DateExtensionTests: XCTestCase {    
+final class DateExtensionTests: XCTestCase {
     func testTimeOfDayAM() throws {
         let date = try stringToDate("May 26, 2022 at 8:30 AM")
         let timeOfDay = date.timeOfDay()
@@ -17,8 +17,9 @@ final class DateExtensionTests: XCTestCase {
     
     func testTimeOfDayPM() throws {
         let date = try stringToDate("Aug 28, 2022 at 12:00 PM")
-        let timeOfDay = date.timeOfDay()
-        XCTAssert(timeOfDay == .PM)
+        XCTAssert(date.timeOfDay() == .PM)
+        let almostMidnight = try stringToDate("Jan 1, 2022 at 11:59 PM")
+        XCTAssert(almostMidnight.timeOfDay() == .PM)
     }
     
     func stringToDate(_ val: String) throws -> Date {
