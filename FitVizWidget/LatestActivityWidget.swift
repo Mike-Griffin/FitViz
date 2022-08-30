@@ -8,13 +8,13 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> ActivityEntry {
-        ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity))
+struct LatestActivityProvider: TimelineProvider {
+    func placeholder(in context: Context) -> LatestActivityEntry {
+        LatestActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity))
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (ActivityEntry) -> ()) {
-        let entry = ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity))
+    func getSnapshot(in context: Context, completion: @escaping (LatestActivityEntry) -> ()) {
+        let entry = LatestActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity))
         completion(entry)
     }
 
@@ -25,7 +25,7 @@ struct Provider: TimelineProvider {
         Task {
             do {
                 let activity = try await cloudkitManager.fetchActivities().first ?? FVActivity(record: MockData.activity)
-                let entry = ActivityEntry(date: .now, activity: activity)
+                let entry = LatestActivityEntry(date: .now, activity: activity)
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
                 completion(timeline)
             } catch {
@@ -35,13 +35,13 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct ActivityEntry: TimelineEntry {
+struct LatestActivityEntry: TimelineEntry {
     let date: Date
     let activity: FVActivity
 }
 
-struct FitVizWidgetEntryView : View {
-    var entry: ActivityEntry
+struct LatestActivityEntryView : View {
+    var entry: LatestActivityEntry
 
     var body: some View {
         VStack {
@@ -51,23 +51,22 @@ struct FitVizWidgetEntryView : View {
     }
 }
 
-@main
-struct FitVizWidget: Widget {
-    let kind: String = "FitVizWidget"
+struct LatestActivityWidget: Widget {
+    let kind: String = "LatestActivityWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            FitVizWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: LatestActivityProvider()) { entry in
+            LatestActivityEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Latest Activity")
+        .description("Widget with details of most recent activity.")
         .supportedFamilies([.systemMedium])
     }
 }
 
-struct FitVizWidget_Previews: PreviewProvider {
+struct LatestActivityWidget_Previews: PreviewProvider {
     static var previews: some View {
-        FitVizWidgetEntryView(entry: ActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity)))
+        LatestActivityEntryView(entry: LatestActivityEntry(date: Date(), activity: FVActivity(record: MockData.activity)))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

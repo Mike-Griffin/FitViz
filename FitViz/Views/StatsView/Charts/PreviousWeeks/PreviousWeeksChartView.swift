@@ -44,6 +44,7 @@ struct PreviousWeeksChartView: View {
                 }
                 .chartYScale(domain: 0...Double(viewModel.maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
                 .frame(height: 250)
+//                .clipShape(RoundedRectangle(cornerRadius: 16))
                 .onChange(of: viewModel.activities) { newValue in
                     for i in 0 ..< 12 {
                         viewModel.animateMap[i] = false
