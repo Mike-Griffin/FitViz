@@ -21,7 +21,7 @@ struct StatsView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
-                PreviousWeeksChartView(viewModel: viewModel )
+                PreviousWeeksChartView(animateMap: $viewModel.animateMap, activityMap: viewModel.activityMap, maxValue: viewModel.maxValue, dateTransitionMap: viewModel.dateTransitionMap)
 
                 TimeOfDayView(viewModel: TimeOfDayView.ViewModel(activities: viewModel.activities))
 

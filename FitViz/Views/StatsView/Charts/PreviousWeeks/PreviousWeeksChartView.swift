@@ -9,7 +9,11 @@ import SwiftUI
 import Charts
 
 struct PreviousWeeksChartView: View {
-    @ObservedObject var viewModel: StatsView.ViewModel
+//    @ObservedObject var viewModel: StatsView.ViewModel
+    @Binding var animateMap: [Int: Bool]
+    var activityMap: [Int: [FVActivity]]
+    var maxValue: Int
+    var dateTransitionMap: [Int: String]
     
     var body: some View {
         ZStack {
@@ -25,8 +29,8 @@ struct PreviousWeeksChartView: View {
                     ForEach(0...11, id: \.self) { i in
                         LineMark(
                             x: .value("Week Number", i),
-                            y: .value("Duration", (!viewModel.activities.isEmpty && viewModel.animateMap[i] == true)
-                                      ? viewModel.activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0
+                            y: .value("Duration", animateMap[i] == true
+                                      ? activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0
                                       : 0)
                         )
                         .symbol(Circle().strokeBorder(lineWidth: 2))
@@ -37,17 +41,17 @@ struct PreviousWeeksChartView: View {
                 .chartXAxis {
                     AxisMarks(values: .stride(by: 1)) { axis in
                         AxisGridLine()
-                        if let month = viewModel.dateTransitionMap[axis.index] {
+                        if let month = dateTransitionMap[axis.index] {
                             AxisValueLabel(month)
                         }
                     }
                 }
-                .chartYScale(domain: 0...Double(viewModel.maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
+                .chartYScale(domain: 0...Double(maxValue).convertMetersToDistanceUnit(DistanceUnit.miles.rawValue))
                 .frame(height: 250)
 //                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .onChange(of: viewModel.activities) { newValue in
+                .onChange(of: activityMap) { newValue in
                     for i in 0 ..< 12 {
-                        viewModel.animateMap[i] = false
+                        animateMap[i] = false
                     }
                     animateGraph()
                 }
@@ -60,7 +64,7 @@ struct PreviousWeeksChartView: View {
         for index in 0 ..< 12 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
                 withAnimation(.interactiveSpring(response:  0.8, dampingFraction: 0.8)) {
-                    viewModel.animateMap[index] = true
+                    animateMap[index] = true
                 }
             }
         }
