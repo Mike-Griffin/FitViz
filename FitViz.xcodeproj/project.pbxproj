@@ -40,6 +40,9 @@
 		7F49D2C828BC247C003CC1F5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D2F285509A4003B0A04 /* String+Ext.swift */; };
 		7F49D2D628BDB1E1003CC1F5 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F49D2D528BDB1E1003CC1F5 /* WidgetBundle.swift */; };
 		7F49D2D828BDB266003CC1F5 /* PreviousWeeksChartWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F49D2D728BDB266003CC1F5 /* PreviousWeeksChartWidget.swift */; };
+		7F49D2D928BEDE6B003CC1F5 /* PreviousWeeksChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27057828A5CCE20041C8FF /* PreviousWeeksChartView.swift */; };
+		7F49D2DC28BEE12F003CC1F5 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF8AA7128A5D1BD0023E64E /* Array+Ext.swift */; };
+		7F49D2DD28BEE2EB003CC1F5 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0EB6D0284D3CFF00721D81 /* Double+Ext.swift */; };
 		7F4E8D30285509A5003B0A04 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D2F285509A4003B0A04 /* String+Ext.swift */; };
 		7F4E8D322855328D003B0A04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D312855328D003B0A04 /* NetworkManager.swift */; };
 		7F4E8D34285533D0003B0A04 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8D33285533D0003B0A04 /* CustomError.swift */; };
@@ -643,15 +646,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F49D2D928BEDE6B003CC1F5 /* PreviousWeeksChartView.swift in Sources */,
 				7F49D2C128BC23C2003CC1F5 /* Constants.swift in Sources */,
 				7F49D2BE28BC22F9003CC1F5 /* CloudKitManager.swift in Sources */,
 				7F49D2D828BDB266003CC1F5 /* PreviousWeeksChartWidget.swift in Sources */,
 				7F49D2C328BC23D7003CC1F5 /* FVSourceInformation.swift in Sources */,
 				7F49D2C228BC23CF003CC1F5 /* Source.swift in Sources */,
+				7F49D2DD28BEE2EB003CC1F5 /* Double+Ext.swift in Sources */,
 				7F49D2C028BC2319003CC1F5 /* MockData.swift in Sources */,
 				7F49D2D628BDB1E1003CC1F5 /* WidgetBundle.swift in Sources */,
 				7F49D2C728BC23FD003CC1F5 /* AuthDetails.swift in Sources */,
 				7F49D2C828BC247C003CC1F5 /* String+Ext.swift in Sources */,
+				7F49D2DC28BEE12F003CC1F5 /* Array+Ext.swift in Sources */,
 				7F49D2C528BC23E7003CC1F5 /* Int+Ext.swift in Sources */,
 				7F49D2BF28BC22FF003CC1F5 /* FVActivity.swift in Sources */,
 				7F49D2C428BC23DE003CC1F5 /* DistanceRange.swift in Sources */,
