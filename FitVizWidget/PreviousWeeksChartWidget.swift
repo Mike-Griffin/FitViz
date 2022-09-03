@@ -19,9 +19,21 @@ struct PreviousWeeksChartProvider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<PreviousWeeksChartEntry>) -> Void) {
-        let entry = PreviousWeeksChartEntry(date: .now, activities: [FVActivity(record: MockData.activity)])
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
+        // TODO: Clean this up and put it in a utility function
+        let firstDayOfWeekTimestamp = Date().getFirstDayOfWeekTimeStamp()
+        let startDateTimeStamp = firstDayOfWeekTimestamp - 11.weeksToSeconds()
+        Task {
+            do {
+                let activities = try await CloudKitManager().fetchActivities(startDate: Date(timeIntervalSince1970: TimeInterval(startDateTimeStamp)))
+                
+                let entry = PreviousWeeksChartEntry(date: .now, activities: activities)
+                let timeline = Timeline(entries: [entry], policy: .atEnd)
+                completion(timeline)
+            } catch {
+                print(error)
+            }
+        }
+
     }
     
 }
@@ -33,13 +45,37 @@ struct PreviousWeeksChartEntry: TimelineEntry {
 
 struct PreviousWeeksChartEntryView : View {
     var entry: PreviousWeeksChartEntry
-
+    @State var animateMap: [Int: Bool] = [:]
+    
     var body: some View {
         VStack {
-            Text("Hi There")
-            Text("\(entry.activities.count)")
+            PreviousWeeksChartView(animateMap: $animateMap, activityMap: entry.activities.groupByWeek(), maxValue: getMaxValue(activityMap: entry.activities.groupByWeek()), dateTransitionMap: getDateTransitionMap())
         }
     }
+}
+
+func getMaxValue(activityMap: [Int: [FVActivity]]) -> Int {
+    var maxValue = 0
+    for (_, value) in activityMap {
+        maxValue = max(maxValue, Int(value.sumDistances()))
+    }
+    return maxValue
+}
+
+func getDateTransitionMap() -> [Int: String] {
+    var previousDate = Date().getFirstDayOfWeek()
+    var dateTransitionMap: [Int: String] = [:]
+
+    for i in 1 ..< 12 {
+        let currentDate = previousDate.addingTimeInterval(TimeInterval((-1).weeksToSeconds()))
+
+        if (previousDate.toMonth() != currentDate.toMonth()) {
+            dateTransitionMap[11 - i] = previousDate.toMonth()
+        }
+        previousDate = currentDate
+    }
+    
+    return dateTransitionMap
 }
 
 struct PreviousWeeksChartWidget: Widget {
@@ -51,6 +87,6 @@ struct PreviousWeeksChartWidget: Widget {
         }
         .configurationDisplayName("Previous Weeks Chart")
         .description("Widget with a chart of the last 12 weeks activities.")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemLarge])
     }
 }

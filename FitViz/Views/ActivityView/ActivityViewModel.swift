@@ -18,6 +18,7 @@ extension ActivityView {
         @Published var region: MKCoordinateRegion?
         @Published var milePace: String
         @Published var regionBuilt = false
+        @Published var loadingMap = true
         let cloudkitManager = CloudKitManager()
         var activityDisplayString: String {
             get {
