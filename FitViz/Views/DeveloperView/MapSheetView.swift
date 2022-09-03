@@ -18,7 +18,7 @@ struct MapSheetView: View {
             } label: {
                 Text("Dismiss")
             }
-            MapView(region: region, lineCoordinates: [])
+            MapView(region: region, lineCoordinates: [], loadingMap: .constant(false))
 
         }
     }

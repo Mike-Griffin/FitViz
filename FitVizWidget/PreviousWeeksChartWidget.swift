@@ -87,6 +87,6 @@ struct PreviousWeeksChartWidget: Widget {
         }
         .configurationDisplayName("Previous Weeks Chart")
         .description("Widget with a chart of the last 12 weeks activities.")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemLarge])
     }
 }

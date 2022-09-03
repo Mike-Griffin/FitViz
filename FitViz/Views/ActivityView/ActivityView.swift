@@ -11,6 +11,9 @@ struct ActivityView: View {
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
+#if DEBUG
+let _ = Self._printChanges()
+#endif
         VStack {
         HStack {
             Text(viewModel.activityDisplayString)
@@ -22,7 +25,12 @@ struct ActivityView: View {
                 Text("Heart Rate: \(viewModel.activity.averageHeartRate.formatDoubleDisplayValue())")
             }
             if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil && viewModel.regionBuilt) {
-                MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates)
+                ZStack {
+                    MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates, loadingMap: $viewModel.loadingMap)
+                    if(viewModel.loadingMap) {
+                        LoadingView()
+                    }
+                }
             }
             if(!viewModel.sameDistanceActivities.isEmpty) {
                 SameDistanceActivityView(viewModel: viewModel)

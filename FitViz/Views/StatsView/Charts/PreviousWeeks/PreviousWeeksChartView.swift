@@ -33,6 +33,11 @@ struct PreviousWeeksChartView: View {
                                       ? activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0
                                       : 0)
                         )
+                        //TODO: Cannot animate on the widget, need to fix this approach
+//                        LineMark(
+//                            x: .value("Week Number", i),
+//                            y: .value("Duration", activityMap[i]?.sumDistances().convertMetersToDistanceUnit(DistanceUnit.miles.rawValue) ?? 0)
+//                        )
                         .symbol(Circle().strokeBorder(lineWidth: 2))
                         .symbolSize(60)
                     }
