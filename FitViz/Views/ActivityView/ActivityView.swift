@@ -9,21 +9,13 @@ import SwiftUI
 
 struct ActivityView: View {
     @ObservedObject var viewModel: ViewModel
-
+    
     var body: some View {
 #if DEBUG
-let _ = Self._printChanges()
+        let _ = Self._printChanges()
 #endif
         VStack {
-        HStack {
-            Text(viewModel.activityDisplayString)
-            Text(viewModel.distanceUnit)
-            Text(viewModel.activity.type)
-        }
-            HStack {
-                Text("Pace: \(viewModel.milePace)/mi")
-                Text("Heart Rate: \(viewModel.activity.averageHeartRate.formatDoubleDisplayValue())")
-            }
+            ActivityDetailsView(viewModel: viewModel)
             if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil && viewModel.regionBuilt) {
                 ZStack {
                     MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates, loadingMap: $viewModel.loadingMap)
