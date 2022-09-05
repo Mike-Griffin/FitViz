@@ -19,6 +19,7 @@ struct ActivityView: View {
             if(viewModel.activity.encodedPolyline != "N/A" && !viewModel.lineCoordinates.isEmpty && viewModel.region != nil && viewModel.regionBuilt) {
                 ZStack {
                     MapView(region: viewModel.region!, lineCoordinates: viewModel.lineCoordinates, loadingMap: $viewModel.loadingMap)
+                        .frame(height: 240)
                     if(viewModel.loadingMap) {
                         LoadingView()
                     }
