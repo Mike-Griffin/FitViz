@@ -30,6 +30,7 @@ struct ActivitySimpleListView: View {
             }
             .headerProminence(.increased)
         }
+        .listStyle(.inset)
     }
 
 }
