@@ -46,9 +46,6 @@ struct ActivityView: View {
 struct SameDistanceActivityView: View {
     @ObservedObject var viewModel: ActivityView.ViewModel
     var body: some View {
-        VStack {
-            Text("Other \(viewModel.activity.distanceRange.description) \(viewModel.activity.type)s")
-            ActivitySimpleListView(activities: viewModel.sameDistanceActivities, viewingActivity: viewModel.activity)
-        }
+        ActivitySimpleListView(activities: viewModel.sameDistanceActivities, viewingActivity: viewModel.activity)
     }
 }

@@ -12,7 +12,7 @@ import MapKit
 extension ActivityView {
     @MainActor class ViewModel: ObservableObject {
         var activity: FVActivity
-        @AppStorage("distanceUnit") var distanceUnit = ""
+        @AppStorage("distanceUnit") var distanceUnit = DistanceUnit.miles.rawValue
         @Published var sameDistanceActivities: [FVActivity] = []
         @Published var lineCoordinates: [CLLocationCoordinate2D]
         @Published var region: MKCoordinateRegion?
@@ -23,6 +23,11 @@ extension ActivityView {
         var activityDisplayString: String {
             get {
                 return activity.distance.displayInUnit(.miles)
+            }
+        }
+        var activityTimeDisplayString: String {
+            get {
+                return activity.startTime.convertDateStringToEpochTimestamp().epochTimeStampToDate().toTimeDisplay()
             }
         }
         

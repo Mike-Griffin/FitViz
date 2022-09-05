@@ -42,7 +42,8 @@ struct MapView: UIViewRepresentable {
         if loadingMap {
             print(Date())
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                uiView.setRegion(region, animated: false)
+//                uiView.setRegion(region, animated: false)
+                uiView.regionThatFits(region)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     loadingMap = false
                 }

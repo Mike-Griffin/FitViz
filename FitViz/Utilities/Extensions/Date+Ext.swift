@@ -57,6 +57,10 @@ extension Date {
         return Int(self.timeIntervalSince1970)
     }
     
+    func toTimeDisplay() -> String {
+        return self.formatted(.dateTime.hour().minute(.twoDigits))
+    }
+    
     func toMonth() -> String {
         return self.formatted(.dateTime.month(.abbreviated))
     }
