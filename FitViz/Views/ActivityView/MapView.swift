@@ -20,6 +20,9 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         mapView.setRegion(region, animated: true)
+        mapView.isZoomEnabled = false
+        mapView.isScrollEnabled = false
+        mapView.isUserInteractionEnabled = false
         let regionVal = mapView.region.center
         let varRegionSpan = region.span
         let regionSpan = mapView.region.span
@@ -43,6 +46,7 @@ struct MapView: UIViewRepresentable {
             print(Date())
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 uiView.setRegion(region, animated: false)
+//                uiView.regionThatFits(region)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     loadingMap = false
                 }

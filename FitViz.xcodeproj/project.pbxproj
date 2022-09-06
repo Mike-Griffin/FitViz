@@ -60,6 +60,7 @@
 		7F57045F28A8117300104B02 /* TimeOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */; };
 		7F57046128A81A2D00104B02 /* MostCommonDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57046028A81A2D00104B02 /* MostCommonDayView.swift */; };
 		7F57046328A81D5200104B02 /* MostCommonDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */; };
+		7F68995E28C419D100091369 /* ActivityDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F68995D28C419D100091369 /* ActivityDetailsView.swift */; };
 		7F70BB3E289CC6A1000DAC26 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */; };
 		7F861C7C2862B39C00D47C2A /* FVSourceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */; };
 		7F92D60C28B5AF9600EFDF22 /* ActivitySimpleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D60B28B5AF9600EFDF22 /* ActivitySimpleListView.swift */; };
@@ -165,6 +166,7 @@
 		7F57045E28A8117300104B02 /* TimeOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayViewModel.swift; sourceTree = "<group>"; };
 		7F57046028A81A2D00104B02 /* MostCommonDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostCommonDayView.swift; sourceTree = "<group>"; };
 		7F57046228A81D5200104B02 /* MostCommonDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostCommonDayViewModel.swift; sourceTree = "<group>"; };
+		7F68995D28C419D100091369 /* ActivityDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailsView.swift; sourceTree = "<group>"; };
 		7F70BB3D289CC6A1000DAC26 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		7F861C7B2862B39C00D47C2A /* FVSourceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FVSourceInformation.swift; sourceTree = "<group>"; };
 		7F92D60B28B5AF9600EFDF22 /* ActivitySimpleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySimpleListView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				7F093D2D2880F42300AC0D75 /* ActivityViewModel.swift */,
 				7F093D2F2880F42D00AC0D75 /* ActivityView.swift */,
+				7F68995D28C419D100091369 /* ActivityDetailsView.swift */,
 				7F093D332884D4D500AC0D75 /* MapView.swift */,
 			);
 			path = ActivityView;
@@ -698,6 +701,7 @@
 				7FA0EBB92820925B00020DA2 /* HomeFeedViewModel.swift in Sources */,
 				7F57046328A81D5200104B02 /* MostCommonDayViewModel.swift in Sources */,
 				7FA0EBAE28208D8B00020DA2 /* RootViewModel.swift in Sources */,
+				7F68995E28C419D100091369 /* ActivityDetailsView.swift in Sources */,
 				7F4E8D4528567C71003B0A04 /* AuthorizationManager.swift in Sources */,
 				7F4E8D422856779F003B0A04 /* KeychainManager.swift in Sources */,
 				7F4E8D3628553A48003B0A04 /* StravaActivity.swift in Sources */,
