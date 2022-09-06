@@ -17,7 +17,7 @@ struct ActivityDetailsView: View {
                         .frame(width: 64, height: 64)
                     ActivityIcon(activityString: viewModel.activity.type, size: 42)
 //                        .frame(width: 52, height: 52)
-                        .foregroundColor(.green)
+                        .foregroundColor(.green).opacity(0.7)
 
                 }
             VStack(spacing: 20) {
